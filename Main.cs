@@ -35,7 +35,7 @@ namespace IngredientLib
 {
     public class Main : BaseMod
     {
-        public const string GUID = "ingredientlib";
+        public const string GUID = "nova.ingredientlib";
         public const string VERSION = "0.2.2";
 
         public Main() : base(GUID, "IngredientLib", "Depleted Supernova#1957", VERSION, ">=1.0.0", Assembly.GetExecutingAssembly()) { }
