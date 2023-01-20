@@ -132,6 +132,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ingredient\Items\Cinnamon.cs" />
+    <Compile Include="Ingredient\Items\Garlic\MincedGarlic.cs" />
+    <Compile Include="Ingredient\Items\Garlic\PeeledGarlic.cs" />
+    <Compile Include="Ingredient\Items\Garlic\Garlic.cs" />
     <Compile Include="Ingredient\Items\Pasta\BoxNoodle.cs" />
     <Compile Include="Ingredient\Items\Pasta\CookedMacaroniPot.cs" />
     <Compile Include="Ingredient\Items\Pasta\CookedNoodlePot.cs" />
@@ -142,6 +145,7 @@
     <Compile Include="Ingredient\Items\Syrup\Syrup.cs" />
     <Compile Include="Ingredient\Items\Syrup\SyrupIngredient.cs" />
     <Compile Include="Ingredient\Providers\BoxPastaProvider.cs" />
+    <Compile Include="Ingredient\Providers\GarlicProvider.cs" />
     <Compile Include="Ingredient\Providers\MacaroniProvider.cs" />
     <Compile Include="Ingredient\Providers\CinnamonProvider.cs" />
     <Compile Include="Ingredient\Providers\SyrupProvider.cs" />

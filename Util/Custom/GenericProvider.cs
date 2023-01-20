@@ -4,7 +4,7 @@
     {
         public abstract string NameTag { get; }
 
-        public override string UniqueNameID => $"{NameTag.ToLower()}source";
+        public override string UniqueNameID => $"{NameTag.ToLower()} source";
         public override string Name => NameTag;
         public override bool SellOnlyAsDuplicate => true;
         public override bool IsPurchasable => true;

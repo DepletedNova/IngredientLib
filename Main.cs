@@ -161,6 +161,12 @@ namespace IngredientLib
             AddGameDataObject<Syrup>();
             AddGameDataObject<SyrupIngredient>();
 
+            // Garlic
+            AddGameDataObject<GarlicProvider>();
+            AddGameDataObject<Garlic>();
+            AddGameDataObject<PeeledGarlic>();
+            AddGameDataObject<MincedGarlic>();
+
             Log("Loaded ingredients.");
         }
 
@@ -222,11 +228,14 @@ namespace IngredientLib
 
             AddMaterial(MaterialHelper.CreateFlat("Cinnamon", 0xC58C66));
 
+            AddMaterial(MaterialHelper.CreateFlat("Garlic", 0xf2e9d2));
+
             Log("Loaded materials.");
         }
 
         private void AddRecipes()
         {
+            // todo: replace this - obsolete system
             var burnedFood = GetGDO<Item>(ItemReferences.BurnedFood);
 
             GetItem<Chocolate>().AddRecipe(GetItem<ChoppedChocolate>(), ProcessReferences.Chop, 1f, false, false);
