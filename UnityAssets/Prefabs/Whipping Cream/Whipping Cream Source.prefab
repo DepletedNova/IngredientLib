@@ -1601,7 +1601,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5825030451128351047, guid: bad2877e030683a419a625cd7bf0b2b5, type: 3}
       propertyPath: m_Name
-      value: Whipping Cream - Item
+      value: Whipping Cream
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bad2877e030683a419a625cd7bf0b2b5, type: 3}

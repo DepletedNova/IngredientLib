@@ -950,7 +950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5825030451128351047, guid: bae543a285b39504fb3bbd978f6ef7cf, type: 3}
       propertyPath: m_Name
-      value: Vinegar - Item
+      value: Vinegar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bae543a285b39504fb3bbd978f6ef7cf, type: 3}
