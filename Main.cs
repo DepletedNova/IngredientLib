@@ -152,6 +152,15 @@ namespace IngredientLib
             AddGameDataObject<IceProvider>();
             AddGameDataObject<Ice>();
 
+            // Cinnamon
+            AddGameDataObject<CinnamonProvider>();
+            AddGameDataObject<Cinnamon>();
+
+            // Syrup
+            AddGameDataObject<SyrupProvider>();
+            AddGameDataObject<Syrup>();
+            AddGameDataObject<SyrupIngredient>();
+
             Log("Loaded ingredients.");
         }
 
@@ -159,6 +168,7 @@ namespace IngredientLib
         {
             // Common
             AddMaterial(MaterialHelper.CreateTransparent("Glass", 0xF6FEFF, 0.6f));
+            AddMaterial(MaterialHelper.CreateTransparent("Plastic - Transparent", 0xF6FEFF, 0.9f));
 
             AddMaterial(MaterialHelper.CreateFlat("Stem", 0x6B3E26));
             AddMaterial(MaterialHelper.CreateFlat("White Fruit", 0xE5FFDC));
@@ -209,6 +219,8 @@ namespace IngredientLib
             AddMaterial(MaterialHelper.CreateFlat("Egg Dough", 0xF4E2AA));
 
             AddMaterial(MaterialHelper.CreateFlat("Caramel", 0xC68E17));
+
+            AddMaterial(MaterialHelper.CreateFlat("Cinnamon", 0xC58C66));
 
             Log("Loaded materials.");
         }

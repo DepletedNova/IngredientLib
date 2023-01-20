@@ -131,6 +131,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ingredient\Items\Cinnamon.cs" />
     <Compile Include="Ingredient\Items\Pasta\BoxNoodle.cs" />
     <Compile Include="Ingredient\Items\Pasta\CookedMacaroniPot.cs" />
     <Compile Include="Ingredient\Items\Pasta\CookedNoodlePot.cs" />
@@ -138,8 +139,12 @@
     <Compile Include="Ingredient\Items\Pasta\Macaroni.cs" />
     <Compile Include="Ingredient\Items\Pasta\UncookedMacaroniPot.cs" />
     <Compile Include="Ingredient\Items\Pasta\UncookedNoodlePot.cs" />
+    <Compile Include="Ingredient\Items\Syrup\Syrup.cs" />
+    <Compile Include="Ingredient\Items\Syrup\SyrupIngredient.cs" />
     <Compile Include="Ingredient\Providers\BoxPastaProvider.cs" />
     <Compile Include="Ingredient\Providers\MacaroniProvider.cs" />
+    <Compile Include="Ingredient\Providers\CinnamonProvider.cs" />
+    <Compile Include="Ingredient\Providers\SyrupProvider.cs" />
     <Compile Include="Util\DualProvider\CDualProvider.cs" />
     <Compile Include="Util\DualProvider\SwitchDualProvider.cs" />
     <Compile Include="Util\DualProvider\DualProviderView.cs" />

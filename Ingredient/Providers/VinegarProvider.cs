@@ -12,9 +12,9 @@
 
         public override void Modify(Appliance gdo)
         {
-            SetupCounter(Prefab, "Vinegar - Item");
+            SetupCounter(Prefab, "Vinegar");
 
-            Prefab.GetChildFromPath("Block/HoldPoint/Vinegar - Item/Jar").ApplyMaterial("Cork", "Vinegar", "Plastic - Orange");
+            Prefab.GetChildFromPath("Block/HoldPoint/Vinegar/Jar").ApplyMaterial("Cork", "Vinegar", "Plastic - Orange");
         }
     }
 }

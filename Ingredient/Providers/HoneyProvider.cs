@@ -3,6 +3,7 @@
     public class HoneyProvider : GenericProvider
     {
         public override string NameTag => "Honey";
+        public override List<Appliance.ApplianceProcesses> Processes => CreateCounterProcesses();
         public override List<IApplianceProperty> Properties => new List<IApplianceProperty>()
         {
             new CItemHolder(),
@@ -11,7 +12,7 @@
 
         public override void Modify(Appliance gdo)
         {
-            SetupCounter(Prefab, "Honey - Item");
+            SetupCounter(Prefab, "Honey");
 
             var honey = Prefab.GetChildFromPath("Block/HoldPoint/Honey - Item");
             honey.ApplyMaterialToChild("glass", "Glass", "Wood", "Sack - String");

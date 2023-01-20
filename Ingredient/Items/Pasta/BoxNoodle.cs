@@ -1,6 +1,6 @@
 ﻿namespace IngredientLib.Ingredient.Items
 {
-    public class BoxNoodle : GenericItem
+    public class BoxNoodle : GenericItem<BoxPastaProvider>
     {
         public override string NameTag => "Box Pasta";
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;

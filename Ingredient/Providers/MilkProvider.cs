@@ -11,9 +11,9 @@
 
         public override void Modify(Appliance gdo)
         {
-            SetupCounter(Prefab, "Milk - Item");
+            SetupCounter(Prefab, "Milk");
 
-            Prefab.GetChildFromPath("Block/HoldPoint/Milk - Item/Jar").ApplyMaterial("Plastic - White", "Plastic - Blue");
+            Prefab.GetChildFromPath("Block/HoldPoint/Milk/Jar").ApplyMaterial("Plastic - White", "Plastic - Blue");
             var crate = Prefab.GetChild("Crate");
             crate.ApplyMaterialToChild("Box", "Wood");
             crate.GetChild("Ice").ApplyMaterialToChildren("Cube", "Ice");
