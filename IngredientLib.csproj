@@ -126,11 +126,23 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.VFXModule">
+      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\UnityEngine.VFXModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplianceUtil\DualProvider\CDualProvider.cs" />
-    <Compile Include="ApplianceUtil\DualProvider\SwitchDualProvider.cs" />
-    <Compile Include="ApplianceUtil\DualProvider\DualProviderView.cs" />
+    <Compile Include="Ingredient\Items\Pasta\BoxNoodle.cs" />
+    <Compile Include="Ingredient\Items\Pasta\CookedMacaroniPot.cs" />
+    <Compile Include="Ingredient\Items\Pasta\CookedNoodlePot.cs" />
+    <Compile Include="Ingredient\Items\Pasta\EggNoodle.cs" />
+    <Compile Include="Ingredient\Items\Pasta\Macaroni.cs" />
+    <Compile Include="Ingredient\Items\Pasta\UncookedMacaroniPot.cs" />
+    <Compile Include="Ingredient\Items\Pasta\UncookedNoodlePot.cs" />
+    <Compile Include="Ingredient\Providers\BoxPastaProvider.cs" />
+    <Compile Include="Ingredient\Providers\MacaroniProvider.cs" />
+    <Compile Include="Util\DualProvider\CDualProvider.cs" />
+    <Compile Include="Util\DualProvider\SwitchDualProvider.cs" />
+    <Compile Include="Util\DualProvider\DualProviderView.cs" />
     <Compile Include="Ingredient\Items\Pork\Bacon.cs" />
     <Compile Include="Ingredient\Items\Banana\Banana.cs" />
     <Compile Include="Ingredient\Items\Banana\BananaPeel.cs" />
@@ -154,7 +166,7 @@
     <Compile Include="Ingredient\Items\Drumstick\CookedDrumstick.cs" />
     <Compile Include="Ingredient\Items\Drumstick\Drumstick.cs" />
     <Compile Include="Ingredient\Items\Drumstick\DrumstickBone.cs" />
-    <Compile Include="Ingredient\Items\Egg Dough\EggDough.cs" />
+    <Compile Include="Ingredient\Items\Pasta\EggDough.cs" />
     <Compile Include="Ingredient\Items\Chocolate\Ganache.cs" />
     <Compile Include="Ingredient\Items\Honey\Honey.cs" />
     <Compile Include="Ingredient\Items\Honey\HoneyIngredient.cs" />
@@ -163,7 +175,7 @@
     <Compile Include="Ingredient\Items\Lime\LimeJuice.cs" />
     <Compile Include="Ingredient\Items\Lemon\LemonJuice.cs" />
     <Compile Include="Ingredient\Items\Lime\Lime.cs" />
-    <Compile Include="Ingredient\Items\Egg Dough\UnmixedEggDough.cs" />
+    <Compile Include="Ingredient\Items\Pasta\UnmixedEggDough.cs" />
     <Compile Include="Ingredient\Items\Whipping Cream\WhippingCream.cs" />
     <Compile Include="Ingredient\Items\Milk\MilkIngredient.cs" />
     <Compile Include="Ingredient\Items\Oats.cs" />
@@ -186,7 +198,6 @@
     <Compile Include="Ingredient\Providers\IceProvider.cs" />
     <Compile Include="Ingredient\Providers\LemonProvider.cs" />
     <Compile Include="Ingredient\Providers\LimeProvider.cs" />
-    <Compile Include="Ingredient\Providers\TestProvider.cs" />
     <Compile Include="Ingredient\Providers\WhippingCreamProvider.cs" />
     <Compile Include="Ingredient\Providers\MilkProvider.cs" />
     <Compile Include="Ingredient\Providers\OatsProvider.cs" />
@@ -202,7 +213,9 @@
     <Compile Include="Util\GDOHelper.cs" />
     <Compile Include="Util\Helper.cs" />
     <Compile Include="Util\MaterialHelper.cs" />
+    <Compile Include="Util\VisualEffectHelper.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(TargetDir)$(TargetFileName)" "C:\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\Mods\IngredientLib\content" /y
@@ -210,5 +223,9 @@ copy "C:\PlateUp\Assets\Bundle Generation\Assets\Bundles\ingredientlib" "C:\Prog
 cd "C:\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\Mods\IngredientLib\content"
 del "ingredientlib.assets"
 ren "ingredientlib" "ingredientlib.assets"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>

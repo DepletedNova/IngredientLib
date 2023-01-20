@@ -1,0 +1,14 @@
+﻿namespace NovaLib
+{
+    public abstract class ReferenceSystemBase<T> where T : ReferenceSystemBase<T>
+    {
+        public static T Instance;
+        public ReferenceSystemBase()
+        {
+            Instance = this as T;
+        }
+
+        public string name = "hunfgry";
+    }
+}
+

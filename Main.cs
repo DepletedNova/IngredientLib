@@ -1,4 +1,5 @@
 ﻿global using UnityEngine;
+global using UnityEngine.VFX;
 global using Unity.Entities;
 global using Unity.Collections;
 global using System;
@@ -18,10 +19,9 @@ global using IngredientLib.Ingredient.Items;
 global using IngredientLib.Ingredient.Providers;
 global using IngredientLib.Util;
 global using IngredientLib.Util.Custom;
-global using IngredientLib.ApplianceUtil;
-global using IngredientLib.ApplianceUtil.Interactions;
-global using IngredientLib.ApplianceUtil.Properties;
-global using IngredientLib.ApplianceUtil.Views;
+global using IngredientLib.Util.Interactions;
+global using IngredientLib.Util.Properties;
+global using IngredientLib.Util.Views;
 global using MessagePack;
 global using HarmonyLib;
 
@@ -44,91 +44,112 @@ namespace IngredientLib
 
         private void AddGameData()
         {
-            // Providers
+            // Vinegar
             AddGameDataObject<VinegarProvider>();
-            AddGameDataObject<ChocolateProvider>();
-            AddGameDataObject<ButterProvider>();
-            AddGameDataObject<MilkProvider>();
-            AddGameDataObject<BananaProvider>();
-            AddGameDataObject<PepperProvider>();
-            AddGameDataObject<LemonProvider>();
-            AddGameDataObject<LimeProvider>();
-            AddGameDataObject<OatsProvider>();
-            AddGameDataObject<PorkProvider>();
-            AddGameDataObject<ChickenProvider>();
-            AddGameDataObject<DrumstickProvider>();
-            AddGameDataObject<HoneyProvider>();
-            AddGameDataObject<WhippingCreamProvider>();
-            AddGameDataObject<IceProvider>();
-#if DEBUG
-            AddGameDataObject<TestProvider>();
-#endif
-
-            // Burned Foods
-            AddGameDataObject<BurnedPorkchop>();
-
-            // Ingredients
             AddGameDataObject<Vinegar>();
             AddGameDataObject<VinegarIngredient>();
 
+            // Whipping Cream
+            AddGameDataObject<WhippingCreamProvider>();
             AddGameDataObject<WhippingCream>();
             AddGameDataObject<WhippingCreamIngredient>();
 
+            // Chocolate
+            AddGameDataObject<ChocolateProvider>();
             AddGameDataObject<Chocolate>();
             AddGameDataObject<ChoppedChocolate>();
             AddGameDataObject<ChocolateShavings>();
             AddGameDataObject<ChocolateSauce>();
             AddGameDataObject<Ganache>();
 
+            // Butter
+            AddGameDataObject<ButterProvider>();
             AddGameDataObject<ButterBlock>();
             AddGameDataObject<Butter>();
 
+            // Milk
+            AddGameDataObject<MilkProvider>();
             AddGameDataObject<Milk>();
             AddGameDataObject<MilkIngredient>();
 
+            // Banana
+            AddGameDataObject<BananaProvider>();
+            AddGameDataObject<Banana>();
+            AddGameDataObject<PeeledBanana>();
             AddGameDataObject<ChoppedBanana>();
             AddGameDataObject<BananaPeel>();
-            AddGameDataObject<PeeledBanana>();
-            AddGameDataObject<Banana>();
 
-            AddGameDataObject<ChoppedPepper>();
+            // Pepper
+            AddGameDataObject<PepperProvider>();
             AddGameDataObject<Pepper>();
+            AddGameDataObject<ChoppedPepper>();
 
+            // Lemon
+            AddGameDataObject<LemonProvider>();
             AddGameDataObject<Lemon>();
             AddGameDataObject<ChoppedLemon>();
             AddGameDataObject<LemonJuice>();
 
+            // Lime
+            AddGameDataObject<LimeProvider>();
             AddGameDataObject<Lime>();
             AddGameDataObject<ChoppedLime>();
             AddGameDataObject<LimeJuice>();
 
+            // Oats
+            AddGameDataObject<OatsProvider>();
             AddGameDataObject<Oats>();
 
+            // Pork
+            AddGameDataObject<PorkProvider>();
             AddGameDataObject<Pork>();
             AddGameDataObject<Porkchop>();
             AddGameDataObject<ChoppedPork>();
             AddGameDataObject<Bacon>();
+            AddGameDataObject<BurnedPorkchop>();
 
+            // Chicken
+            AddGameDataObject<ChickenProvider>();
+            AddGameDataObject<Chicken>();
             AddGameDataObject<ShreddedChicken>();
             AddGameDataObject<CookedChicken>();
-            AddGameDataObject<Chicken>();
 
+            // Drumstick
+            AddGameDataObject<DrumstickProvider>();
             AddGameDataObject<Drumstick>();
             AddGameDataObject<CookedDrumstick>();
             AddGameDataObject<BonelessDrumstick>();
             AddGameDataObject<CookedBonelessDrumstick>();
             AddGameDataObject<DrumstickBone>();
 
+            // Honey
+            AddGameDataObject<HoneyProvider>();
             AddGameDataObject<Honey>();
             AddGameDataObject<HoneyIngredient>();
 
+            // Pasta
+            AddGameDataObject<BoxPastaProvider>();
             AddGameDataObject<UnmixedEggDough>();
             AddGameDataObject<EggDough>();
+            AddGameDataObject<EggNoodle>();
+            AddGameDataObject<BoxNoodle>();
+            AddGameDataObject<UncookedNoodlePot>();
+            AddGameDataObject<CookedNoodlePot>();
 
+            // Macaroni
+            AddGameDataObject<MacaroniProvider>();
+            AddGameDataObject<Macaroni>();
+            AddGameDataObject<UncookedMacaroniPot>();
+            AddGameDataObject<CookedMacaroniPot>();
+
+            // Caramel
             AddGameDataObject<Caramel>();
 
+            // Batter
             AddGameDataObject<Batter>();
 
+            // Ice
+            AddGameDataObject<IceProvider>();
             AddGameDataObject<Ice>();
 
             Log("Loaded ingredients.");
@@ -141,6 +162,9 @@ namespace IngredientLib
 
             AddMaterial(MaterialHelper.CreateFlat("Stem", 0x6B3E26));
             AddMaterial(MaterialHelper.CreateFlat("White Fruit", 0xE5FFDC));
+
+            AddMaterial(MaterialHelper.CreateFlat("Emoji Yellow", 0xFAC036));
+            AddMaterial(MaterialHelper.CreateFlat("Emoji Orange", 0xE48C15));
 
             // Specific
             AddMaterial(MaterialHelper.CreateFlat("Vinegar", 0xFFF0C6));
@@ -226,11 +250,13 @@ namespace IngredientLib
             GetItem<CookedBonelessDrumstick>().AddRecipe(burnedFood, ProcessReferences.Cook, 10f, true, false);
 
             GetItem<UnmixedEggDough>().AddRecipe(GetItem<EggDough>(), ProcessReferences.Knead, 1.6f, false, false);
+            GetItem<EggDough>().AddRecipe(GetItem<EggNoodle>(), ProcessReferences.Knead, 1.3f, false, false);
 
             GetGDO<Item>(ItemReferences.Sugar).AddRecipe(GetItem<Caramel>(), ProcessReferences.Cook, 2.6f, false, false);
             GetItem<Caramel>().AddRecipe(burnedFood, ProcessReferences.Cook, 10f, true, false);
 
             Log("Loaded base recipes.");
+
         }
 
         private Item GetItem<T>() where T : CustomItem
@@ -249,6 +275,18 @@ namespace IngredientLib
             Events.BuildGameDataEvent += (s, args) =>
             {
                 AddRecipes();
+
+#if DEBUG
+                Log("Providers");
+                foreach (var item in providerReferences)
+                    Debug.Log($" * \"{item.Key}\": `{item.Value}`");
+                Log("Ingredient\n");
+                foreach (var item in ingredientReferences)
+                    Debug.Log($" * \"{item.Key}\": `{item.Value}`");
+                Log("Split Ingredient\n");
+                foreach (var item in splitIngredientReferences)
+                    Debug.Log($" * \"{item.Key}\": `{item.Value}`");
+#endif
 
                 args.gamedata.ProcessesView.Initialise(args.gamedata);
             };

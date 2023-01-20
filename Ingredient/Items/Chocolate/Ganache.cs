@@ -4,7 +4,7 @@
     {
         public override string NameTag => "Ganache";
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
-        public override List<ItemSet> ItemSets => new List<ItemSet>()
+        public override List<ItemSet> Sets => new List<ItemSet>()
             {
                 new ItemSet()
                 {

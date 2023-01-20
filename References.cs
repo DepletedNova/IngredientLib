@@ -76,9 +76,9 @@
 
     public static class References
     {
-        private static Dictionary<string, int> ingredientReferences = new Dictionary<string, int>();
-        private static Dictionary<string, int> splitIngredientReferences = new Dictionary<string, int>();
-        private static Dictionary<string, int> providerReferences = new Dictionary<string, int>();
+        public static Dictionary<string, int> ingredientReferences = new Dictionary<string, int>();
+        public static Dictionary<string, int> splitIngredientReferences = new Dictionary<string, int>();
+        public static Dictionary<string, int> providerReferences = new Dictionary<string, int>();
 
         public static int GetIngredient(string name) => ingredientReferences[name.ToLower()];
         public static int GetSplitIngredient(string name) => splitIngredientReferences[name.ToLower()] | 0;
@@ -88,27 +88,18 @@
         {
             if (ingredientReferences.ContainsKey(name.ToLower()))
                 return;
-#if DEBUG
-            Debug.Log($"* \"{name}\": `{item.ID}` [INGREDIENT]");
-#endif
             ingredientReferences.Add(name.ToLower(), item.ID);
         }
         internal static void AddSplitIngredient<T>(string name, T item) where T : GameDataObject
         {
             if (splitIngredientReferences.ContainsKey(name.ToLower()))
                 return;
-#if DEBUG
-            Debug.Log($"* \"{name}\": `{item.ID}` [SPLIT]");
-#endif
             splitIngredientReferences.Add(name.ToLower(), item.ID);
         }
         internal static void AddProvider<T>(string name, T item) where T : GameDataObject
         {
             if (providerReferences.ContainsKey(name.ToLower()))
                 return;
-#if DEBUG
-            Debug.Log($"* \"{name}\": `{item.ID}` [PROVIDER]");
-#endif
             providerReferences.Add(name.ToLower(), item.ID);
         }
     }

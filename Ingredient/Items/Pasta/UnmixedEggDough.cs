@@ -1,8 +1,8 @@
 ﻿namespace IngredientLib.Ingredient.Items
 {
-    public class Batter : GenericItemGroup
+    public class UnmixedEggDough : GenericItemGroup
     {
-        public override string NameTag => "Batter";
+        public override string NameTag => "Unmixed Egg Dough";
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override List<ItemSet> Sets => new List<ItemSet>()
             {
@@ -11,7 +11,7 @@
                     Items = new List<Item>()
                     {
                         GetGDO<Item>(ItemReferences.Flour),
-                        GetCastedGDO<Item, MilkIngredient>(),
+                        GetGDO<Item>(ItemReferences.EggCracked),
                     },
                     Min = 2,
                     Max = 2
@@ -22,7 +22,9 @@
         {
             var bowl = Prefab.GetChild("bowl");
             bowl.ApplyMaterialToChild("Cylinder.001", "Metal Dark");
-            bowl.ApplyMaterialToChild("Cylinder", "Raw Pastry", "Flour");
+            bowl.ApplyMaterialToChild("Cylinder", "Flour", "Egg - Yolk", "Egg - White");
+            bowl.ApplyMaterialToChild("yolk", "Egg - Yolk");
+            bowl.ApplyMaterialToChild("whites", "Egg - White");
         }
     }
 }
