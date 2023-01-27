@@ -7,14 +7,18 @@
         public override Item DisposesTo => GetGDO<Item>(ItemReferences.Pot);
         public override ItemStorage ItemStorageFlags => ItemStorage.Small;
 
+        public override void Convert(GameData gameData, out GameDataObject gdo)
+        {
+            base.Convert(gameData, out gdo);
+
+            Prefab.TryAddComponent<ItemGroupViewAccessed>().Setup();
+        }
+
         public override void Modify(Item gdo)
         {
             var pot = Prefab.GetChild("Pot");
             var pasta = Prefab.GetChild("Pasta");
             var mac = Prefab.GetChild("Macaroni");
-
-            // View
-            Prefab.TryAddComponent<ItemGroupViewAccessed>().Setup();
 
             // Visuals
             pot.ApplyMaterialToChild("Cylinder", "Metal");

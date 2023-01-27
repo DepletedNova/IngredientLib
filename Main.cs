@@ -35,10 +35,10 @@ namespace IngredientLib
 {
     public class Main : BaseMod
     {
-        public const string GUID = "nova.ingredientlib";
-        public const string VERSION = "0.2.2";
+        public const string GUID = "ingredientlib";
+        public const string VERSION = "0.3.2";
 
-        public Main() : base(GUID, "IngredientLib", "Depleted Supernova#1957", VERSION, ">=1.0.0", Assembly.GetExecutingAssembly()) { }
+        public Main() : base(GUID, "IngredientLib", "Depleted Supernova#1957", VERSION, ">=1.1.0", Assembly.GetExecutingAssembly()) { }
 
         public static AssetBundle bundle;
 
@@ -298,6 +298,7 @@ namespace IngredientLib
                 AddRecipes();
 
 #if DEBUG
+                Log("Custom References");
                 Log("Providers");
                 foreach (var item in providerReferences)
                     Debug.Log($" * \"{item.Key}\": `{item.Value}`");
@@ -307,6 +308,17 @@ namespace IngredientLib
                 Log("Split Ingredient\n");
                 foreach (var item in splitIngredientReferences)
                     Debug.Log($" * \"{item.Key}\": `{item.Value}`");
+                //
+                Log("KitchenLib References");
+                Log("Providers");
+                foreach (var item in providerReferences)
+                    Debug.Log($" * \"{GetCustomGameDataObject(item.Value).UniqueNameID}\": `{item.Value}`");
+                Log("Ingredient\n");
+                foreach (var item in ingredientReferences)
+                    Debug.Log($" * \"{GetCustomGameDataObject(item.Value).UniqueNameID}\": `{item.Value}`");
+                Log("Split Ingredient\n");
+                foreach (var item in splitIngredientReferences)
+                    Debug.Log($" * \"{GetCustomGameDataObject(item.Value).UniqueNameID}\": `{item.Value}`");
 #endif
 
                 args.gamedata.ProcessesView.Initialise(args.gamedata);

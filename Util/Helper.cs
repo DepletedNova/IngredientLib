@@ -35,6 +35,14 @@
         {
             return gameObject.transform.childCount;
         }
+        public static List<GameObject> GetChildren(this GameObject gameObject)
+        {
+            var children = new List<GameObject>();
+            for (var i = 0; i < gameObject.transform.childCount; i++)
+                children.Add(gameObject.GetChild(i));
+            
+            return children;
+        }
 
         // GDO
         public static T GetGDO<T>(int id) where T : GameDataObject

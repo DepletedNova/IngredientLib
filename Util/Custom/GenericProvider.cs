@@ -19,9 +19,9 @@
             AddProvider(NameTag, gdo);
         }
 
-        public override void AttachDependentProperties(GameDataObject gameDataObject)
+        public override void AttachDependentProperties(GameData gameData, GameDataObject gdo)
         {
-            base.AttachDependentProperties(gameDataObject);
+            base.AttachDependentProperties(gameData, gdo);
 
             AddCustomProperties();
         }

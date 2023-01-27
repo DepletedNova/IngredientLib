@@ -2,7 +2,7 @@
 
 namespace IngredientLib.Util
 {
-    public static class GDOHelper
+    internal static class GDOHelper
     {
         public static void AddRecipe(this Item from, Item to, int process, float duration, bool isBad, bool requiresWrapper)
         {
