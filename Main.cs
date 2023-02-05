@@ -1,28 +1,30 @@
 ﻿global using UnityEngine;
 global using UnityEngine.VFX;
+
 global using Unity.Entities;
 global using Unity.Collections;
+
 global using System;
 global using System.Linq;
 global using System.Reflection;
 global using System.Collections.Generic;
+
 global using Kitchen;
 global using Kitchen.Components;
 global using KitchenData;
 global using KitchenMods;
+
 global using KitchenLib;
 global using KitchenLib.Customs;
 global using KitchenLib.Event;
 global using KitchenLib.References;
 global using KitchenLib.Utils;
+
 global using IngredientLib.Ingredient.Items;
 global using IngredientLib.Ingredient.Providers;
 global using IngredientLib.Util;
 global using IngredientLib.Util.Custom;
-global using IngredientLib.Util.Interactions;
-global using IngredientLib.Util.Properties;
-global using IngredientLib.Util.Views;
-global using MessagePack;
+
 global using HarmonyLib;
 
 global using static KitchenData.ItemGroup;
@@ -36,7 +38,7 @@ namespace IngredientLib
     public class Main : BaseMod
     {
         public const string GUID = "ingredientlib";
-        public const string VERSION = "0.3.2";
+        public const string VERSION = "0.3.1";
 
         public Main() : base(GUID, "IngredientLib", "Depleted Supernova#1957", VERSION, ">=1.1.0", Assembly.GetExecutingAssembly()) { }
 
@@ -53,6 +55,7 @@ namespace IngredientLib
             AddGameDataObject<WhippingCreamProvider>();
             AddGameDataObject<WhippingCream>();
             AddGameDataObject<WhippingCreamIngredient>();
+            AddGameDataObject<WhippedCream>();
 
             // Chocolate
             AddGameDataObject<ChocolateProvider>();

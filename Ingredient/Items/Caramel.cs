@@ -4,6 +4,7 @@
     {
         public override string NameTag => "Caramel";
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
+        public override Appliance DedicatedProvider => GetGDO<Appliance>(ApplianceReferences.SourceSugar);
 
         public override void Modify(Item gdo)
         {

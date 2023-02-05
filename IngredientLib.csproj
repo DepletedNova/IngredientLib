@@ -92,6 +92,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\MessagePack.Annotations.dll</HintPath>
     </Reference>
+    <Reference Include="ShapesRuntime">
+      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\ShapesRuntime.dll</HintPath>
+    </Reference>
     <Reference Include="Sirenix.Serialization">
       <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Sirenix.Serialization.dll</HintPath>
     </Reference>
@@ -148,14 +151,12 @@
     <Compile Include="Ingredient\Items\Pasta\UncookedNoodlePot.cs" />
     <Compile Include="Ingredient\Items\Syrup\Syrup.cs" />
     <Compile Include="Ingredient\Items\Syrup\SyrupIngredient.cs" />
+    <Compile Include="Ingredient\Items\Whipping Cream\WhippedCream.cs" />
     <Compile Include="Ingredient\Providers\BoxPastaProvider.cs" />
     <Compile Include="Ingredient\Providers\GarlicProvider.cs" />
     <Compile Include="Ingredient\Providers\MacaroniProvider.cs" />
     <Compile Include="Ingredient\Providers\CinnamonProvider.cs" />
     <Compile Include="Ingredient\Providers\SyrupProvider.cs" />
-    <Compile Include="Util\DualProvider\CDualProvider.cs" />
-    <Compile Include="Util\DualProvider\SwitchDualProvider.cs" />
-    <Compile Include="Util\DualProvider\DualProviderView.cs" />
     <Compile Include="Ingredient\Items\Pork\Bacon.cs" />
     <Compile Include="Ingredient\Items\Banana\Banana.cs" />
     <Compile Include="Ingredient\Items\Banana\BananaPeel.cs" />

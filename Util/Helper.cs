@@ -16,7 +16,7 @@
         {
             T comp = gameObject.GetComponent<T>();
             if (comp == null)
-                return gameObject.AddComponent<T>();
+                comp = gameObject.AddComponent<T>();
             return comp;
         }
         public static GameObject GetChild(this GameObject gameObject, string childName)

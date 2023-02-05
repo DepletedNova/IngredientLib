@@ -7,8 +7,8 @@
         public override ItemStorage ItemStorageFlags => ItemStorage.None;
 
         public override Item SplitSubItem => GetCastedGDO<Item, MilkIngredient>();
-        public override float SplitSpeed => 1.0f;
         public override int SplitCount => 999;
+        public override float SplitSpeed => 2.0f;
 
         public override void Modify(Item gdo)
         {
