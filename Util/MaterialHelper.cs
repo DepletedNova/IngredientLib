@@ -53,19 +53,22 @@
 
         public static Material[] GetMaterialArray(params string[] materials)
         {
-            List<Material> materialList = new List<Material>();
-            foreach (string matName in materials)
+            Material[] materialList = new Material[materials.Length];
+            for (int i = 0; i < materials.Length; i++)
             {
+                string matName = materials[i];
                 string formatted = $"IngredientLib - \"{matName}\"";
                 bool flag = CustomMaterials.CustomMaterialsIndex.ContainsKey(formatted);
                 if (flag)
                 {
-                    materialList.Add(CustomMaterials.CustomMaterialsIndex[formatted]);
-                } else {
-                    materialList.Add(MaterialUtils.GetExistingMaterial(matName));
+                    materialList[i] = CustomMaterials.CustomMaterialsIndex[formatted];
+                }
+                else
+                {
+                    materialList[i] = MaterialUtils.GetExistingMaterial(matName);
                 }
             }
-            return materialList.ToArray();
+            return materialList;
         }
 
         // Material Generation

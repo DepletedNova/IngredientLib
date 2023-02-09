@@ -7,6 +7,7 @@
 
         public override string UniqueNameID => $"{NameTag.ToLower()}{(IsSplitItem ? " ingredient" : "")}";
         public override GameObject Prefab => GetPrefab(NameTag);
+        public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
 
         public override void Convert(GameData gameData, out GameDataObject gdo)
         {

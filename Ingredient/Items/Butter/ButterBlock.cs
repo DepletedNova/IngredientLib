@@ -7,13 +7,12 @@
         public override GameObject Prefab => GetPrefab("Butter Block");
 
         public override Item SplitSubItem => GetCastedGDO<Item, Butter>();
+        public override List<Item> SplitDepletedItems => new() { GetCastedGDO<Item, Butter>() };
         public override int SplitCount => 6;
         public override float SplitSpeed => 2.5f;
 
         public override void Modify(Item gdo)
         {
-            gdo.SplitDepletedItems.Add(GetCastedGDO<Item, Butter>());
-
             Prefab.ApplyMaterialToChildren("ButterSlice", "Butter");
 
             Prefab.ApplyMaterialToChild("Tray", "Coffee Cup");

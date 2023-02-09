@@ -38,7 +38,7 @@ namespace IngredientLib
     public class Main : BaseMod
     {
         public const string GUID = "ingredientlib";
-        public const string VERSION = "0.3.3";
+        public const string VERSION = "0.3.4";
 
         public Main() : base(GUID, "IngredientLib", "Depleted Supernova#1957", VERSION, ">=1.1.0", Assembly.GetExecutingAssembly()) { }
 
@@ -176,8 +176,8 @@ namespace IngredientLib
         private void AddMaterials()
         {
             // Common
-            AddMaterial(MaterialHelper.CreateTransparent("Glass", 0xF6FEFF, 0.6f));
-            AddMaterial(MaterialHelper.CreateTransparent("Plastic - Transparent", 0xF6FEFF, 0.9f));
+            AddMaterial(MaterialHelper.CreateTransparent("Glass", 0xF6FEFF, 0.3f));
+            AddMaterial(MaterialHelper.CreateTransparent("Plastic - Transparent", 0xF6FEFF, 0.7f));
 
             AddMaterial(MaterialHelper.CreateFlat("Stem", 0x6B3E26));
             AddMaterial(MaterialHelper.CreateFlat("White Fruit", 0xE5FFDC));
