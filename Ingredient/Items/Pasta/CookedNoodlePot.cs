@@ -10,8 +10,11 @@
         public override void Convert(GameData gameData, out GameDataObject gdo)
         {
             base.Convert(gameData, out gdo);
+        }
 
-            Prefab.TryAddComponent<ItemGroupViewAccessed>().Setup();
+        public override void AttachDependentProperties(GameData gameData, GameDataObject gdo)
+        {
+            base.AttachDependentProperties(gameData, gdo);
         }
 
         public override void Modify(Item gdo)
@@ -33,60 +36,5 @@
             mac.GetChild("Mac").ApplyMaterialToChildren("roni", "Sack");
             mac.GetChild("CookedMac").ApplyMaterialToChildren("roni", "Raw Pastry");
         }
-
-        // Thanks to ZekNikZ for showing me this workaround.
-        private class ItemGroupViewAccessed : ItemGroupView
-        {
-            internal void Setup()
-            {
-                var pasta = gameObject.GetChild("Pasta");
-                var mac = gameObject.GetChild("Macaroni");
-                ComponentGroups = new()
-                {
-                    new ComponentGroup()
-                    {
-                        GameObject = gameObject.GetChild("Water"),
-                        Item = GetGDO<Item>(ItemReferences.Water)
-                    },
-                    new ComponentGroup()
-                    {
-                        GameObject = pasta.GetChild("BoxNoodle"),
-                        Item = GetCastedGDO<Item, BoxNoodle>()
-                    },
-                    new ComponentGroup()
-                    {
-                        GameObject = pasta.GetChild("EggNoodle"),
-                        Item = GetCastedGDO<Item, EggNoodle>()
-                    },
-                    new ComponentGroup()
-                    {
-                        GameObject = mac.GetChild("Mac"),
-                        Item = GetCastedGDO<Item, Macaroni>()
-                    },
-                    new ComponentGroup()
-                    {
-                        Objects = new()
-                        {
-                            pasta.GetChild("CookedNoodle"),
-                            gameObject.GetChild("Steam")
-                        },
-                        DrawAll = true,
-                        Item = GetCastedGDO<Item, CookedNoodlePot>()
-                    },
-                    new ComponentGroup()
-                    {
-                        Objects = new()
-                        {
-                            mac.GetChild("CookedMac"),
-                            gameObject.GetChild("Steam")
-                        },
-                        DrawAll = true,
-                        Item = GetCastedGDO<Item, CookedMacaroniPot>()
-                    }
-
-                };
-            }
-        }
-
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace IngredientLib.Ingredient.Items
 {
-    public class UncookedNoodlePot : GenericItemGroup
+    public class UncookedNoodlePot : GenericItemGroup<UncookedNoodlePot.ItemGroupViewAccessed>
     {
         public override string NameTag => "Potted Pasta";
         public override GameObject Prefab => GetPrefab("Potted Pasta");
@@ -49,5 +49,56 @@
                 Process = GetGDO<Process>(ProcessReferences.Cook),
             }
         };
+        public override void Modify(ItemGroup gdo)
+        {
+            Prefab.GetComponent<ItemGroupViewAccessed>().Setup(gdo);
+        }
+        public class ItemGroupViewAccessed : GenericItemGroup.AccessedItemGroupView
+        {
+            protected override List<ComponentGroup> groups => new()
+            {
+                new()
+                {
+                    GameObject = gameObject.GetChild("Water"),
+                    Item = GetGDO<Item>(ItemReferences.Water)
+                },
+                new ComponentGroup()
+                {
+                    GameObject = gameObject.GetChild("Pasta").GetChild("BoxNoodle"),
+                    Item = GetCastedGDO<Item, BoxNoodle>()
+                },
+                new ComponentGroup()
+                {
+                    GameObject = gameObject.GetChild("Pasta").GetChild("EggNoodle"),
+                    Item = GetCastedGDO<Item, EggNoodle>()
+                },
+                new ComponentGroup()
+                {
+                    GameObject = gameObject.GetChild("Macaroni").GetChild("Mac"),
+                    Item = GetCastedGDO<Item, Macaroni>()
+                },
+                new ComponentGroup()
+                {
+                    Objects = new()
+                    {
+                        gameObject.GetChild("Pasta").GetChild("CookedNoodle"),
+                        gameObject.GetChild("Steam")
+                    },
+                    DrawAll = true,
+                    Item = GetCastedGDO<Item, CookedNoodlePot>()
+                },
+                new ComponentGroup()
+                {
+                    Objects = new()
+                    {
+                        gameObject.GetChild("Macaroni").GetChild("CookedMac"),
+                        gameObject.GetChild("Steam")
+                    },
+                    DrawAll = true,
+                    Item = GetCastedGDO<Item, CookedMacaroniPot>()
+                }
+            };
+
+        }
     }
 }

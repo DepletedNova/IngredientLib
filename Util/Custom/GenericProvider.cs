@@ -5,7 +5,10 @@
         public abstract string NameTag { get; }
 
         public override string UniqueNameID => $"{NameTag.ToLower()} source";
-        public override string Name => NameTag;
+        public override List<(Locale, ApplianceInfo)> InfoList => new()
+        {
+            (Locale.English, LocalisationUtils.CreateApplianceInfo(NameTag, $"Provides {NameTag}", new List<Appliance.Section>(), new()))
+        };
         public override bool SellOnlyAsDuplicate => true;
         public override bool IsPurchasable => true;
         public override PriceTier PriceTier => PriceTier.Medium;

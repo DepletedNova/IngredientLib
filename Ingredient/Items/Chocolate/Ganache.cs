@@ -1,6 +1,6 @@
 ﻿namespace IngredientLib.Ingredient.Items
 {
-    public class Ganache : GenericItemGroup<ChocolateProvider>
+    public class Ganache : GenericItemGroup<ChocolateProvider, ItemGroupView>
     {
         public override string NameTag => "Ganache";
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
