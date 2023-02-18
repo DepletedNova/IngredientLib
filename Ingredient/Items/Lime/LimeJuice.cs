@@ -5,6 +5,8 @@
         public override string NameTag => "Lime Juice";
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
 
+        public override string ColourBlindTag => "Li";
+
         public override void Modify(Item gdo)
         {
             Prefab.ApplyMaterialToChild("glass", "Glass");

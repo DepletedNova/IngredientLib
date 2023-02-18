@@ -1,9 +1,6 @@
 ﻿global using UnityEngine;
 global using UnityEngine.VFX;
 
-global using Unity.Entities;
-global using Unity.Collections;
-
 global using System;
 global using System.Linq;
 global using System.Reflection;
@@ -38,7 +35,7 @@ namespace IngredientLib
     public class Main : BaseMod
     {
         public const string GUID = "ingredientlib";
-        public const string VERSION = "0.3.5";
+        public const string VERSION = "0.4.0";
 
         public Main() : base(GUID, "IngredientLib", "Depleted Supernova#1957", VERSION, ">=1.1.0", Assembly.GetExecutingAssembly()) { }
 
@@ -170,6 +167,22 @@ namespace IngredientLib
             AddGameDataObject<PeeledGarlic>();
             AddGameDataObject<MincedGarlic>();
 
+            // Jalapeño
+            AddGameDataObject<JalapenoProvider>();
+            AddGameDataObject<Jalapeno>();
+            AddGameDataObject<ChoppedJalapeno>();
+
+            // Blueberries
+            AddGameDataObject<BlueberryProvider>();
+            AddGameDataObject<Blueberries>();
+
+            // Tortillas
+            AddGameDataObject<TortillaProvider>();
+            AddGameDataObject<Tortilla>();
+            AddGameDataObject<ToastedTortilla>();
+            AddGameDataObject<UncookedTortillaChips>();
+            AddGameDataObject<TortillaChips>();
+
             Log("Loaded ingredients.");
         }
 
@@ -233,53 +246,25 @@ namespace IngredientLib
 
             AddMaterial(MaterialHelper.CreateFlat("Garlic", 0xf2e9d2));
 
+            AddMaterial(MaterialHelper.CreateFlat("Jalapeno", 0x548042));
+
+            AddMaterial(MaterialHelper.CreateFlat("Blueberry", 0x4f86f7));
+            AddMaterial(MaterialHelper.CreateFlat("Blueberry 2", 0x115bf4));
+            //AddMaterial(MaterialHelper.CreateFlat("Blueberry Mound", 0x6d91d9));
+
+            AddMaterial(MaterialHelper.CreateFlat("Tortilla", 0xE4DABF));
+            AddMaterial(MaterialHelper.CreateFlat("Tortilla Spots", 0xD59D62));
+            AddMaterial(MaterialHelper.CreateFlat("Toasted Tortilla", 0xBF9C70));
+            AddMaterial(MaterialHelper.CreateFlat("Toasted Tortilla Spots", 0xAC834E));
+
             Log("Loaded materials.");
         }
 
         private void AddRecipes()
         {
-            // todo: replace this - obsolete system
-            var burnedFood = GetGDO<Item>(ItemReferences.BurnedFood);
-
-            GetItem<Chocolate>().AddRecipe(GetItem<ChoppedChocolate>(), ProcessReferences.Chop, 1f, false, false);
-            GetItem<Chocolate>().AddRecipe(GetItem<ChocolateSauce>(), ProcessReferences.Cook, 2.4f, false, false);
-            GetItem<ChoppedChocolate>().AddRecipe(GetItem<ChocolateShavings>(), ProcessReferences.Chop, 0.5f, false, false);
-            GetItem<ChoppedChocolate>().AddRecipe(GetItem<ChocolateSauce>(), ProcessReferences.Cook, 0.6f, false, false);
-            GetItem<ChocolateShavings>().AddRecipe(GetItem<ChocolateSauce>(), ProcessReferences.Cook, 0.4f, false, false);
-            GetItem<ChocolateSauce>().AddRecipe(null, ProcessReferences.Cook, 15f, true, false);
-
-            GetItem<PeeledBanana>().AddRecipe(GetItem<ChoppedBanana>(), ProcessReferences.Chop, 1.3f, false, false);
-
-            GetItem<Pepper>().AddRecipe(GetItem<ChoppedPepper>(), ProcessReferences.Chop, 1.3f, false, false);
-
-            GetItem<Lemon>().AddRecipe(GetItem<ChoppedLemon>(), ProcessReferences.Chop, 1.3f, false, false);
-            GetItem<ChoppedLemon>().AddRecipe(GetItem<LemonJuice>(), ProcessReferences.Knead, 1.3f, false, false);
-
-            GetItem<Lime>().AddRecipe(GetItem<ChoppedLime>(), ProcessReferences.Chop, 1.3f, false, false);
-            GetItem<ChoppedLime>().AddRecipe(GetItem<LimeJuice>(), ProcessReferences.Knead, 1.3f, false, false);
-
-            GetItem<Pork>().AddRecipe(GetItem<Porkchop>(), ProcessReferences.Cook, 6.5f, false, false);
-            GetItem<Pork>().AddRecipe(GetItem<ChoppedPork>(), ProcessReferences.Chop, 2.4f, false, false);
-            GetItem<Porkchop>().AddRecipe(GetItem<BurnedPorkchop>(), ProcessReferences.Cook, 10f, true, false);
-            GetItem<ChoppedPork>().AddRecipe(GetItem<Bacon>(), ProcessReferences.Cook, 4f, false, false);
-            GetItem<Bacon>().AddRecipe(burnedFood, ProcessReferences.Cook, 8f, true, false);
-
-            GetItem<Chicken>().AddRecipe(GetItem<CookedChicken>(), ProcessReferences.Cook, 6f, false, false);
-            GetItem<CookedChicken>().AddRecipe(burnedFood, ProcessReferences.Cook, 10f, true, false);
-            GetItem<CookedChicken>().AddRecipe(GetItem<ShreddedChicken>(), ProcessReferences.Chop, 1.3f, false, false);
-
-            GetItem<Drumstick>().AddRecipe(GetItem<CookedDrumstick>(), ProcessReferences.Cook, 6f, false, false);
-            GetItem<CookedDrumstick>().AddRecipe(burnedFood, ProcessReferences.Cook, 10f, true, false);
-            GetItem<BonelessDrumstick>().AddRecipe(GetItem<CookedBonelessDrumstick>(), ProcessReferences.Cook, 6f, false, false);
-            GetItem<CookedBonelessDrumstick>().AddRecipe(burnedFood, ProcessReferences.Cook, 10f, true, false);
-
-            GetItem<UnmixedEggDough>().AddRecipe(GetItem<EggDough>(), ProcessReferences.Knead, 1.6f, false, false);
-            GetItem<EggDough>().AddRecipe(GetItem<EggNoodle>(), ProcessReferences.Knead, 1.3f, false, false);
-
             GetGDO<Item>(ItemReferences.Sugar).AddRecipe(GetItem<Caramel>(), ProcessReferences.Cook, 2.6f, false, false);
-            GetItem<Caramel>().AddRecipe(burnedFood, ProcessReferences.Cook, 10f, true, false);
 
-            Log("Loaded base recipes.");
+            Log("Modified base recipes.");
 
         }
 
@@ -288,7 +273,7 @@ namespace IngredientLib
             return GetCustomGameDataObject<T>().GameDataObject as Item;
         }
 
-        public override void PostActivate(Mod mod)
+        protected override void OnPostActivate(Mod mod)
         {
             bundle = mod.GetPacks<AssetBundleModPack>().SelectMany(e => e.AssetBundles).ToList()[0];
 

@@ -18,6 +18,16 @@
                 }
             };
 
+        public override List<Item.ItemProcess> Processes => new()
+        {
+            new()
+            {
+                Duration = 1.6f,
+                Process = GetGDO<Process>(ProcessReferences.Knead),
+                Result = GetCastedGDO<Item, EggDough>()
+            }
+        };
+
         public override void Modify(ItemGroup gdo)
         {
             var bowl = Prefab.GetChild("bowl");

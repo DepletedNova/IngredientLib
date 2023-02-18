@@ -5,6 +5,18 @@
         public override string NameTag => "Chocolate Sauce";
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
 
+        public override string ColourBlindTag => "Sa";
+
+        public override List<Item.ItemProcess> Processes => new()
+        {
+            new()
+            {
+                Duration = 15f,
+                Process = GetGDO<Process>(ProcessReferences.Cook),
+                IsBad = true,
+            }
+        };
+
         public override void Modify(Item gdo)
         {
             GameObject bowl = Prefab.GetChild("Small Bowl Soup");

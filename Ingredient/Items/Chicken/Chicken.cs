@@ -4,7 +4,16 @@
     {
         public override string NameTag => "Chicken";
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
-        public override Appliance DedicatedProvider => GetCastedGDO<Appliance, ChickenProvider>();
+
+        public override List<Item.ItemProcess> Processes => new()
+        {
+            new()
+            {
+                Duration = 6f,
+                Process = GetGDO<Process>(ProcessReferences.Cook),
+                Result = GetCastedGDO<Item, CookedChicken>()
+            }
+        };
 
         public override void Modify(Item gdo)
         {

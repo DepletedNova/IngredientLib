@@ -99,6 +99,24 @@
                 }
             };
 
+            protected override List<ColourBlindLabel> labels => new()
+            {
+                new()
+                {
+                    Item = GetCastedGDO<Item, Macaroni>(),
+                    Text = "Ma"
+                },
+                new()
+                {
+                    Item = GetCastedGDO<Item, BoxNoodle>(),
+                    Text = "No"
+                },
+                new()
+                {
+                    Item = GetCastedGDO<Item, EggNoodle>(),
+                    Text = "No"
+                }
+            };
         }
     }
 }

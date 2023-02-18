@@ -18,6 +18,8 @@
                 }
             };
 
+        public override string ColourBlindTag => "Ga";
+
         public override void Modify(ItemGroup gdo)
         {
             GameObject bowl = Prefab.GetChild("Small Bowl Soup");

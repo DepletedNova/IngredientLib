@@ -18,6 +18,8 @@
                 }
             };
 
+        public override string ColourBlindTag => "Ba";
+
         public override void Modify(ItemGroup gdo)
         {
             var bowl = Prefab.GetChild("bowl");

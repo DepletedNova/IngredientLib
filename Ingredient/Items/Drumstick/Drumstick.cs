@@ -8,6 +8,16 @@
         public override int SplitCount => 1;
         public override float SplitSpeed => 1f;
 
+        public override List<Item.ItemProcess> Processes => new()
+        {
+            new()
+            {
+                Duration = 6f,
+                Process = GetGDO<Process>(ProcessReferences.Cook),
+                Result = GetCastedGDO<Item, CookedDrumstick>()
+            }
+        };
+
         public override void Modify(Item gdo)
         {
             gdo.SplitDepletedItems.Add(GetCastedGDO<Item, BonelessDrumstick>());

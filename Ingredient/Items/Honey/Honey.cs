@@ -4,7 +4,7 @@
     {
         public override string NameTag => "Honey";
         public override bool IsIndisposable => true;
-        public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
+        public override ItemStorage ItemStorageFlags => ItemStorage.None;
 
         public override Item SplitSubItem => GetCastedGDO<Item, HoneyIngredient>();
         public override bool PreventExplicitSplit => true;
