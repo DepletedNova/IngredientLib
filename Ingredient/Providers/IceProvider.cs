@@ -5,8 +5,7 @@
         public override string NameTag => "Ice";
         public override List<IApplianceProperty> Properties => new List<IApplianceProperty>()
         {
-            new CItemHolder(),
-            GetCItemProvider(GetIngredient("Ice"), 1, 1, false, false, true, false, false, true, false)
+            GetUnlimitedCItemProvider(GetIngredient("Ice"))
         };
 
         public override void Modify(Appliance gdo)

@@ -12,9 +12,10 @@
 
         public override void Modify(Appliance gdo)
         {
-            SetupCounter(Prefab, "Honey");
+            SetupCounter(Prefab);
+            SetupCounterLimitedItem(Prefab, GetPrefab("Honey"));
 
-            var honey = Prefab.GetChildFromPath("Block/HoldPoint/Honey - Item");
+            var honey = Prefab.GetChildFromPath("Block/HoldPoint/Honey");
             honey.ApplyMaterialToChild("glass", "Glass", "Wood", "Sack - String");
             honey.ApplyMaterialToChild("honey", "Honey");
         }

@@ -240,7 +240,6 @@ GameObject:
   - component: {fileID: 1665216163934580929}
   - component: {fileID: 2983138756475601109}
   - component: {fileID: 3480366956135684286}
-  - component: {fileID: 1504225130088367592}
   m_Layer: 0
   m_Name: whites
   m_TagString: Untagged
@@ -311,20 +310,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1504225130088367592
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 418035513912792065}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 512c88fdfe3c3574fa574a0319f7d546, type: 2}
 --- !u!1 &7512421776660214291
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +321,6 @@ GameObject:
   - component: {fileID: 4354907795448918705}
   - component: {fileID: 8229057587301803321}
   - component: {fileID: 8546078881062157166}
-  - component: {fileID: 8184717697419523271}
   m_Layer: 0
   m_Name: yolk
   m_TagString: Untagged
@@ -407,17 +391,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8184717697419523271
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7512421776660214291}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: c37c1d78fabf8ab45bc51fae3b6097e9, type: 2}

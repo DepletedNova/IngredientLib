@@ -10,7 +10,7 @@
 
         public override void Modify(Appliance gdo)
         {
-            SetupCounter(Prefab, "Cinnamon", false);
+            SetupCounter(Prefab);
 
             var visuals = Prefab.GetChild("Visuals");
             visuals.ApplyMaterialToChild("Jar", "Cinnamon", "Plastic - Red");

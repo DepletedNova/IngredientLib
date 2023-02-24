@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 7292962779378601414}
   - component: {fileID: 3142718455127480309}
   - component: {fileID: 2215520761444179183}
-  - component: {fileID: 4510662571065398971}
   m_Layer: 0
   m_Name: garlic
   m_TagString: Untagged
@@ -113,17 +112,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4510662571065398971
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7414733477211270317}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4711208715938537054, guid: 3a1032feb2f76b249aeffbf10dd90d14, type: 3}

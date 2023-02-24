@@ -1,4 +1,7 @@
-﻿namespace IngredientLib.Util
+﻿using Kitchen;
+using Unity.Entities;
+
+namespace IngredientLib.Util
 {
     public static class Helper
     {
@@ -71,26 +74,8 @@
                 },
             };
         }
-        internal static void SetupCounter(GameObject prefab, string itemName)
+        internal static void SetupCounter(GameObject prefab)
         {
-            SetupCounter(prefab, itemName, true);
-        }
-        internal static void SetupCounter(GameObject prefab, string itemName, bool addComponents)
-        {
-            Transform holdTransform = GameObjectUtils.GetChildObject(prefab, "Block/HoldPoint").transform;
-
-            if (addComponents)
-            {
-                prefab.TryAddComponent<HoldPointContainer>().HoldPoint = holdTransform;
-
-                var sourceView = prefab.TryAddComponent<LimitedItemSourceView>();
-                sourceView.HeldItemPosition = holdTransform;
-                ReflectionUtils.GetField<LimitedItemSourceView>("Items").SetValue(sourceView, new List<GameObject>()
-                {
-                    GameObjectUtils.GetChildObject(prefab, $"Block/HoldPoint/{itemName}")
-                });
-            }
-
             GameObject parent = prefab.GetChildFromPath("Block/Counter2");
             var paintedWood = MaterialHelper.GetMaterialArray("Wood 4 - Painted");
             var defaultWood = MaterialHelper.GetMaterialArray("Wood - Default");
@@ -99,6 +84,19 @@
             parent.ApplyMaterialToChild("Counter Surface", defaultWood);
             parent.ApplyMaterialToChild("Counter Top", defaultWood);
             parent.ApplyMaterialToChild("Handles", "Knob");
+        }
+        internal static void SetupCounterLimitedItem(GameObject counterPrefab, GameObject itemPrefab)
+        {
+            Transform holdTransform = GameObjectUtils.GetChildObject(counterPrefab, "Block/HoldPoint").transform;
+
+            counterPrefab.TryAddComponent<HoldPointContainer>().HoldPoint = holdTransform;
+            
+            var sourceView = counterPrefab.TryAddComponent<LimitedItemSourceView>();
+            sourceView.HeldItemPosition = holdTransform;
+            ReflectionUtils.GetField<LimitedItemSourceView>("Items").SetValue(sourceView, new List<GameObject>()
+            {
+                GameObjectUtils.GetChildObject(counterPrefab, $"Block/HoldPoint/{itemPrefab.name}")
+            });
         }
         internal static void SetupGenericCrates(GameObject prefab)
         {

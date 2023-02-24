@@ -12,7 +12,8 @@
 
         public override void Modify(Appliance gdo)
         {
-            SetupCounter(Prefab, "Syrup");
+            SetupCounter(Prefab);
+            SetupCounterLimitedItem(Prefab, GetPrefab("Syrup"));
 
             Prefab.GetChildFromPath("Block/HoldPoint/Syrup/bottle").ApplyMaterial("Cooked Batter", "Metal- Shiny Blue", "Plastic - Red", "Paper");
         }

@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 7292962779378601414}
   - component: {fileID: 3142718455127480309}
   - component: {fileID: 2215520761444179183}
-  - component: {fileID: 5540916300599452165}
   m_Layer: 0
   m_Name: ice
   m_TagString: Untagged
@@ -113,17 +112,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5540916300599452165
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7414733477211270317}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: f1d72895028dd6645b7dbfb2de54a5ef, type: 2}
