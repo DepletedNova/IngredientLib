@@ -138,6 +138,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ingredient\Items\FlourTortilla.cs" />
     <Compile Include="Ingredient\Items\Cinnamon.cs" />
     <Compile Include="Ingredient\Items\Garlic\MincedGarlic.cs" />
     <Compile Include="Ingredient\Items\Garlic\PeeledGarlic.cs" />
@@ -152,13 +153,17 @@
     <Compile Include="Ingredient\Items\Pasta\UncookedNoodlePot.cs" />
     <Compile Include="Ingredient\Items\Jalapenos\ChoppedJalapeno.cs" />
     <Compile Include="Ingredient\Items\Jalapenos\Jalapeno.cs" />
-    <Compile Include="Ingredient\Items\Tortillas\TortillaChips.cs" />
-    <Compile Include="Ingredient\Items\Tortillas\UncookedTortillaChips.cs" />
-    <Compile Include="Ingredient\Items\Tortillas\ToastedTortilla.cs" />
-    <Compile Include="Ingredient\Items\Tortillas\Tortilla.cs" />
+    <Compile Include="Ingredient\Items\Spinach\ChoppedSpinach.cs" />
+    <Compile Include="Ingredient\Items\Spinach\Spinach.cs" />
+    <Compile Include="Ingredient\Items\Corn Tortillas\TortillaChips.cs" />
+    <Compile Include="Ingredient\Items\Corn Tortillas\UncookedTortillaChips.cs" />
+    <Compile Include="Ingredient\Items\Corn Tortillas\ToastedTortilla.cs" />
+    <Compile Include="Ingredient\Items\Corn Tortillas\Tortilla.cs" />
     <Compile Include="Ingredient\Items\Syrup\Syrup.cs" />
     <Compile Include="Ingredient\Items\Syrup\SyrupIngredient.cs" />
     <Compile Include="Ingredient\Items\Whipping Cream\WhippedCream.cs" />
+    <Compile Include="Ingredient\Providers\FlourTortillaProvider.cs" />
+    <Compile Include="Ingredient\Providers\SpinachProvider.cs" />
     <Compile Include="Ingredient\Providers\TortillaProvider.cs" />
     <Compile Include="Ingredient\Providers\BoxPastaProvider.cs" />
     <Compile Include="Ingredient\Providers\GarlicProvider.cs" />

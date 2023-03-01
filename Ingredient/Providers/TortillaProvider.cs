@@ -8,6 +8,11 @@
             GetUnlimitedCItemProvider(GetIngredient("Tortilla"))
         };
 
+        public override List<(Locale, ApplianceInfo)> InfoList => new()
+        {
+            (Locale.English, LocalisationUtils.CreateApplianceInfo("Corn Tortillas", $"Provides Corn Tortillas", new List<Appliance.Section>(), new()))
+        };
+
         public override void Modify(Appliance gdo)
         {
             var storage = Prefab.GetChild("MetalStorage");

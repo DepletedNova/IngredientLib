@@ -35,7 +35,7 @@ namespace IngredientLib
     public class Main : BaseMod
     {
         public const string GUID = "ingredientlib";
-        public const string VERSION = "0.4.2";
+        public const string VERSION = "0.4.3";
 
         public Main() : base(GUID, "IngredientLib", "Depleted Supernova#1957", VERSION, ">=1.1.0", Assembly.GetExecutingAssembly()) { }
 
@@ -183,6 +183,15 @@ namespace IngredientLib
             AddGameDataObject<UncookedTortillaChips>();
             AddGameDataObject<TortillaChips>();
 
+            // Spinach
+            AddGameDataObject<SpinachProvider>();
+            AddGameDataObject<Spinach>();
+            AddGameDataObject<ChoppedSpinach>();
+
+            // Flour Tortillas
+            AddGameDataObject<FlourTortillaProvider>();
+            AddGameDataObject<FlourTortilla>();
+
             Log("Loaded ingredients.");
         }
 
@@ -256,6 +265,9 @@ namespace IngredientLib
             AddMaterial(MaterialHelper.CreateFlat("Tortilla Spots", 0xD59D62));
             AddMaterial(MaterialHelper.CreateFlat("Toasted Tortilla", 0xBF9C70));
             AddMaterial(MaterialHelper.CreateFlat("Toasted Tortilla Spots", 0xAC834E));
+
+            AddMaterial(MaterialHelper.CreateFlat("Spinach", 0x4D7E33));
+            AddMaterial(MaterialHelper.CreateFlat("Spinach Stem", 0x7C9C4F));
 
             Log("Loaded materials.");
         }
