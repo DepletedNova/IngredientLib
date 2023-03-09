@@ -8,6 +8,7 @@ namespace IngredientLib.Util.Custom
 
         public override string UniqueNameID => NameTag.ToLower();
         public override ItemCategory ItemCategory => ItemCategory.Generic;
+        public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override GameObject Prefab => GetPrefab(NameTag);
 
         public override void Convert(GameData gameData, out GameDataObject gdo)
