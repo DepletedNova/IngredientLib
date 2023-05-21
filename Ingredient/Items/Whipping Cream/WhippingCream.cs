@@ -6,8 +6,6 @@
         public override bool IsIndisposable => true;
         public override ItemStorage ItemStorageFlags => ItemStorage.None;
 
-        public override string ColourBlindTag => "Whi";
-
         public override Item SplitSubItem => GetCastedGDO<Item, WhippingCreamIngredient>();
         public override int SplitCount => 999;
         public override float SplitSpeed => 2.0f;

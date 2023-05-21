@@ -12,7 +12,7 @@
         {
             SetupFridge(Prefab);
 
-            Prefab.GetChildFromPath("Fridge/Fridge2/Shelf").ApplyMaterial("Plastic - Grey");
+            Prefab.GetChild("Fridge/Fridge2/Shelf").ApplyMaterial("Plastic - Grey");
 
             Prefab.GetChild("Porks").ApplyMaterialToChildren("Pork", "Pork Fat", "Pork");
         }

@@ -14,7 +14,7 @@
             SetupCounter(Prefab);
             SetupCounterLimitedItem(Prefab, GetPrefab("Milk"));
 
-            Prefab.GetChildFromPath("Block/HoldPoint/Milk/Jar").ApplyMaterial("Plastic - White", "Plastic - Blue");
+            Prefab.GetChild("Block/HoldPoint/Milk/Jar").ApplyMaterial("Plastic - White", "Plastic - Blue");
             var crate = Prefab.GetChild("Crate");
             crate.ApplyMaterialToChild("Box", "Wood");
             crate.GetChild("Ice").ApplyMaterialToChildren("Cube", "Ice");

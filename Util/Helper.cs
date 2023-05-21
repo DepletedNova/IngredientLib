@@ -5,46 +5,9 @@ namespace IngredientLib.Util
 {
     public static class Helper
     {
-
-        // Prefab / GameObject
         public static GameObject GetPrefab(string name)
         {
             return Main.bundle.LoadAsset<GameObject>(name);
-        }
-        public static bool HasComponent<T>(this GameObject gameObject) where T : Component
-        {
-            return gameObject.GetComponent<T>() != null;
-        }
-        public static T TryAddComponent<T>(this GameObject gameObject) where T : Component
-        {
-            T comp = gameObject.GetComponent<T>();
-            if (comp == null)
-                comp = gameObject.AddComponent<T>();
-            return comp;
-        }
-        public static GameObject GetChild(this GameObject gameObject, string childName)
-        {
-            return gameObject.transform.Find(childName).gameObject;
-        }
-        public static GameObject GetChild(this GameObject gameObject, int childIndex)
-        {
-            return gameObject.transform.GetChild(childIndex).gameObject;
-        }
-        public static GameObject GetChildFromPath(this GameObject gameObject, string childPath)
-        {
-            return GameObjectUtils.GetChildObject(gameObject, childPath);
-        }
-        public static int GetChildCount(this GameObject gameObject)
-        {
-            return gameObject.transform.childCount;
-        }
-        public static List<GameObject> GetChildren(this GameObject gameObject)
-        {
-            var children = new List<GameObject>();
-            for (var i = 0; i < gameObject.transform.childCount; i++)
-                children.Add(gameObject.GetChild(i));
-            
-            return children;
         }
 
         // GDO
@@ -76,9 +39,9 @@ namespace IngredientLib.Util
         }
         internal static void SetupCounter(GameObject prefab)
         {
-            GameObject parent = prefab.GetChildFromPath("Block/Counter2");
-            var paintedWood = MaterialHelper.GetMaterialArray("Wood 4 - Painted");
-            var defaultWood = MaterialHelper.GetMaterialArray("Wood - Default");
+            GameObject parent = prefab.GetChild("Block/Counter2");
+            var paintedWood = GetMaterialArray("Wood 4 - Painted");
+            var defaultWood = GetMaterialArray("Wood - Default");
             parent.ApplyMaterialToChild("Counter", paintedWood);
             parent.ApplyMaterialToChild("Counter Doors", paintedWood);
             parent.ApplyMaterialToChild("Counter Surface", defaultWood);
@@ -112,7 +75,7 @@ namespace IngredientLib.Util
 
             var sourceView = fridge.TryAddComponent<ItemSourceView>();
             var quad = fridge.GetChild("Quad").GetComponent<MeshRenderer>();
-            quad.materials = MaterialHelper.GetMaterialArray("Flat Image");
+            quad.materials = GetMaterialArray("Flat Image");
             ReflectionUtils.GetField<ItemSourceView>("Renderer").SetValue(sourceView, quad);
             ReflectionUtils.GetField<ItemSourceView>("Animator").SetValue(sourceView, fridge2.GetComponent<Animator>());
 
@@ -138,7 +101,7 @@ namespace IngredientLib.Util
 
             var sourceView = lockerPrefab.TryAddComponent<ItemSourceView>();
             var quad = lockerPrefab.GetChild("Quad").GetComponent<MeshRenderer>();
-            quad.materials = MaterialHelper.GetMaterialArray("Flat Image");
+            quad.materials = GetMaterialArray("Flat Image");
             ReflectionUtils.GetField<ItemSourceView>("Renderer").SetValue(sourceView, quad);
             ReflectionUtils.GetField<ItemSourceView>("Animator").SetValue(sourceView, lockerModel.GetComponent<Animator>());
 
@@ -158,7 +121,7 @@ namespace IngredientLib.Util
             holdPoint.HoldPoint = prefab.transform.Find("HoldPoint");
 
             // Model
-            var stand = prefab.GetChildFromPath("Stand/Stand");
+            var stand = prefab.GetChild("Stand/Stand");
             stand.ApplyMaterialToChild("Body", "Wood 4 - Painted");
             stand.ApplyMaterialToChild("Doors", "Wood 4 - Painted");
             stand.ApplyMaterialToChild("Handles", "Metal - Brass");

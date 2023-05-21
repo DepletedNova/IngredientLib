@@ -18,13 +18,13 @@ namespace IngredientLib.Util.Custom
             AddIngredient(NameTag, gdo);
         }
 
-        public override void OnRegister(GameDataObject gdo)
+        public override void OnRegister(ItemGroup gdo)
         {
             T component = Prefab.GetComponent<T>();
             if (component as AccessedItemGroupView != null)
                 (component as AccessedItemGroupView).Setup(gdo);
 
-            Modify(gdo as ItemGroup);
+            Modify(gdo);
         }
 
         public virtual void Modify(ItemGroup gdo) { }

@@ -29,12 +29,7 @@
             AddCustomProperties();
         }
 
-        public override void OnRegister(GameDataObject gdo)
-        {
-            gdo.name = $"Source - {NameTag}";
-
-            Modify(gdo as Appliance);
-        }
+        public override void OnRegister(Appliance gdo) => Modify(gdo);
 
         protected virtual void AddCustomProperties() { }
         public abstract void Modify(Appliance gdo);

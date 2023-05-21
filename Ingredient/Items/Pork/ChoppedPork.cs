@@ -9,7 +9,7 @@
         {
             new()
             {
-                Duration = 4f,
+                Duration = 3.5f,
                 Process = GetGDO<Process>(ProcessReferences.Cook),
                 Result = GetCastedGDO<Item, Bacon>()
             }

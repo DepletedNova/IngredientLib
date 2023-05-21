@@ -138,12 +138,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\CPickupIgnoresHolder.cs" />
+    <Compile Include="Ingredient\Items\Strawberry\ChoppedStrawberry.cs" />
+    <Compile Include="Ingredient\Items\Strawberry\Strawberry.cs" />
+    <Compile Include="Ingredient\Items\Avocado\MashedAvocado.cs" />
+    <Compile Include="Ingredient\Items\Avocado\ChoppedAvocado.cs" />
+    <Compile Include="Ingredient\Items\Avocado\Avocado.cs" />
+    <Compile Include="Ingredient\Items\Chocolate\CocoaPowder.cs" />
     <Compile Include="Ingredient\Items\FlourTortilla.cs" />
     <Compile Include="Ingredient\Items\Cinnamon.cs" />
     <Compile Include="Ingredient\Items\Garlic\MincedGarlic.cs" />
     <Compile Include="Ingredient\Items\Garlic\PeeledGarlic.cs" />
     <Compile Include="Ingredient\Items\Garlic\Garlic.cs" />
     <Compile Include="Ingredient\Items\Blueberries.cs" />
+    <Compile Include="Ingredient\Items\Orange Juice\OrangeJuice.cs" />
+    <Compile Include="Ingredient\Items\Orange Juice\OrangeJuiceIngredient.cs" />
     <Compile Include="Ingredient\Items\Pasta\BoxNoodle.cs" />
     <Compile Include="Ingredient\Items\Pasta\CookedMacaroniPot.cs" />
     <Compile Include="Ingredient\Items\Pasta\CookedNoodlePot.cs" />
@@ -162,7 +171,11 @@
     <Compile Include="Ingredient\Items\Syrup\Syrup.cs" />
     <Compile Include="Ingredient\Items\Syrup\SyrupIngredient.cs" />
     <Compile Include="Ingredient\Items\Whipping Cream\WhippedCream.cs" />
+    <Compile Include="Ingredient\Providers\AvocadoProvider.cs" />
+    <Compile Include="Ingredient\Providers\StrawberryProvider.cs" />
+    <Compile Include="Ingredient\Providers\CocoaPowderProvider.cs" />
     <Compile Include="Ingredient\Providers\FlourTortillaProvider.cs" />
+    <Compile Include="Ingredient\Providers\OrangeJuiceProvider.cs" />
     <Compile Include="Ingredient\Providers\SpinachProvider.cs" />
     <Compile Include="Ingredient\Providers\TortillaProvider.cs" />
     <Compile Include="Ingredient\Providers\BoxPastaProvider.cs" />
@@ -234,6 +247,7 @@
     <Compile Include="Ingredient\Providers\PorkProvider.cs" />
     <Compile Include="Ingredient\Providers\VinegarProvider.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="Patches\TakeFromHolder_Patch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="References.cs" />
     <Compile Include="Util\Custom\GenericItem.cs" />
@@ -241,10 +255,11 @@
     <Compile Include="Util\Custom\GenericProvider.cs" />
     <Compile Include="Util\GDOHelper.cs" />
     <Compile Include="Util\Helper.cs" />
-    <Compile Include="Util\MaterialHelper.cs" />
     <Compile Include="Util\VisualEffectHelper.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Systems\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(TargetDir)$(TargetFileName)" "C:\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\Mods\IngredientLib\content" /y

@@ -15,7 +15,7 @@
             SetupCounter(Prefab);
             SetupCounterLimitedItem(Prefab, GetPrefab("Vinegar"));
 
-            Prefab.GetChildFromPath("Block/HoldPoint/Vinegar/Jar").ApplyMaterial("Cork", "Vinegar", "Plastic - Orange");
+            Prefab.GetChild("Block/HoldPoint/Vinegar/Jar").ApplyMaterial("Cork", "Vinegar", "Plastic - Orange");
         }
     }
 }

@@ -19,12 +19,7 @@
                 AddIngredient(NameTag, gdo);
         }
 
-        public override void OnRegister(GameDataObject gdo)
-        {
-            gdo.name = $"{(IsSplitItem ? "Split Ingredient" : "Ingredient")} - {NameTag}";
-            
-            Modify(gdo as Item);
-        }
+        public override void OnRegister(Item gdo) => Modify(gdo);
 
         public virtual void Modify(Item gdo) { }
     }

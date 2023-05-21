@@ -15,7 +15,7 @@
             SetupCounter(Prefab);
             SetupCounterLimitedItem(Prefab, GetPrefab("Syrup"));
 
-            Prefab.GetChildFromPath("Block/HoldPoint/Syrup/bottle").ApplyMaterial("Cooked Batter", "Metal- Shiny Blue", "Plastic - Red", "Paper");
+            Prefab.GetChild("Block/HoldPoint/Syrup/bottle").ApplyMaterial("Cooked Batter", "Metal- Shiny Blue", "Plastic - Red", "Paper");
         }
     }
 }
