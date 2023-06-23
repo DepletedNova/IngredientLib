@@ -6,7 +6,7 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("spinch", "Spinach", "Spinach Stem");
+            Prefab.ApplyMaterialToChildren("spinch", "Spinach");
         }
     }
 }

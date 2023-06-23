@@ -14,7 +14,6 @@
         public override void Modify(Item gdo)
         {
             Prefab.ApplyMaterialToChildren("ButterSlice", "Butter");
-
             Prefab.ApplyMaterialToChild("Tray", "Coffee Cup");
 
             var splittable = Prefab.TryAddComponent<ObjectsSplittableView>();

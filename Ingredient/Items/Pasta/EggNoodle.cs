@@ -7,7 +7,7 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("pasta", "Sack");
+            Prefab.ApplyMaterialToChild("pasta", "Egg Dough", "Sack");
         }
     }
 }

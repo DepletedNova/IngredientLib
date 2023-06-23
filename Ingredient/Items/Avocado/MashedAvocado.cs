@@ -6,7 +6,7 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("avocado", "Avocado Mash");
+            Prefab.ApplyMaterialToChild("avocado", "Avocado Inside");
             Prefab.ApplyMaterialToChild("bowl", "Wood 1 - Dim");
         }
     }

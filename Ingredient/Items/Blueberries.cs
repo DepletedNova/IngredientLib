@@ -8,8 +8,7 @@
         public override void Modify(Item gdo)
         {
             Prefab.ApplyMaterialToChild("scoop", "Metal Black");
-            //Prefab.ApplyMaterialToChild("mound", "Blueberry Mound");
-            Prefab.GetChild("Berries").ApplyMaterialToChildren("Berry", "Blueberry", "Blueberry 2");
+            Prefab.GetChild("Berries").ApplyMaterialToChildren("Berry", "Blueberry");
         }
     }
 }

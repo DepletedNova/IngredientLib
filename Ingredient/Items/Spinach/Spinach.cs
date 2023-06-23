@@ -8,7 +8,7 @@
         {
             new()
             {
-                Duration = 0.4f,
+                Duration = 0.2f,
                 Process = GetGDO<Process>(ProcessReferences.Chop),
                 Result = GetCastedGDO<Item, ChoppedSpinach>()
             }
@@ -16,8 +16,8 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("spinch", "Spinach", "Spinach Stem");
-            Prefab.ApplyMaterialToChild("band", "Plastic - Red");
+            Prefab.ApplyMaterialToChildren("spinch", "Spinach");
+            Prefab.ApplyMaterialToChildren("band", "Plastic - Red");
         }
     }
 }

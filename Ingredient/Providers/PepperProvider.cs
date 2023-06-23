@@ -12,7 +12,7 @@
         {
             SetupGenericCrates(Prefab);
 
-            Prefab.GetChild("Peppers").ApplyMaterialToChildren("Pepper", "Tomato", "Salad Leaf", "Stem");
+            Prefab.GetChild("Peppers").ApplyMaterialToChildren("Pepper", "Tomato", "Salad Leaf");
         }
     }
 }

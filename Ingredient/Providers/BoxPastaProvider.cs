@@ -8,16 +8,15 @@
             GetUnlimitedCItemProvider(GetIngredient("Box Pasta"))
         };
 
+        public override List<(Locale, ApplianceInfo)> InfoList => new()
+        {
+            (Locale.English, LocalisationUtils.CreateApplianceInfo("Noodles", "Provides noodles", new(), new()))
+        };
+
         public override void Modify(Appliance gdo)
         {
-            var storage = Prefab.GetChild("MetalStorage");
-            storage.ApplyMaterialToChild("Frame", "Metal Dark");
-            storage.ApplyMaterialToChild("Platform", "Wood - Default");
-
-            var shelf = Prefab.GetChild("Shelf");
-            shelf.ApplyMaterialToChild("Box", "Plastic - Blue", "Plastic - Orange", "Emoji Yellow", "Emoji Orange");
-            shelf.ApplyMaterialToChildren("noodle", "Sack");
-            shelf.ApplyMaterialToChild("Sheet", "Paper - White");
+            Prefab.ApplyMaterialToChild("Sack", "Sack - Brown");
+            Prefab.GetChild("Noodles").ApplyMaterialToChildren("Noodle", "Sack");
         }
     }
 }

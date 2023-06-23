@@ -10,12 +10,11 @@
 
         public override void Modify(Appliance gdo)
         {
-            SetupGenericCrates(Prefab);
-
-            GameObject parent = Prefab.GetChild("Bars");
-            parent.ApplyMaterialToChildren("WrappedFull", "Plastic - Red", "Plastic - White");
-            parent.ApplyMaterialToChildren("WrappedHalf", "Chocolate", "Chocolate Dark", "Chocolate Light", "Plastic - Red", "Plastic - White", "Plastic");
-            parent.ApplyMaterialToChild("Chocolate", "Chocolate", "Chocolate Dark", "Chocolate Light");
+            Prefab.ApplyMaterialToChild("Frame", "Metal Dark");
+            Prefab.ApplyMaterialToChild("Stand", "Wood - Default");
+            var choc = Prefab.GetChild("Chocolate");
+            choc.ApplyMaterialToChildren("bar", "Plastic - Red", "Plastic - White");
+            choc.ApplyMaterialToChildren("chocolate", "Chocolate");
         }
     }
 }

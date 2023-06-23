@@ -18,11 +18,15 @@
             }
         };
 
+        public override List<Item> SplitDepletedItems => new()
+        {
+            GetCastedGDO<Item, BonelessDrumstick>()
+        };
+
         public override void Modify(Item gdo)
         {
-            gdo.SplitDepletedItems.Add(GetCastedGDO<Item, BonelessDrumstick>());
-
-            Prefab.ApplyMaterialToChild("chicken", "Raw Chicken", "Raw Drumstick Bone");
+            Prefab.ApplyMaterialToChild("meat", "Raw Chicken");
+            Prefab.ApplyMaterialToChild("bone", "Raw Drumstick Bone");
         }
     }
 }

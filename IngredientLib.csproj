@@ -164,10 +164,6 @@
     <Compile Include="Ingredient\Items\Jalapenos\Jalapeno.cs" />
     <Compile Include="Ingredient\Items\Spinach\ChoppedSpinach.cs" />
     <Compile Include="Ingredient\Items\Spinach\Spinach.cs" />
-    <Compile Include="Ingredient\Items\Corn Tortillas\TortillaChips.cs" />
-    <Compile Include="Ingredient\Items\Corn Tortillas\UncookedTortillaChips.cs" />
-    <Compile Include="Ingredient\Items\Corn Tortillas\ToastedTortilla.cs" />
-    <Compile Include="Ingredient\Items\Corn Tortillas\Tortilla.cs" />
     <Compile Include="Ingredient\Items\Syrup\Syrup.cs" />
     <Compile Include="Ingredient\Items\Syrup\SyrupIngredient.cs" />
     <Compile Include="Ingredient\Items\Whipping Cream\WhippedCream.cs" />
@@ -177,7 +173,6 @@
     <Compile Include="Ingredient\Providers\FlourTortillaProvider.cs" />
     <Compile Include="Ingredient\Providers\OrangeJuiceProvider.cs" />
     <Compile Include="Ingredient\Providers\SpinachProvider.cs" />
-    <Compile Include="Ingredient\Providers\TortillaProvider.cs" />
     <Compile Include="Ingredient\Providers\BoxPastaProvider.cs" />
     <Compile Include="Ingredient\Providers\GarlicProvider.cs" />
     <Compile Include="Ingredient\Providers\MacaroniProvider.cs" />

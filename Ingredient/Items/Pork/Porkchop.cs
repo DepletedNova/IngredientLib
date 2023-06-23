@@ -18,7 +18,7 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("pork", "Porkchop Fat", "Porkchop");
+            Prefab.ApplyMaterialToChild("pork", "Porkchop", "Porkchop Fat");
         }
     }
 }

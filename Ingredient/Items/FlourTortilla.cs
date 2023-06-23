@@ -6,8 +6,7 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("Wrap", "Bread - Inside");
-            Prefab.ApplyMaterialToChild("Char", "Well-done  Burger");
+            Prefab.ApplyMaterialToChild("tortilla", "Bread - Inside", "Well-done  Burger");
         }
     }
 }

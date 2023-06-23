@@ -19,9 +19,8 @@
 
         public override void Modify(Item gdo)
         {
-            GameObject bowl = Prefab.GetChild("Small Bowl Soup");
-            bowl.ApplyMaterialToChild("Circle", "Plate");
-            bowl.ApplyMaterialToChild("Circle.001", "Chocolate Dark");
+            Prefab.ApplyMaterialToChild("Bowl", "Metal");
+            Prefab.ApplyMaterialToChild("Chocolate", "Chocolate");
         }
     }
 }

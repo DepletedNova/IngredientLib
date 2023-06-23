@@ -9,8 +9,8 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("glass", "Glass");
-            Prefab.ApplyMaterialToChild("juice", "Lemon Juice");
+            Prefab.ApplyMaterialToChild("cup", "Metal");
+            Prefab.ApplyMaterialToChild("fill", "Lemon Juice");
         }
     }
 }

@@ -19,7 +19,7 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("fruit", "Lemon", "Lemon Inner", "White Fruit");
+            Prefab.ApplyMaterialToChild("fruit", "Lemon", "White Fruit");
         }
     }
 }

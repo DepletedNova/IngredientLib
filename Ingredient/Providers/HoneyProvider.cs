@@ -15,9 +15,7 @@
             SetupCounter(Prefab);
             SetupCounterLimitedItem(Prefab, GetPrefab("Honey"));
 
-            var honey = Prefab.GetChild("Block/HoldPoint/Honey");
-            honey.ApplyMaterialToChild("glass", "Glass", "Wood", "Sack - String");
-            honey.ApplyMaterialToChild("honey", "Honey");
+            Prefab.GetChild("Block/HoldPoint/Honey/honey").ApplyMaterial("honey", "Honey", "Cloth - Fancy", "Sack - String");
         }
     }
 }

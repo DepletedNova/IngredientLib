@@ -23,7 +23,7 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("Bar", "Chocolate", "Chocolate Dark", "Chocolate Light");
+            Prefab.ApplyMaterialToChildren("chocolate", "Chocolate");
         }
     }
 }

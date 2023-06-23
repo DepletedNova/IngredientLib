@@ -7,9 +7,8 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("Bowl", "Door Glass");
-            Prefab.ApplyMaterialToChild("Pile", "Coffee Cup");
-            Prefab.ApplyMaterialToChild("Bubbling", "Coffee Cup");
+            Prefab.ApplyMaterialToChild("Bowl", "Metal - Brass");
+            Prefab.ApplyMaterialToChild("Pile", "Plastic - White", "Plastic - White");
         }
     }
 }

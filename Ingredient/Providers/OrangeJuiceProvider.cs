@@ -16,7 +16,7 @@
 
             Prefab.GetChild("Block/HoldPoint/Orange Juice/Carton").ApplyMaterial("Plastic - Orange", "Plastic - White", "Hob Black", "Salad Leaf");
             var crate = Prefab.GetChild("Crate");
-            crate.ApplyMaterialToChild("Box", "Plastic", "Metal", "Neon Light - Green");
+            crate.ApplyMaterialToChild("Box", "Wood");
             crate.GetChild("Ice").ApplyMaterialToChildren("Cube", "Ice");
         }
     }

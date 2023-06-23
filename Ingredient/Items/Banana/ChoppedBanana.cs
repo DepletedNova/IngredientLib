@@ -7,7 +7,7 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("nanner", "Banana", "Banana Inner");
+            Prefab.ApplyMaterialToChildren("banana", "Banana", "Banana Inner");
         }
     }
 }

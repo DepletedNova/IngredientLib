@@ -13,7 +13,7 @@
         {
             gdo.SplitDepletedItems.Add(GetCastedGDO<Item, PeeledBanana>());
 
-            Prefab.ApplyMaterialToChild("nanner", "Banana Peel", "Stem");
+            Prefab.ApplyMaterialToChild("banana", "Banana Peel", "Stem");
         }
     }
 }

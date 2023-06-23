@@ -10,10 +10,10 @@
 
         public override void Modify(Appliance gdo)
         {
-            SetupGenericCrates(Prefab);
-
-            Prefab.GetChild("Berries").ApplyMaterialToChildren("Berry", "Blueberry", "Blueberry 2");
-            //Prefab.ApplyMaterialToChild("Pile", "Blueberry Mound");
+            Prefab.ApplyMaterialToChild("Frame", "Metal Dark");
+            Prefab.ApplyMaterialToChild("Stand", "Wood - Default");
+            Prefab.ApplyMaterialToChild("Baskets", "Plastic - Blue");
+            Prefab.GetChild("Blueberries").ApplyMaterialToChildren("Blueberry", "Blueberry");
         }
     }
 }

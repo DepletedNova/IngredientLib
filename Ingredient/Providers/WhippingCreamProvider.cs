@@ -14,7 +14,7 @@
             SetupCounter(Prefab);
             SetupCounterLimitedItem(Prefab, GetPrefab("Whipping Cream"));
 
-            Prefab.GetChild("Block/HoldPoint/Whipping Cream/Jar").ApplyMaterial("Plastic - White", "Plastic - Red");
+            Prefab.GetChild("Block/HoldPoint/Whipping Cream/Jar").ApplyMaterial("Plastic - Red", "Plastic - White");
             var crate = Prefab.GetChild("Crate");
             crate.ApplyMaterialToChild("Box", "Wood");
             crate.GetChild("Ice").ApplyMaterialToChildren("Cube", "Ice");

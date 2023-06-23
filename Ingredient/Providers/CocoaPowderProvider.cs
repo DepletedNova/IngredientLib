@@ -11,7 +11,7 @@
 
         public override void Modify(Appliance gdo)
         {
-            Prefab.ApplyMaterialToChild("Sack", "Sack - Blue", "Chocolate");
+            Prefab.ApplyMaterialToChild("Sack", "Sack - Brown", "Chocolate");
         }
     }
 }

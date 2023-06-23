@@ -9,7 +9,7 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChildren("jalapeno", "Tomato");
+            Prefab.ApplyMaterialToChildren("Shaving", "Tomato");
         }
     }
 }

@@ -8,15 +8,22 @@
             GetUnlimitedCItemProvider(GetIngredient("Flour Tortillas"))
         };
 
+        public override List<(Locale, ApplianceInfo)> InfoList => new()
+        {
+            (Locale.English, LocalisationUtils.CreateApplianceInfo("Tortillas", "Provides tortillas", new(), new()))
+        };
+
         public override void Modify(Appliance gdo)
         {
             SetupCounter(Prefab);
 
-            Prefab.ApplyMaterialToChild("Cloth", "Paper");
+            var box = Prefab.GetChild("Breadbox");
+            box.ApplyMaterialToChild("Box", "Wood");
+            box.ApplyMaterialToChild("Door", "Wood", "Metal");
 
-            var parent = Prefab.GetChild("Tortillas");
-            parent.ApplyMaterialToChildren("Wrap", "Bread - Inside");
-            parent.ApplyMaterialToChildren("Char", "Well-done  Burger");
+            Prefab.GetChild("Tortillas").ApplyMaterialToChildren("Tortilla", "Bread - Inside", "Well-done  Burger");
+
+            ReflectionUtils.GetField<ItemSourceView>("Animator").SetValue(Prefab.TryAddComponent<ItemSourceView>(), box.GetComponent<Animator>());
         }
     }
 }

@@ -18,7 +18,7 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChildren("jalapeno", "Tomato", "Salad Leaf", "Stem");
+            Prefab.ApplyMaterialToChildren("jalapeno", "Tomato", "Salad Leaf");
         }
     }
 }

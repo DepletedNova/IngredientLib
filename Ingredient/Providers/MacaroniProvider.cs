@@ -15,9 +15,10 @@
             storage.ApplyMaterialToChild("Platform", "Wood - Default");
 
             var shelf = Prefab.GetChild("Shelf");
-            shelf.ApplyMaterialToChildren("Box", "Plastic - Blue", "Emoji Yellow", "Plastic - Orange", "Plastic - Black Dark");
-            shelf.ApplyMaterialToChild("scoop", "Metal");
-            shelf.ApplyMaterialToChild("mac", "Sack");
+            shelf.ApplyMaterialToChildren("Box", "Plastic - Blue", "Plastic - Orange");
+            shelf.ApplyMaterialToChild("Scoop", "Metal");
+            shelf.ApplyMaterialToChild("Layer", "Sack");
+            shelf.GetChild("Macaroni").ApplyMaterialToChildren("Mac", "Sack");
         }
     }
 }

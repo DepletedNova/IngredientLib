@@ -9,7 +9,7 @@
             new()
             {
                 Result = GetCastedGDO<Item, ChoppedStrawberry>(),
-                Duration = 1.3f,
+                Duration = .4f,
                 Process = GetGDO<Process>(ProcessReferences.Chop)
             }
         };

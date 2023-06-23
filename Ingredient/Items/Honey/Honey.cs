@@ -13,8 +13,7 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("glass", "Glass", "Wood", "Sack - String");
-            Prefab.ApplyMaterialToChild("honey", "Honey");
+            Prefab.ApplyMaterialToChild("honey", "Honey", "Cloth - Fancy", "Sack - String");
         }
     }
 }

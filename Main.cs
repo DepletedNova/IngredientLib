@@ -37,7 +37,7 @@ namespace IngredientLib
     public class Main : BaseMod
     {
         public const string GUID = "ingredientlib";
-        public const string VERSION = "0.5.0";
+        public const string VERSION = "1.0.0";
 
         public Main() : base(GUID, "IngredientLib", "Depleted Supernova#1957", VERSION, ">=1.1.0", Assembly.GetExecutingAssembly()) { }
 
@@ -48,6 +48,8 @@ namespace IngredientLib
             // Common
             AddTransparent("Glass", 0xF6FEFF, 0.3f);
             AddTransparent("Plastic - Transparent", 0xF6FEFF, 0.7f);
+
+            AddFlat("Sack - Brown", 0xb59b7c);
 
             AddFlat("Stem", 0x6B3E26);
             AddFlat("White Fruit", 0xE5FFDC);
@@ -68,7 +70,7 @@ namespace IngredientLib
             AddFlat("Banana Peel", 0xFFE135);
             AddFlat("Banana Inner", 0xE5DE6E);
 
-            AddFlat("Lemon", 0xFFF44);
+            AddFlat("Lemon", 0xffe200);
             AddFlat("Lemon Inner", 0xCCBB34);
             AddFlat("Lemon Juice", 0xFFF26D);
 
@@ -81,8 +83,8 @@ namespace IngredientLib
 
             AddFlat("Pork Fat", 0xFFCBCB);
             AddFlat("Pork", 0xE291AC);
-            AddFlat("Porkchop Fat", 0xB38F5A);
-            AddFlat("Porkchop", 0xEADCB3);
+            AddFlat("Porkchop Fat", 0xEADCB3);
+            AddFlat("Porkchop", 0xB38F5A);
             AddFlat("Bacon Fat", 0xC5A099);
             AddFlat("Bacon", 0x8E3D2F);
 
@@ -116,9 +118,8 @@ namespace IngredientLib
             AddFlat("Spinach", 0x4D7E33);
             AddFlat("Spinach Stem", 0x7C9C4F);
 
-            AddFlat("Avocado", 0x4E7030);
+            AddFlat("Avocado", 0x364C2E);
             AddFlat("Avocado Inside", 0xBCC067);
-            AddFlat("Avocado Mash", 0x89AA40);
 
             AddFlat("Strawberry", 0xCC2E36);
             AddFlat("Strawberry Inside", 0xF7C3A8);
@@ -126,7 +127,6 @@ namespace IngredientLib
             Log("Loaded materials.");
         }
 
-        // IMPORTANT - I do not recommend the "IngredientLib - " format in your mods. I want to remove it eventually.
         private void AddFlat(string name, int color)
         {
             AddMaterial(CreateFlat(name, color));

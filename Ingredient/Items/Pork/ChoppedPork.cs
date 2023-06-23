@@ -9,7 +9,7 @@
         {
             new()
             {
-                Duration = 3.5f,
+                Duration = 2.5f,
                 Process = GetGDO<Process>(ProcessReferences.Cook),
                 Result = GetCastedGDO<Item, Bacon>()
             }
@@ -17,7 +17,7 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("pork", "Pork", "Pork Fat");
+            Prefab.ApplyMaterialToChildren("pork", "Pork", "Pork Fat");
         }
     }
 }

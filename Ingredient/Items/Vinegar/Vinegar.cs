@@ -13,7 +13,7 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("Jar", "Cork", "Vinegar", "Cardboard");
+            Prefab.ApplyMaterialToChild("Jar", "Vinegar", "Plastic - White", "Metal");
         }
     }
 }

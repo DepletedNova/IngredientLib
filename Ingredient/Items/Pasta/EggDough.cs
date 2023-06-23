@@ -17,9 +17,8 @@
 
         public override void Modify(Item gdo)
         {
-            var bowl = Prefab.GetChild("bowl");
-            bowl.ApplyMaterialToChild("Cylinder.001", "Metal Dark");
-            bowl.ApplyMaterialToChild("Cylinder", "Egg Dough");
+            Prefab.ApplyMaterialToChild("Bowl", "Metal Dark");
+            Prefab.ApplyMaterialToChild("Dough", "Egg Dough");
         }
     }
 }

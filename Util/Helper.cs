@@ -50,7 +50,7 @@ namespace IngredientLib.Util
         }
         internal static void SetupCounterLimitedItem(GameObject counterPrefab, GameObject itemPrefab)
         {
-            Transform holdTransform = GameObjectUtils.GetChildObject(counterPrefab, "Block/HoldPoint").transform;
+            Transform holdTransform = GetChildObject(counterPrefab, "Block/HoldPoint").transform;
 
             counterPrefab.TryAddComponent<HoldPointContainer>().HoldPoint = holdTransform;
             
@@ -58,7 +58,7 @@ namespace IngredientLib.Util
             sourceView.HeldItemPosition = holdTransform;
             ReflectionUtils.GetField<LimitedItemSourceView>("Items").SetValue(sourceView, new List<GameObject>()
             {
-                GameObjectUtils.GetChildObject(counterPrefab, $"Block/HoldPoint/{itemPrefab.name}")
+                GetChildObject(counterPrefab, $"Block/HoldPoint/{itemPrefab.name}")
             });
         }
         internal static void SetupGenericCrates(GameObject prefab)
@@ -111,8 +111,11 @@ namespace IngredientLib.Util
             soundSource.ShouldLoop = false;
 
             // Models
-            lockerModel.ApplyMaterialToChild("Body", "Metal- Shiny", "Metal- Shiny", "Metal- Shiny", "Plastic - Red", "Plastic - Blue");
-            lockerModel.ApplyMaterialToChild("Door", "Metal- Shiny", "Door Glass", "Metal Dark");
+            prefab.GetChild("Ice").ApplyMaterialToChildren("Ice", "Ice");
+            lockerModel.ApplyMaterialToChild("Body", "Metal- Shiny", "Metal Dark");
+            lockerModel.ApplyMaterialToChild("Wires", "Plastic - Red", "Plastic - Blue");
+            lockerModel.ApplyMaterialToChild("Block", "Metal- Shiny", "Door Glass");
+            lockerModel.ApplyMaterialToChild("Door", "Metal- Shiny", "Door Glass", "Metal Very Dark");
         }
         internal static void SetupStand(GameObject prefab)
         {

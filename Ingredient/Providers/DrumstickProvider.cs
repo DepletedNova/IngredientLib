@@ -12,8 +12,8 @@
         {
             SetupLocker(Prefab);
 
-            Prefab.GetChild("Ice").ApplyMaterialToChildren("Ice", "Ice");
-            Prefab.GetChild("Chicken").ApplyMaterialToChildren("chicken", "Raw Chicken", "Raw Drumstick Bone");
+            Prefab.GetChild("Chicken").ApplyMaterialToChildren("chicken", "Raw Chicken");
+            Prefab.GetChild("Chicken").ApplyMaterialToChildren("bone", "Raw Drumstick Bone");
         }
     }
 }

@@ -7,8 +7,9 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("scoop", "Metal");
-            Prefab.ApplyMaterialToChild("mac", "Sack");
+            Prefab.ApplyMaterialToChild("Scoop", "Metal");
+            Prefab.ApplyMaterialToChild("Layer", "Sack");
+            Prefab.GetChild("Macaroni").ApplyMaterialToChildren("Mac", "Sack");
         }
     }
 }

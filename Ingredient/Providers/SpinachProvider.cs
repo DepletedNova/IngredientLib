@@ -13,8 +13,8 @@
             SetupGenericCrates(Prefab);
 
             GameObject parent = Prefab.GetChild("Spinch");
-            parent.ApplyMaterialToChildren("Spinch", "Spinach", "Spinach Stem");
-            parent.ApplyMaterialToChildren("Band", "Plastic - Red");
+            parent.ApplyMaterialToChildren("spinch", "Spinach");
+            parent.ApplyMaterialToChildren("band", "Plastic - Red");
         }
     }
 }

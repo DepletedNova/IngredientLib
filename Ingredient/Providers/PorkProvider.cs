@@ -14,7 +14,7 @@
 
             Prefab.GetChild("Fridge/Fridge2/Shelf").ApplyMaterial("Plastic - Grey");
 
-            Prefab.GetChild("Porks").ApplyMaterialToChildren("Pork", "Pork Fat", "Pork");
+            Prefab.GetChild("Porks").ApplyMaterialToChildren("Pork", "Pork", "Pork Fat");
         }
     }
 }

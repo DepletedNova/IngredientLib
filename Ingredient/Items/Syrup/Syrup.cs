@@ -13,7 +13,7 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("bottle", "Cooked Batter", "Metal- Shiny Blue", "Plastic - Red", "Paper");
+            Prefab.ApplyMaterialToChild("bottle", "Metal- Shiny Blue", "Cooked Batter", "Paper", "Plastic - Red");
         }
     }
 }

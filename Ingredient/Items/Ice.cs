@@ -7,7 +7,8 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("ice", "Ice");
+            Prefab.ApplyMaterialToChild("scoop", "Metal Dark");
+            Prefab.ApplyMaterialToChildren("ice", "Ice");
         }
     }
 }

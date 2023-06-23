@@ -11,8 +11,6 @@
         public override void Modify(Appliance gdo)
         {
             SetupLocker(Prefab);
-
-            Prefab.GetChild("Ice").ApplyMaterialToChildren("Ice", "Ice");
         }
     }
 }

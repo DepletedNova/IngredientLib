@@ -9,7 +9,7 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("cup", "Glass");
+            Prefab.ApplyMaterialToChild("cup", "Metal");
             Prefab.ApplyMaterialToChild("fill", "Coffee Cup");
         }
     }
