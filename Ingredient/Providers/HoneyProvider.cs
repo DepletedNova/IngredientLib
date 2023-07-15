@@ -1,4 +1,6 @@
-﻿namespace IngredientLib.Ingredient.Providers
+﻿using Kitchen;
+
+namespace IngredientLib.Ingredient.Providers
 {
     public class HoneyProvider : GenericProvider
     {

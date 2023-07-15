@@ -41,8 +41,13 @@
     <Reference Include="ChefConnector">
       <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\ChefConnector.dll</HintPath>
     </Reference>
-    <Reference Include="Kitchen.Common">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Kitchen.Common.dll</HintPath>
+    <Reference Include="Controllers, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Controllers.dll</HintPath>
+    </Reference>
+    <Reference Include="Kitchen.Common, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Kitchen.Common.dll</HintPath>
     </Reference>
     <Reference Include="Kitchen.FranchiseBuilderMode">
       <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Kitchen.FranchiseBuilderMode.dll</HintPath>
@@ -50,8 +55,9 @@
     <Reference Include="Kitchen.FranchiseMode">
       <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Kitchen.FranchiseMode.dll</HintPath>
     </Reference>
-    <Reference Include="Kitchen.GameData">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Kitchen.GameData.dll</HintPath>
+    <Reference Include="Kitchen.GameData, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Kitchen.GameData.dll</HintPath>
     </Reference>
     <Reference Include="Kitchen.Layouts">
       <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Kitchen.Layouts.dll</HintPath>
@@ -133,12 +139,18 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.VFXModule">
-      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\UnityEngine.VFXModule.dll</HintPath>
+    <Reference Include="UnityEngine.VFXModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MiniCafe\bin\Release\UnityEngine.VFXModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\CPickupIgnoresHolder.cs" />
+    <Compile Include="Ingredient\Items\CustardMix.cs" />
+    <Compile Include="Ingredient\Items\Custard.cs" />
+    <Compile Include="Ingredient\Items\SweetDoughMix.cs" />
+    <Compile Include="Ingredient\Items\SweetDough.cs" />
+    <Compile Include="Ingredient\Items\ThinBatter.cs" />
     <Compile Include="Ingredient\Items\Strawberry\ChoppedStrawberry.cs" />
     <Compile Include="Ingredient\Items\Strawberry\Strawberry.cs" />
     <Compile Include="Ingredient\Items\Avocado\MashedAvocado.cs" />
@@ -245,6 +257,18 @@
     <Compile Include="Patches\TakeFromHolder_Patch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="References.cs" />
+    <Compile Include="Repair\Components\CRepairAfterDuration.cs" />
+    <Compile Include="Repair\Components\SCheckForRepair.cs" />
+    <Compile Include="Repair\Components\SRepair.cs" />
+    <Compile Include="Repair\GDOs\RepairMenuTrigger.cs" />
+    <Compile Include="Repair\GDOs\RepairProcess.cs" />
+    <Compile Include="Repair\Patches\GenericPromptIndicatorView_Patch.cs" />
+    <Compile Include="Repair\Patches\SStartDayWarnings_Patch.cs" />
+    <Compile Include="Repair\Patches\StartNewDay_Patch.cs" />
+    <Compile Include="Repair\Systems\CreateRepairMenuTrigger.cs" />
+    <Compile Include="Repair\Systems\PatchController.cs" />
+    <Compile Include="Repair\Systems\RepairMenuAfterDuration.cs" />
+    <Compile Include="Repair\Systems\RequestRepairCheck.cs" />
     <Compile Include="Util\Custom\GenericItem.cs" />
     <Compile Include="Util\Custom\GenericItemGroup.cs" />
     <Compile Include="Util\Custom\GenericProvider.cs" />
@@ -252,9 +276,7 @@
     <Compile Include="Util\Helper.cs" />
     <Compile Include="Util\VisualEffectHelper.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Systems\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(TargetDir)$(TargetFileName)" "C:\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\Mods\IngredientLib\content" /y
