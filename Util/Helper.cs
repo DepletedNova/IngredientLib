@@ -7,7 +7,7 @@ namespace IngredientLib.Util
     {
         public static GameObject GetPrefab(string name)
         {
-            return Main.bundle.LoadAsset<GameObject>(name);
+            return Main.Bundle.LoadAsset<GameObject>(name);
         }
 
         // GDO
@@ -80,7 +80,7 @@ namespace IngredientLib.Util
             ReflectionUtils.GetField<ItemSourceView>("Animator").SetValue(sourceView, fridge2.GetComponent<Animator>());
 
             var soundSource = fridge2.TryAddComponent<AnimationSoundSource>();
-            soundSource.SoundList = new List<AudioClip>() { Main.bundle.LoadAsset<AudioClip>("Fridge_mixdown") };
+            soundSource.SoundList = new List<AudioClip>() { Main.Bundle.LoadAsset<AudioClip>("Fridge_mixdown") };
             soundSource.Category = SoundCategory.Effects;
             soundSource.ShouldLoop = false;
 
@@ -106,7 +106,7 @@ namespace IngredientLib.Util
             ReflectionUtils.GetField<ItemSourceView>("Animator").SetValue(sourceView, lockerModel.GetComponent<Animator>());
 
             var soundSource = lockerModel.TryAddComponent<AnimationSoundSource>();
-            soundSource.SoundList = new List<AudioClip>() { Main.bundle.LoadAsset<AudioClip>("Fridge_mixdown") };
+            soundSource.SoundList = new List<AudioClip>() { Main.Bundle.LoadAsset<AudioClip>("Fridge_mixdown") };
             soundSource.Category = SoundCategory.Effects;
             soundSource.ShouldLoop = false;
 

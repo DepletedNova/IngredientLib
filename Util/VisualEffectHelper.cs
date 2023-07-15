@@ -1,4 +1,6 @@
-﻿namespace IngredientLib.Util
+﻿using UnityEngine.VFX;
+
+namespace IngredientLib.Util
 {
     public static class VisualEffectHelper
     {

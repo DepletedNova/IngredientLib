@@ -31,18 +31,25 @@ global using static KitchenLib.Utils.MaterialUtils;
 global using static KitchenLib.Utils.GameObjectUtils;
 global using static IngredientLib.References;
 global using static IngredientLib.Util.Helper;
+using TMPro;
 
 namespace IngredientLib
 {
     public class Main : BaseMod
     {
         public const string GUID = "ingredientlib";
-        public const string VERSION = "1.0.0";
+        public const string VERSION = "1.1.0";
 
         public Main() : base(GUID, "IngredientLib", "Depleted Supernova#1957", VERSION, ">=1.1.0", Assembly.GetExecutingAssembly()) { }
 
-        public static AssetBundle bundle;
 
+        #region References
+        public static AssetBundle Bundle;
+
+        internal static StartDayWarning CorruptedSaveWarning = (StartDayWarning)VariousUtils.GetID("IL:CorruptedSave");
+        #endregion
+
+        #region Visuals
         private void AddMaterials()
         {
             // Common
@@ -139,17 +146,33 @@ namespace IngredientLib
             AddMaterial(CreateTransparent($"IngredientLib - \"{name}\"", color, transparency));
         }
 
+        private void AddIcons()
+        {
+            Bundle.LoadAllAssets<Texture2D>();
+            Bundle.LoadAllAssets<Sprite>();
+
+            var icons = Bundle.LoadAsset<TMP_SpriteAsset>("Icon Asset");
+            TMP_Settings.defaultSpriteAsset.fallbackSpriteAssets.Add(icons);
+            icons.material = UnityEngine.Object.Instantiate(TMP_Settings.defaultSpriteAsset.material);
+            icons.material.mainTexture = Bundle.LoadAsset<Texture2D>("Icon Texture");
+        }
+        #endregion
+
         protected override void OnPostActivate(Mod mod)
         {
-            bundle = mod.GetPacks<AssetBundleModPack>().SelectMany(e => e.AssetBundles).ToList()[0];
+            Bundle = mod.GetPacks<AssetBundleModPack>().SelectMany(e => e.AssetBundles).ToList()[0];
 
             AddGameData();
 
             AddMaterials();
 
+            AddIcons();
+
             Events.BuildGameDataEvent += (s, args) =>
             {
                 GetGDO<Item>(ItemReferences.Sugar).AddRecipe(GetCastedGDO<Item, Caramel>(), ProcessReferences.Cook, 2.6f, false, false);
+
+                AddLocalisations(args.gamedata);
 
 #if DEBUG
                 Log("Custom References");
@@ -198,6 +221,51 @@ namespace IngredientLib
             }
             Log($"Registered {counter} GameDataObjects.");
         }
+
+        #region Localisation
+        public static readonly Dictionary<string, string> GlobalLocalisationTexts = new()
+        {
+            { "IL:Repair", "Repair modded foods" }
+        };
+
+        public static readonly Dictionary<StartDayWarning, GenericLocalisationStruct> StartDayWarningLocalisationTexts = new()
+        {
+            { CorruptedSaveWarning, new()
+                {
+                    Name = "Corrupted modded foods",
+                    Description = "Modded foods have had changes and are in need of repairs"
+                }
+            }
+        };
+
+        private void AddLocalisations(GameData gameData)
+        {
+            var baseTexts = gameData.GlobalLocalisation.Text;
+            foreach (var text in GlobalLocalisationTexts)
+            {
+                if (baseTexts.ContainsKey(text.Key))
+                    continue;
+                baseTexts.Add(text.Key, text.Value);
+            }
+
+            var startDayTexts = gameData.GlobalLocalisation.StartDayWarningLocalisation.Text;
+            foreach (var text in StartDayWarningLocalisationTexts)
+            {
+                if (startDayTexts.ContainsKey(text.Key))
+                    continue;
+                startDayTexts.Add(text.Key, text.Value);
+            }
+        }
+        #endregion
+
+        #region Logging
+        internal static void LogInfo(string msg) { Debug.Log($"[{GUID}] " + msg); }
+        internal static void LogWarning(string msg) { Debug.LogWarning($"[{GUID}] " + msg); }
+        internal static void LogError(string msg) { Debug.LogError($"[{GUID}] " + msg); }
+        internal static void LogInfo(object msg) { LogInfo($"[{GUID}] " + msg.ToString()); }
+        internal static void LogWarning(object msg) { LogWarning($"[{GUID}] " + msg.ToString()); }
+        internal static void LogError(object msg) { LogError($"[{GUID}] " + msg.ToString()); }
+        #endregion
     }
 
     internal struct IWontRegister { }
