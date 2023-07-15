@@ -46,8 +46,8 @@ namespace IngredientLib.Repair.Systems
 
             var IsBroke = false;
 
-            List<int> RequiredProcesses = new();
             List<int> RequiredItems = new();
+            List<int> RequiredProcesses = new();
             List<int> BlockedItems = new();
             List<(int Menu, int Ingredient)> RequiredIngredients = new();
             List<(int Menu, int Ingredient)> RequiredExtras = new();
@@ -86,11 +86,13 @@ namespace IngredientLib.Repair.Systems
                     {
                         var itemGroup = menuItem.Item as ItemGroup;
                         if (itemGroup != null)
+                        {
                             foreach (var itemSet in itemGroup.DerivedSets)
                                 if (!itemSet.RequiresUnlock)
                                     foreach (var item in itemSet.Items)
                                         if (!RequiredIngredients.Contains((itemGroup.ID, item.ID)))
                                             RequiredIngredients.Add((itemGroup.ID, item.ID));
+                        }
                     }
 
                     // Extras

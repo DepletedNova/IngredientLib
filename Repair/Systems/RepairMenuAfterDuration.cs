@@ -53,8 +53,9 @@ namespace IngredientLib.Repair.Systems
 
                 Main.LogInfo("[Repair] Attempting to fix corrupted modded dishes...");
 
-                List<int> RequiredProcesses = new();
+                List<(MenuItem Menu, int Source) > RequiredMenus = new();
                 List<int> RequiredItems = new();
+                List<int> RequiredProcesses = new();
                 List<int> BlockedItems = new();
                 List<(int Menu, int Ingredient)> RequiredIngredients = new();
                 List<(int Menu, int Ingredient)> RequiredExtras = new();
@@ -98,6 +99,8 @@ namespace IngredientLib.Repair.Systems
                                         foreach (var item in itemSet.Items)
                                             if (!RequiredIngredients.Contains((itemGroup.ID, item.ID)))
                                                 RequiredIngredients.Add((itemGroup.ID, item.ID));
+
+                            RequiredMenus.Add((menuItem, unlock.ID));
                         }
 
                         // Extras
@@ -255,50 +258,91 @@ namespace IngredientLib.Repair.Systems
                 var menuEntities = Menus.ToEntityArray(Allocator.Temp);
                 foreach (var entity in menuEntities)
                 {
-                    if (Require(entity, out CMenuItem cMenu) && GameData.Main.TryGet(cMenu.SourceDish, out Dish dish))
+                    var cMenu = GetComponent<CMenuItem>(entity);
+                    if (!GameData.Main.TryGet(cMenu.SourceDish, out Dish dish) || !GameData.Main.TryGet(cMenu.Item, out Item item))
                     {
-                        foreach (var menu in dish.UnlocksMenuItems)
-                        {
-                            if (menu.Item.ID == cMenu.Item)
-                            {
-                                if (menu.Phase != cMenu.Phase)
-                                {
-                                    Main.LogInfo($"[Repair] Correcting menu phase: {cMenu.Item}");
-                                    switch (cMenu.Phase)
-                                    {
-                                        case MenuPhase.Starter:
-                                            EntityManager.RemoveComponent<CMenuItemStarter>(entity);
-                                            break;
-                                        case MenuPhase.Main:
-                                            EntityManager.RemoveComponent<CMenuItemMain>(entity);
-                                            break;
-                                        case MenuPhase.Dessert:
-                                            EntityManager.RemoveComponent<CMenuItemDessert>(entity);
-                                            break;
-                                        case MenuPhase.Side:
-                                            EntityManager.RemoveComponent<CMenuItemSide>(entity);
-                                            break;
-                                    }
+                        Main.LogInfo($"[Repair] Deleting invalid menu: {cMenu.SourceDish} - {cMenu.Item}");
+                        ECB.DestroyEntity(entity);
+                        continue;
+                    }
 
-                                    switch (menu.Phase)
-                                    {
-                                        case MenuPhase.Starter:
-                                            EntityManager.AddComponent<CMenuItemStarter>(entity);
-                                            break;
-                                        case MenuPhase.Main:
-                                            EntityManager.AddComponent<CMenuItemMain>(entity);
-                                            break;
-                                        case MenuPhase.Dessert:
-                                            EntityManager.AddComponent<CMenuItemDessert>(entity);
-                                            break;
-                                        case MenuPhase.Side:
-                                            EntityManager.AddComponent<CMenuItemSide>(entity);
-                                            break;
-                                    }
-                                }
-                                break;
+                    var index = RequiredMenus.FindIndex(x => x.Menu.Item.ID == cMenu.Item && x.Source == cMenu.SourceDish);
+                    if (index != -1)
+                    {
+                        if (RequiredMenus[index].Menu.Phase != cMenu.Phase)
+                        {
+                            Main.LogInfo($"[Repair] Correcting menu phase: {cMenu.SourceDish} - {cMenu.Item}");
+
+                            var newPhase = RequiredMenus[index].Menu.Phase;
+
+                            switch(cMenu.Phase)
+                            {
+                                case MenuPhase.Starter:
+                                    EntityManager.RemoveComponent<CMenuItemStarter>(entity); break;
+                                case MenuPhase.Main:
+                                    EntityManager.RemoveComponent<CMenuItemMain>(entity); break;
+                                case MenuPhase.Dessert:
+                                    EntityManager.RemoveComponent<CMenuItemDessert>(entity); break;
+                                case MenuPhase.Side:
+                                    EntityManager.RemoveComponent<CMenuItemSide>(entity); break;
+                            }
+
+                            cMenu.Phase = newPhase;
+                            EntityManager.SetComponentData(entity, cMenu);
+
+                            switch (newPhase)
+                            {
+                                case MenuPhase.Starter:
+                                    EntityManager.AddComponent<CMenuItemStarter>(entity); break;
+                                case MenuPhase.Main:
+                                    EntityManager.AddComponent<CMenuItemMain>(entity); break;
+                                case MenuPhase.Dessert:
+                                    EntityManager.AddComponent<CMenuItemDessert>(entity); break;
+                                case MenuPhase.Side:
+                                    EntityManager.AddComponent<CMenuItemSide>(entity); break;
                             }
                         }
+
+                        RequiredMenus.RemoveAt(index);
+                    }
+                    else
+                    {
+                        Main.LogInfo($"[Repair] Deleting excess menu: {cMenu.SourceDish} - {cMenu.Item}");
+                        ECB.DestroyEntity(entity);
+                    }
+                }
+                foreach (var menuSet in RequiredMenus)
+                {
+                    Main.LogInfo($"[Repair] Creating menu: {menuSet.Source} - {menuSet.Menu.Item}");
+                    var newMenu = EntityManager.CreateEntity(new ComponentType[] {
+                        typeof(CMenuItem),
+                        typeof(CAvailableIngredient)
+                    });
+                    EntityManager.AddComponentData(newMenu, new CMenuItem
+                    {
+                        Item = menuSet.Menu.Item.ID,
+                        Weight = menuSet.Menu.Weight,
+                        Phase = menuSet.Menu.Phase,
+                        SourceDish = menuSet.Source
+                    });
+                    if (menuSet.Menu.DynamicMenuType > DynamicMenuType.Static)
+                    {
+                        EntityManager.AddComponentData(newMenu, new CDynamicMenuItem
+                        {
+                            Type = menuSet.Menu.DynamicMenuType,
+                            Ingredient = menuSet.Menu.DynamicMenuIngredient.ID
+                        });
+                    }
+                    switch (menuSet.Menu.Phase)
+                    {
+                        case MenuPhase.Starter:
+                            EntityManager.AddComponent<CMenuItemStarter>(newMenu); break;
+                        case MenuPhase.Main:
+                            EntityManager.AddComponent<CMenuItemMain>(newMenu); break;
+                        case MenuPhase.Dessert:
+                            EntityManager.AddComponent<CMenuItemDessert>(newMenu); break;
+                        case MenuPhase.Side:
+                            EntityManager.AddComponent<CMenuItemSide>(newMenu); break;
                     }
                 }
                 menuEntities.Dispose();
