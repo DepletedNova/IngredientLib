@@ -1,8 +1,8 @@
 ﻿namespace IngredientLib.Ingredient.Items
 {
-    public class Batter : GenericItemGroup<Batter.View>
+    public class ThinBatter : GenericItemGroup<ThinBatter.View>
     {
-        public override string NameTag => "Batter";
+        public override string NameTag => "Thin Batter";
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override List<ItemSet> Sets => new List<ItemSet>()
             {
@@ -12,22 +12,22 @@
                     {
                         GetGDO<Item>(ItemReferences.Flour),
                         GetGDO<Item>(ItemReferences.EggCracked),
-                        GetCastedGDO<Item, Butter>()
+                        GetGDO<Item>(329108931),
                     },
                     Min = 3,
                     Max = 3
                 }
             };
 
-        public override string ColourBlindTag => "Ba";
+        public override string ColourBlindTag => "TBa";
 
         public override void Modify(ItemGroup gdo)
         {
-            Prefab.ApplyMaterialToChild("Bowl", "Metal - Brass");
+            Prefab.ApplyMaterialToChild("Bowl", "Metal- Shiny Blue");
 
             Prefab.ApplyMaterialToChild("Flour", "Flour");
             Prefab.ApplyMaterialToChild("Egg", "Egg - White", "Egg - Yolk");
-            Prefab.ApplyMaterialToChild("Butter", "Butter");
+            Prefab.ApplyMaterialToChild("Milk", "Milk");
         }
 
         public class View : AccessedItemGroupView
@@ -46,9 +46,9 @@
                 },
                 new()
                 {
-                    Item = GetCastedGDO<Item, Butter>(),
-                    GameObject = gameObject.GetChild("Butter")
-                },
+                    Item = GetGDO<Item>(329108931),
+                    GameObject = gameObject.GetChild("Milk")
+                }
             };
         }
     }
