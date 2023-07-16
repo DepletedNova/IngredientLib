@@ -68,8 +68,16 @@ namespace IngredientLib.Repair.Systems
                     {
                         // Required Items
                         foreach (var item in dishUnlock.MinimumIngredients)
+                        {
+                            if (item.DedicatedProvider == null)
+                                continue;
+
+                            if (item.DedicatedProvider.GetProperty(out CDynamicItemProvider _))
+                                continue;
+
                             if (!RequiredItems.Contains(item.ID))
                                 RequiredItems.Add(item.ID);
+                        }
 
                         // Required Processes
                         foreach (var process in dishUnlock.RequiredProcesses)
