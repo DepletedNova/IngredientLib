@@ -38,7 +38,7 @@ namespace IngredientLib
     public class Main : BaseMod
     {
         public const string GUID = "ingredientlib";
-        public const string VERSION = "1.1.1";
+        public const string VERSION = "1.1.3";
 
         public Main() : base(GUID, "IngredientLib", "Depleted Supernova#1957", VERSION, ">=1.1.0", Assembly.GetExecutingAssembly()) { }
 
@@ -225,15 +225,15 @@ namespace IngredientLib
         #region Localisation
         public static readonly Dictionary<string, string> GlobalLocalisationTexts = new()
         {
-            { "IL:Repair", "Repair modded foods" }
+            { "IL:Repair", "Repair save" }
         };
 
         public static readonly Dictionary<StartDayWarning, GenericLocalisationStruct> StartDayWarningLocalisationTexts = new()
         {
             { CorruptedSaveWarning, new()
                 {
-                    Name = "Corrupted modded foods",
-                    Description = "Modded foods have had changes and are in need of repairs"
+                    Name = "Corrupted save",
+                    Description = "This can happen because of mod updates or other misc reasons.\nThere is a repair button next to the Practice Mode button.\nThis will not fix all issues."
                 }
             }
         };

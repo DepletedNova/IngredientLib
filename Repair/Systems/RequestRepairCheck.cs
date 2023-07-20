@@ -13,7 +13,8 @@ namespace IngredientLib.Repair.Systems
 
         protected override void OnUpdate()
         {
-            if (Require(out SCurrentScene sScene) && sScene.Type == SceneType.Kitchen)
+            if (Require(out SCurrentScene sScene) && sScene.Type == SceneType.Kitchen &&
+                (!Require(out SDay sDay) || sDay.Day != 0))
                 EntityManager.CreateEntity(new ComponentType[] { typeof(SCheckForRepair) });
         }
     }

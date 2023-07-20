@@ -72,8 +72,11 @@ namespace IngredientLib.Repair.Systems
                             if (item.DedicatedProvider == null)
                                 continue;
 
-                            if (item.DedicatedProvider.GetProperty(out CDynamicItemProvider _))
+                            if (item.DedicatedProvider.GetProperty(out CDynamicItemProvider _) || !item.DedicatedProvider.GetProperty(out CItemProvider _))
+                            {
+                                Main.LogInfo($"[Repair] Skipping item: {item.ID}");
                                 continue;
+                            }
 
                             if (!RequiredItems.Contains(item.ID))
                                 RequiredItems.Add(item.ID);

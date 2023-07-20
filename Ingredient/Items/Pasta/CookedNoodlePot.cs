@@ -6,6 +6,10 @@
         public override Item DisposesTo => GetGDO<Item>(ItemReferences.Pot);
         public override ItemStorage ItemStorageFlags => ItemStorage.Small;
 
+        public override int SplitCount => 3;
+        public override Item SplitSubItem => GetCastedGDO<Item, PastaNoodles>();
+        public override List<Item> SplitDepletedItems => new() { GetGDO<Item>(ItemReferences.Pot) };
+
         public override void Modify(Item gdo)
         {
             Prefab.ApplyMaterialToChild("Handles", "Metal Dark");

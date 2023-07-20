@@ -70,7 +70,7 @@ namespace IngredientLib.Repair.Systems
                         if (item.DedicatedProvider == null)
                             continue;
 
-                        if (item.DedicatedProvider.GetProperty(out CDynamicItemProvider _))
+                        if (item.DedicatedProvider.GetProperty(out CDynamicItemProvider _) || !item.DedicatedProvider.GetProperty(out CItemProvider _))
                             continue;
 
                         if (!RequiredItems.Contains(item.ID))
@@ -79,8 +79,10 @@ namespace IngredientLib.Repair.Systems
 
                     // Required Processes
                     foreach (var process in dishUnlock.RequiredProcesses)
+                    {
                         if (!RequiredProcesses.Contains(process.ID))
                             RequiredProcesses.Add(process.ID);
+                    }
                     
                     // Blocked items
                     foreach (var blocked in dishUnlock.BlockProviders)

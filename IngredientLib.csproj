@@ -148,6 +148,7 @@
     <Compile Include="Components\CPickupIgnoresHolder.cs" />
     <Compile Include="Ingredient\Items\CustardMix.cs" />
     <Compile Include="Ingredient\Items\Custard.cs" />
+    <Compile Include="Ingredient\Items\Pasta\PastaNoodles.cs" />
     <Compile Include="Ingredient\Items\SweetDoughMix.cs" />
     <Compile Include="Ingredient\Items\SweetDough.cs" />
     <Compile Include="Ingredient\Items\ThinBatter.cs" />
@@ -265,7 +266,9 @@
     <Compile Include="Repair\Patches\GenericPromptIndicatorView_Patch.cs" />
     <Compile Include="Repair\Patches\SStartDayWarnings_Patch.cs" />
     <Compile Include="Repair\Patches\StartNewDay_Patch.cs" />
+    <Compile Include="Repair\Patches\PopupUtilities_Patch.cs" />
     <Compile Include="Repair\Systems\CreateRepairMenuTrigger.cs" />
+    <Compile Include="Repair\Systems\DisablePracticeOnCorrupted.cs" />
     <Compile Include="Repair\Systems\PatchController.cs" />
     <Compile Include="Repair\Systems\RepairMenuAfterDuration.cs" />
     <Compile Include="Repair\Systems\RequestRepairCheck.cs" />
