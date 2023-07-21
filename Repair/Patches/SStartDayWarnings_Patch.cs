@@ -15,7 +15,7 @@ namespace IngredientLib.Repair.Patches
             if (__result != StartDayWarning.Ready && __result != StartDayWarning.PlayersNotReady && __result != StartDayWarning.SellingRequiredAppliance)
                 return;
 
-            CorruptedSave = WarningLevel.Error.If(PatchController.StaticHasSingleton<SRepair>());
+            CorruptedSave = WarningLevel.Error.If(PatchController.StaticHasSingleton<SRepair>() && !PatchController.StaticHasSingleton<SPracticeMode>());
             if (CorruptedSave.IsActive())
                 __result = Main.CorruptedSaveWarning;
         }

@@ -1,5 +1,6 @@
 ﻿using IngredientLib.Repair.Components;
 using IngredientLib.Repair.GDOs;
+using System.Linq;
 using Unity.Collections;
 using Unity.Entities;
 
@@ -80,8 +81,12 @@ namespace IngredientLib.Repair.Systems
                     // Required Processes
                     foreach (var process in dishUnlock.RequiredProcesses)
                     {
-                        if (!RequiredProcesses.Contains(process.ID))
-                            RequiredProcesses.Add(process.ID);
+                        var id = process.ID;
+                        if (process.IsPseudoprocessFor != null)
+                            id = process.IsPseudoprocessFor.ID;
+
+                        if (!RequiredProcesses.Contains(id))
+                            RequiredProcesses.Add(id);
                     }
                     
                     // Blocked items
@@ -145,8 +150,12 @@ namespace IngredientLib.Repair.Systems
                             RequiredItems.Remove(cProvider.DefaultProvidedItem);
 
                     foreach (var process in appliance.Processes)
+                    {
                         if (RequiredProcesses.Contains(process.Process.ID))
                             RequiredProcesses.Remove(process.Process.ID);
+                        if (process.Process.IsPseudoprocessFor != null && RequiredProcesses.Contains(process.Process.IsPseudoprocessFor.ID))
+                            RequiredProcesses.Remove(process.Process.IsPseudoprocessFor.ID);
+                    }
                 }
             }
             IsBroke |= RequiredItems.Count > 0 || RequiredProcesses.Count > 0;

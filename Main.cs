@@ -32,13 +32,16 @@ global using static KitchenLib.Utils.GameObjectUtils;
 global using static IngredientLib.References;
 global using static IngredientLib.Util.Helper;
 using TMPro;
+using IngredientLib.Repair.Systems;
+using IngredientLib.Repair.Patches;
+using Controllers;
 
 namespace IngredientLib
 {
     public class Main : BaseMod
     {
         public const string GUID = "ingredientlib";
-        public const string VERSION = "1.1.3";
+        public const string VERSION = "1.1.5";
 
         public Main() : base(GUID, "IngredientLib", "Depleted Supernova#1957", VERSION, ">=1.1.0", Assembly.GetExecutingAssembly()) { }
 
@@ -47,6 +50,11 @@ namespace IngredientLib
         public static AssetBundle Bundle;
 
         internal static StartDayWarning CorruptedSaveWarning = (StartDayWarning)VariousUtils.GetID("IL:CorruptedSave");
+
+        internal static PauseMenuAction RepairAction = (PauseMenuAction)VariousUtils.GetID("IL:RepairMenu");
+        internal static GameStateRequest RepairRequest = (GameStateRequest)VariousUtils.GetID("IL:RepairMenu");
+
+        public static bool StartPractice(WarningLevel level) => level.IsBlocking() || SStartDayWarnings_Patch.CorruptedSave.IsBlocking();
         #endregion
 
         #region Visuals
@@ -225,7 +233,7 @@ namespace IngredientLib
         #region Localisation
         public static readonly Dictionary<string, string> GlobalLocalisationTexts = new()
         {
-            { "IL:Repair", "Repair save" }
+            { "IL:Repair", "Repair Save" }
         };
 
         public static readonly Dictionary<StartDayWarning, GenericLocalisationStruct> StartDayWarningLocalisationTexts = new()
@@ -233,7 +241,7 @@ namespace IngredientLib
             { CorruptedSaveWarning, new()
                 {
                     Name = "Corrupted save",
-                    Description = "This can happen because of mod updates or other misc reasons.\nThere is a repair button next to the Practice Mode button.\nThis will not fix all issues."
+                    Description = "This can happen because of mod updates or other misc reasons.\nA repair button is infront of the restaurant or in the pause menu."
                 }
             }
         };
