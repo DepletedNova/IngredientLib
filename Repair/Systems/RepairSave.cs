@@ -1,4 +1,5 @@
 ﻿using IngredientLib.Repair.Components;
+using System.Linq;
 using Unity.Collections;
 using Unity.Entities;
 using static KitchenData.Dish;
@@ -64,14 +65,14 @@ namespace IngredientLib.Repair.Systems
                         if (item.DedicatedProvider == null)
                             continue;
 
-                        if (item.DedicatedProvider.GetProperty(out CDynamicItemProvider _) || !item.DedicatedProvider.GetProperty(out CItemProvider _))
+                        if (item.DedicatedProvider.GetProperty(out CDynamicItemProvider _) || !item.DedicatedProvider.GetProperty(out CItemProvider cProvider))
                         {
                             Main.LogInfo($"[Repair] Skipping item: {item.ID}");
                             continue;
                         }
 
-                        if (!RequiredItems.Contains(item.ID))
-                            RequiredItems.Add(item.ID);
+                        if (!RequiredItems.Contains(cProvider.DefaultProvidedItem))
+                            RequiredItems.Add(cProvider.DefaultProvidedItem);
                     }
 
                     // Required Processes

@@ -71,11 +71,11 @@ namespace IngredientLib.Repair.Systems
                         if (item.DedicatedProvider == null)
                             continue;
 
-                        if (item.DedicatedProvider.GetProperty(out CDynamicItemProvider _) || !item.DedicatedProvider.GetProperty(out CItemProvider _))
+                        if (item.DedicatedProvider.GetProperty(out CDynamicItemProvider _) || !item.DedicatedProvider.GetProperty(out CItemProvider cProvider))
                             continue;
 
-                        if (!RequiredItems.Contains(item.ID))
-                            RequiredItems.Add(item.ID);
+                        if (!RequiredItems.Contains(cProvider.DefaultProvidedItem))
+                            RequiredItems.Add(cProvider.DefaultProvidedItem);
                     }
 
                     // Required Processes
