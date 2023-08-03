@@ -1,47 +1,41 @@
-﻿global using UnityEngine;
-global using UnityEngine.VFX;
-
-global using System;
-global using System.Linq;
-global using System.Reflection;
-global using System.Collections.Generic;
-
+﻿global using HarmonyLib;
+global using IngredientLib.Ingredient.Items;
+global using IngredientLib.Ingredient.Providers;
+global using IngredientLib.Util;
+global using IngredientLib.Util.Custom;
 global using Kitchen;
 global using Kitchen.Components;
 global using KitchenData;
-global using KitchenMods;
-
 global using KitchenLib;
 global using KitchenLib.Customs;
 global using KitchenLib.Event;
 global using KitchenLib.References;
 global using KitchenLib.Utils;
-
-global using IngredientLib.Ingredient.Items;
-global using IngredientLib.Ingredient.Providers;
-global using IngredientLib.Util.Custom;
-global using IngredientLib.Util;
-
-global using HarmonyLib;
-
+global using KitchenMods;
+global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Reflection;
+global using UnityEngine;
+global using UnityEngine.VFX;
+global using static IngredientLib.References;
+global using static IngredientLib.Util.Helper;
 global using static KitchenData.ItemGroup;
+global using static KitchenLib.Utils.GameObjectUtils;
 global using static KitchenLib.Utils.GDOUtils;
 global using static KitchenLib.Utils.KitchenPropertiesUtils;
 global using static KitchenLib.Utils.MaterialUtils;
-global using static KitchenLib.Utils.GameObjectUtils;
-global using static IngredientLib.References;
-global using static IngredientLib.Util.Helper;
-using TMPro;
-using IngredientLib.Repair.Systems;
-using IngredientLib.Repair.Patches;
 using Controllers;
+using IngredientLib.Repair.Patches;
+using System.IO;
+using TMPro;
 
 namespace IngredientLib
 {
     public class Main : BaseMod
     {
         public const string GUID = "ingredientlib";
-        public const string VERSION = "1.1.6";
+        public const string VERSION = "1.1.7";
 
         public Main() : base(GUID, "IngredientLib", "Depleted Supernova#1957", VERSION, ">=1.1.0", Assembly.GetExecutingAssembly()) { }
 
@@ -182,6 +176,9 @@ namespace IngredientLib
 
                 AddLocalisations(args.gamedata);
 
+                FixServedItems(args.gamedata);
+
+                #region Debug logging
 #if DEBUG
                 Log("Custom References");
                 Log("Providers");
@@ -205,10 +202,42 @@ namespace IngredientLib
                 foreach (var item in splitIngredientReferences)
                     Debug.Log($" * \"{GetCustomGameDataObject(item.Value).UniqueNameID}\": `{item.Value}`");
 #endif
+                #endregion
 
                 args.gamedata.ProcessesView.Initialise(args.gamedata);
             };
         }
+
+        #region Fixes
+        internal void FixServedItems(GameData gamedata)
+        {
+            foreach (var gdoPair in gamedata.Objects)
+            {
+                var gdo = gdoPair.Value;
+
+                if (!(gdo is Item item))
+                    continue;
+
+                if (item.NeedsIngredients == null) item.NeedsIngredients = new();
+                if (item.SatisfiedBy == null) item.SatisfiedBy = new();
+            }
+        }
+        #endregion
+
+        #region Snapshot
+        private string GetOrCreateFolder(string path)
+        {
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+            return path;
+        }
+        private void SaveSnapshot(Texture2D snapshot, string folderPath, string fileName)
+        {
+            var path = Path.Combine(folderPath, fileName + ".png");
+            if (!File.Exists(path))
+                File.WriteAllBytes(path, snapshot.EncodeToPNG());
+        }
+        #endregion
 
         internal void AddGameData()
         {
