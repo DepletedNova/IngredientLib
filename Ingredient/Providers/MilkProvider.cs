@@ -18,6 +18,8 @@
             var crate = Prefab.GetChild("Crate");
             crate.ApplyMaterialToChild("Box", "Wood");
             crate.GetChild("Ice").ApplyMaterialToChildren("Cube", "Ice");
+
+            this.Redirect(ApplianceReferences.SourceMilk);
         }
     }
 }

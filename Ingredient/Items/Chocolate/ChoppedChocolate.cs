@@ -24,6 +24,8 @@
         public override void Modify(Item gdo)
         {
             Prefab.ApplyMaterialToChildren("chocolate", "Chocolate");
+
+            this.Redirect(GetCustomGameDataObject<ChocolateShavings>().ID);
         }
     }
 }

@@ -11,6 +11,8 @@
         {
             Prefab.ApplyMaterialToChild("cup", "Metal");
             Prefab.ApplyMaterialToChild("fill", "Lemon Juice");
+
+            this.Redirect(741084967); // Lemon Slice
         }
     }
 }

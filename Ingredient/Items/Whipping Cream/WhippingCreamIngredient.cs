@@ -10,7 +10,7 @@
         {
             new()
             {
-                Duration = 1.3f,
+                Duration = .6f,
                 Process = GetGDO<Process>(ProcessReferences.Knead),
                 Result = GetCastedGDO<Item, WhippedCream>()
             }

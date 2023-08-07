@@ -16,7 +16,7 @@
             },
             new()
             {
-                Duration = 1.3f,
+                Duration = .6f,
                 Process = GetGDO<Process>(ProcessReferences.Chop),
                 Result = GetCastedGDO<Item, ShreddedChicken>()
             }

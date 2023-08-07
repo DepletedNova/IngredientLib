@@ -9,7 +9,7 @@
         {
             new()
             {
-                Duration = 10f,
+                Duration = 6f,
                 Process = GetGDO<Process>(ProcessReferences.Cook),
                 IsBad = true,
                 Result = GetGDO<Item>(ItemReferences.BurnedFood)
@@ -18,8 +18,8 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("meat", "Cooked Drumstick");
-            Prefab.ApplyMaterialToChild("bone", "Cooked Drumstick Bone");
+            Prefab.ApplyMaterialToChild("meat", "Cooked Chicken");
+            Prefab.ApplyMaterialToChild("bone", "Cooked Bone");
         }
     }
 }

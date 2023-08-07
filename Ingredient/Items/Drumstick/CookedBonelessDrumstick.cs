@@ -18,7 +18,7 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("chicken", "Cooked Drumstick");
+            Prefab.ApplyMaterialToChild("chicken", "Cooked Chicken");
         }
     }
 }

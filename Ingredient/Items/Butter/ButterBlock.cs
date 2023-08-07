@@ -9,7 +9,7 @@
         public override Item SplitSubItem => GetCastedGDO<Item, Butter>();
         public override List<Item> SplitDepletedItems => new() { GetCastedGDO<Item, Butter>() };
         public override int SplitCount => 6;
-        public override float SplitSpeed => 1.5f;
+        public override float SplitSpeed => 2f;
 
         public override void Modify(Item gdo)
         {

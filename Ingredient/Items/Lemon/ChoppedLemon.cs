@@ -20,6 +20,8 @@
         public override void Modify(Item gdo)
         {
             Prefab.ApplyMaterialToChild("fruit", "Lemon", "White Fruit");
+
+            this.Redirect(741084967); // Lemon Slice
         }
     }
 }

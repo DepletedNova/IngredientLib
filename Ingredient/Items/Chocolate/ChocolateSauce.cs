@@ -21,6 +21,8 @@
         {
             Prefab.ApplyMaterialToChild("Bowl", "Metal");
             Prefab.ApplyMaterialToChild("Chocolate", "Chocolate");
+
+            this.Redirect(-1004033684); // Melted Chocolate
         }
     }
 }

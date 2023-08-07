@@ -7,7 +7,7 @@
         {
             new Item.ItemProcess()
             {
-                Duration = 1.3f,
+                Duration = 1f,
                 Process = GetGDO<Process>(ProcessReferences.Chop),
                 Result = GetCastedGDO<Item, PeeledGarlic>()
             }

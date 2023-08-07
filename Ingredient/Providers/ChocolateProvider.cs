@@ -15,6 +15,8 @@
             var choc = Prefab.GetChild("Chocolate");
             choc.ApplyMaterialToChildren("bar", "Plastic - Red", "Plastic - White");
             choc.ApplyMaterialToChildren("chocolate", "Chocolate");
+
+            this.Redirect(783588616);
         }
     }
 }

@@ -9,7 +9,7 @@
         {
             new()
             {
-                Duration = 6f,
+                Duration = 1.5f,
                 Process = GetGDO<Process>(ProcessReferences.Cook),
                 Result = GetCastedGDO<Item, CookedBonelessDrumstick>()
             }
@@ -17,7 +17,7 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("chicken", "Raw Chicken");
+            Prefab.ApplyMaterialToChild("chicken", "Crab Cake - No Flour");
         }
     }
 }

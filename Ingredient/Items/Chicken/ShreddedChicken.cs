@@ -7,7 +7,7 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChildren("Shaving", "Cooked Chicken");
+            Prefab.ApplyMaterialToChildren("Shaving", "Cooked Batter");
         }
     }
 }

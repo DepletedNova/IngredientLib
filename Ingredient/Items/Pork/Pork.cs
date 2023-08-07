@@ -9,13 +9,13 @@
         {
             new()
             {
-                Duration = 4.5f,
+                Duration = 3.5f,
                 Process = GetGDO<Process>(ProcessReferences.Cook),
                 Result = GetCastedGDO<Item, Porkchop>()
             },
             new()
             {
-                Duration = 1.3f,
+                Duration = 1f,
                 Process = GetGDO<Process>(ProcessReferences.Chop),
                 Result = GetCastedGDO<Item, ChoppedPork>()
             }

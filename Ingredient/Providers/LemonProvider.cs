@@ -13,6 +13,8 @@
             SetupGenericCrates(Prefab);
 
             Prefab.GetChild("Lemons").ApplyMaterialToChildren("Lemon", "Lemon");
+
+            this.Redirect(1470180731);
         }
     }
 }

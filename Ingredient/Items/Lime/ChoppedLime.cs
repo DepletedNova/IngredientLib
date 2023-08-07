@@ -11,7 +11,7 @@
         {
             new()
             {
-                Duration = 1.3f,
+                Duration = 1f,
                 Process = GetGDO<Process>(ProcessReferences.Knead),
                 Result = GetCastedGDO<Item, LimeJuice>()
             }

@@ -26,7 +26,9 @@ global using static KitchenLib.Utils.GDOUtils;
 global using static KitchenLib.Utils.KitchenPropertiesUtils;
 global using static KitchenLib.Utils.MaterialUtils;
 using Controllers;
+using IngredientLib.Menu;
 using IngredientLib.Repair.Patches;
+using KitchenLib.Preferences;
 using System.IO;
 using TMPro;
 
@@ -35,10 +37,9 @@ namespace IngredientLib
     public class Main : BaseMod
     {
         public const string GUID = "ingredientlib";
-        public const string VERSION = "1.1.7";
+        public const string VERSION = "1.2.0";
 
         public Main() : base(GUID, "IngredientLib", "Depleted Supernova#1957", VERSION, ">=1.1.0", Assembly.GetExecutingAssembly()) { }
-
 
         #region References
         public static AssetBundle Bundle;
@@ -160,6 +161,169 @@ namespace IngredientLib
         }
         #endregion
 
+        #region Tweaks
+        private void PerformTweak()
+        {
+            TweakBasegame();
+
+            if (ApplyRedirects.Value)
+                RedirectGDOs();
+        }
+
+        private void RedirectGDOs()
+        {
+            // Items
+            foreach (var item in GameData.Main.Get<Item>())
+            {
+                for (int i = 0; i < item.DerivedProcesses.Count; i++)
+                {
+                    var process = item.DerivedProcesses[i];
+                    process.Result.TryRedirect(n => process.Result = n);
+                    process.Process.TryRedirect(n => process.Process = n);
+                }
+                item.AutomaticItemProcess.Result.TryRedirect(n => item.AutomaticItemProcess.Result = n);
+                item.AutomaticItemProcess.Process.TryRedirect(n => item.AutomaticItemProcess.Process = n);
+
+                item.DirtiesTo.TryRedirect(n => item.DirtiesTo = n);
+                item.DisposesTo.TryRedirect(n => item.DisposesTo = n);
+                item.SplitSubItem.TryRedirect(n => item.SplitSubItem = n);
+                item.DedicatedProvider.TryRedirect(n => item.DedicatedProvider = n);
+
+                if (!(item is ItemGroup itemGroup))
+                    continue;
+
+                for (int i = 0; i < itemGroup.DerivedSets.Count; i++)
+                {
+                    var set = itemGroup.DerivedSets[i];
+                    for (int i2 = 0; i2 < set.Items.Count; i2++)
+                    {
+                        set.Items[i2].TryRedirect(n => set.Items[i2] = n);
+                    }
+                }
+
+                var prefab = itemGroup.Prefab;
+                if (prefab == null || !prefab.TryGetComponent<ItemGroupView>(out var view))
+                    continue;
+
+                if (!view.ComponentGroups.IsNullOrEmpty())
+                {
+                    var newGroups = new List<ItemGroupView.ComponentGroup>();
+                    for (int i = 0; i < view.ComponentGroups.Count; i++)
+                    {
+                        var group = view.ComponentGroups[i];
+                        var groupItem = group.Item;
+                        group.Item.TryRedirect(n => groupItem = n);
+                        var newGroup = new ItemGroupView.ComponentGroup
+                        {
+                            GameObject = group.GameObject,
+                            DrawAll = group.DrawAll,
+                            IsDrawing = group.IsDrawing,
+                            Item = groupItem,
+                            Objects = group.Objects
+                        };
+                        newGroups.Add(newGroup);
+                    }
+                    view.ComponentGroups = newGroups;
+                }
+
+                var labelRefl = ReflectionUtils.GetField<ItemGroupView>("ComponentLabels");
+
+                var labels = (List<ItemGroupView.ColourBlindLabel>)labelRefl.GetValue(view);
+                if (!labels.IsNullOrEmpty())
+                {
+                    var newLabels = new List<ItemGroupView.ColourBlindLabel>();
+                    for (int i = 0; i < labels.Count; i++)
+                    {
+                        var label = labels[i];
+                        var labelItem = label.Item;
+                        label.Item.TryRedirect(n => labelItem = n);
+                        var newLabel = new ItemGroupView.ColourBlindLabel
+                        {
+                            Item = labelItem,
+                            Text = label.Text
+                        };
+                        newLabels.Add(newLabel);
+                    }
+                    labelRefl.SetValue(view, newLabels);
+                }
+            }
+            
+            // Dishes
+            foreach (var dish in GameData.Main.Get<Dish>())
+            {
+                var minimumList = dish.MinimumIngredients.ToList();
+                for (int i = 0; i < minimumList.Count; i++)
+                {
+                    minimumList[i].TryRedirect(n => minimumList[i] = n);
+                }
+                dish.MinimumIngredients = minimumList.ToHashSet();
+
+                var processesList = dish.RequiredProcesses.ToList();
+                for (int i = 0; i < processesList.Count; i++)
+                {
+                    processesList[i].TryRedirect(n => processesList[i] = n);
+                }
+                dish.RequiredProcesses = processesList.ToHashSet();
+            }
+        }
+
+        private void TweakBasegame()
+        {
+            GetGDO<Item>(ItemReferences.Sugar).AddRecipe(GetCastedGDO<Item, Caramel>(), ProcessReferences.Cook, 2.6f, false, false);
+            GetGDO<Item>(106900119).AddRecipe(GetCastedGDO<Item, ChocolateShavings>(), ProcessReferences.Chop, 1f, false, false);
+
+            UpdateCondiment<KetchupIngredient>(GetGDO<Item>(ItemReferences.CondimentKetchup));
+            UpdateCondiment<MustardIngredient>(GetGDO<Item>(ItemReferences.CondimentMustard));
+            UpdateCondiment<SoySauceIngredient>(GetGDO<Item>(ItemReferences.CondimentSoySauce));
+        }
+
+        private void UpdateCondiment<T>(Item condiment) where T : CustomItem
+        {
+            // Update condiment gdo
+            condiment.SplitSubItem = GetCastedGDO<Item, T>();
+            condiment.SplitCount = 999;
+            condiment.PreventExplicitSplit = true;
+            condiment.AllowSplitMerging = true;
+
+            // Update provider gdo
+            var provider = condiment.DedicatedProvider;
+            provider.Properties = new()
+            {
+                GetCItemProvider(condiment.ID, 3, 3, false, false, false, false, false, true, false),
+                new CItemHolder()
+            };
+
+            // Update provider prefab
+            var prefab = provider.Prefab;
+            prefab.transform.Find("HoldPoint").localPosition = prefab.GetChild(4).transform.localPosition;
+        }
+        #endregion
+
+        #region Preferences
+        public static PreferenceManager PreferenceManager;
+
+        public static PreferenceBool ApplyRedirects;
+
+        private void SetupMenu()
+        {
+            PreferenceManager = new(GUID);
+
+            ApplyRedirects = PreferenceManager.RegisterPreference(new PreferenceBool("ApplyRedirects", true));
+            PreferenceManager.Load();
+
+            ModsPreferencesMenu<MainMenuAction>.RegisterMenu("IngredientLib", typeof(PreferencesMenu<MainMenuAction>), typeof(MainMenuAction));
+            ModsPreferencesMenu<PauseMenuAction>.RegisterMenu("IngredientLib", typeof(PreferencesMenu<PauseMenuAction>), typeof(PauseMenuAction));
+            Events.PreferenceMenu_MainMenu_CreateSubmenusEvent += (s, args) =>
+            {
+                args.Menus.Add(typeof(PreferencesMenu<MainMenuAction>), new PreferencesMenu<MainMenuAction>(args.Container, args.Module_list));
+            };
+            Events.PreferenceMenu_PauseMenu_CreateSubmenusEvent += (s, args) =>
+            {
+                args.Menus.Add(typeof(PreferencesMenu<PauseMenuAction>), new PreferencesMenu<PauseMenuAction>(args.Container, args.Module_list));
+            };
+        }
+        #endregion
+
         protected override void OnPostActivate(Mod mod)
         {
             Bundle = mod.GetPacks<AssetBundleModPack>().SelectMany(e => e.AssetBundles).ToList()[0];
@@ -172,7 +336,7 @@ namespace IngredientLib
 
             Events.BuildGameDataEvent += (s, args) =>
             {
-                GetGDO<Item>(ItemReferences.Sugar).AddRecipe(GetCastedGDO<Item, Caramel>(), ProcessReferences.Cook, 2.6f, false, false);
+                PerformTweak();
 
                 AddLocalisations(args.gamedata);
 
@@ -206,6 +370,11 @@ namespace IngredientLib
 
                 args.gamedata.ProcessesView.Initialise(args.gamedata);
             };
+        }
+
+        protected override void OnInitialise()
+        {
+            SetupMenu();
         }
 
         #region Fixes

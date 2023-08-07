@@ -7,7 +7,7 @@
 
         public override void Modify(Item gdo)
         {
-            Prefab.ApplyMaterialToChild("chicken", "Raw Drumstick Bone");
+            Prefab.ApplyMaterialToChild("chicken", "Raw Bone");
         }
     }
 }

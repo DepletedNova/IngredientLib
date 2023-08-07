@@ -15,6 +15,8 @@ namespace IngredientLib.Ingredient.Items
         public override void Modify(Item gdo)
         {
             Prefab.ApplyMaterialToChild("carton", "Plastic - Blue", "Plastic - White");
+
+            this.Redirect(ItemReferences.Milk);
         }
     }
 }

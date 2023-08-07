@@ -152,6 +152,9 @@
     <Compile Include="Components\CPickupIgnoresHolder.cs" />
     <Compile Include="Ingredient\Items\CustardMix.cs" />
     <Compile Include="Ingredient\Items\Custard.cs" />
+    <Compile Include="Ingredient\Items\SoySauceIngredient.cs" />
+    <Compile Include="Ingredient\Items\MustardIngredient.cs" />
+    <Compile Include="Ingredient\Items\KetchupIngredient.cs" />
     <Compile Include="Ingredient\Items\Pasta\PastaNoodles.cs" />
     <Compile Include="Ingredient\Items\SweetDoughMix.cs" />
     <Compile Include="Ingredient\Items\SweetDough.cs" />
@@ -259,8 +262,10 @@
     <Compile Include="Ingredient\Providers\PorkProvider.cs" />
     <Compile Include="Ingredient\Providers\VinegarProvider.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="Menu\PreferenceMenu.cs" />
     <Compile Include="Patches\TakeFromHolder_Patch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RedirectRegistry.cs" />
     <Compile Include="References.cs" />
     <Compile Include="Repair\Components\CRepairAfterDuration.cs" />
     <Compile Include="Repair\Components\SCheckForRepair.cs" />

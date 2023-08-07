@@ -9,7 +9,7 @@
         {
             new()
             {
-                Duration = 4f,
+                Duration = 2.5f,
                 Process = GetGDO<Process>(ProcessReferences.Cook),
                 IsBad = true,
                 Result = GetGDO<Item>(ItemReferences.BurnedFood)

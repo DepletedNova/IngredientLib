@@ -24,6 +24,8 @@
         public override void Modify(Item gdo)
         {
             Prefab.ApplyMaterialToChild("Bar", "Chocolate");
+
+            this.Redirect(106900119); // Chocolate
         }
     }
 }

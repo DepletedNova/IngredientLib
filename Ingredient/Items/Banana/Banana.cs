@@ -7,7 +7,7 @@
 
         public override Item SplitSubItem => GetCastedGDO<Item, BananaPeel>();
         public override int SplitCount => 1;
-        public override float SplitSpeed => 1f;
+        public override float SplitSpeed => 1.25f;
 
         public override void Modify(Item gdo)
         {

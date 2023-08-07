@@ -11,6 +11,8 @@
         {
             Prefab.ApplyMaterialToChild("cup", "Metal");
             Prefab.ApplyMaterialToChild("fill", "Coffee Cup");
+
+            this.Redirect(ItemReferences.Milk);
         }
     }
 }
