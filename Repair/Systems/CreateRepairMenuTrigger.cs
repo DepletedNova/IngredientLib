@@ -176,15 +176,21 @@ namespace IngredientLib.Repair.Systems
             blockers.Dispose();
 
             // Ingredients
+
             var ingredients = Ingredients.ToComponentDataArray<CAvailableIngredient>(Allocator.Temp);
+            List<CAvailableIngredient> cycledIngredients = new();
             int excessIngredients = 0;
             foreach (var ingredient in ingredients)
             {
                 if (ingredient.MenuItem == 0 || ingredient.Ingredient == 0) continue;
 
                 var index = RequiredIngredients.FindIndex(x => ingredient.Ingredient == x.Ingredient && ingredient.MenuItem == x.Menu);
-                if (index != -1) RequiredIngredients.RemoveAt(index);
-                else excessIngredients++;
+                if (index != -1)
+                {
+                    RequiredIngredients.RemoveAt(index);
+                    cycledIngredients.Add(ingredient);
+                }
+                else if (!cycledIngredients.Contains(ingredient)) excessIngredients++;
             }
             IsBroke |= excessIngredients > 0 || RequiredIngredients.Count > 0;
             if (RequiredIngredients.Count > 0) Main.LogInfo($"Missing unlocked ingredients: {RequiredIngredients.Count}");

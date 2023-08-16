@@ -37,7 +37,7 @@ namespace IngredientLib
     public class Main : BaseMod
     {
         public const string GUID = "ingredientlib";
-        public const string VERSION = "1.2.0";
+        public const string VERSION = "1.2.3";
 
         public Main() : base(GUID, "IngredientLib", "Depleted Supernova#1957", VERSION, ">=1.1.0", Assembly.GetExecutingAssembly()) { }
 
@@ -162,32 +162,32 @@ namespace IngredientLib
         #endregion
 
         #region Tweaks
-        private void PerformTweak()
+        private void PerformTweak(GameData gameData)
         {
-            TweakBasegame();
-
             if (ApplyRedirects.Value)
-                RedirectGDOs();
+                RedirectGDOs(gameData);
+
+            TweakBasegame();
         }
 
-        private void RedirectGDOs()
+        private void RedirectGDOs(GameData gameData)
         {
             // Items
-            foreach (var item in GameData.Main.Get<Item>())
+            foreach (var item in gameData.Get<Item>())
             {
                 for (int i = 0; i < item.DerivedProcesses.Count; i++)
                 {
                     var process = item.DerivedProcesses[i];
-                    process.Result.TryRedirect(n => process.Result = n);
-                    process.Process.TryRedirect(n => process.Process = n);
+                    process.Result.TryRedirect(n => process.Result = n, gameData);
+                    process.Process.TryRedirect(n => process.Process = n, gameData);
                 }
-                item.AutomaticItemProcess.Result.TryRedirect(n => item.AutomaticItemProcess.Result = n);
-                item.AutomaticItemProcess.Process.TryRedirect(n => item.AutomaticItemProcess.Process = n);
+                item.AutomaticItemProcess.Result.TryRedirect(n => item.AutomaticItemProcess.Result = n, gameData);
+                item.AutomaticItemProcess.Process.TryRedirect(n => item.AutomaticItemProcess.Process = n, gameData);
 
-                item.DirtiesTo.TryRedirect(n => item.DirtiesTo = n);
-                item.DisposesTo.TryRedirect(n => item.DisposesTo = n);
-                item.SplitSubItem.TryRedirect(n => item.SplitSubItem = n);
-                item.DedicatedProvider.TryRedirect(n => item.DedicatedProvider = n);
+                item.DirtiesTo.TryRedirect(n => item.DirtiesTo = n, gameData);
+                item.DisposesTo.TryRedirect(n => item.DisposesTo = n, gameData);
+                item.SplitSubItem.TryRedirect(n => item.SplitSubItem = n, gameData);
+                item.DedicatedProvider.TryRedirect(n => item.DedicatedProvider = n, gameData);
 
                 if (!(item is ItemGroup itemGroup))
                     continue;
@@ -197,7 +197,7 @@ namespace IngredientLib
                     var set = itemGroup.DerivedSets[i];
                     for (int i2 = 0; i2 < set.Items.Count; i2++)
                     {
-                        set.Items[i2].TryRedirect(n => set.Items[i2] = n);
+                        set.Items[i2].TryRedirect(n => set.Items[i2] = n, gameData);
                     }
                 }
 
@@ -212,7 +212,7 @@ namespace IngredientLib
                     {
                         var group = view.ComponentGroups[i];
                         var groupItem = group.Item;
-                        group.Item.TryRedirect(n => groupItem = n);
+                        group.Item.TryRedirect(n => groupItem = n, gameData);
                         var newGroup = new ItemGroupView.ComponentGroup
                         {
                             GameObject = group.GameObject,
@@ -236,7 +236,7 @@ namespace IngredientLib
                     {
                         var label = labels[i];
                         var labelItem = label.Item;
-                        label.Item.TryRedirect(n => labelItem = n);
+                        label.Item.TryRedirect(n => labelItem = n, gameData);
                         var newLabel = new ItemGroupView.ColourBlindLabel
                         {
                             Item = labelItem,
@@ -247,21 +247,21 @@ namespace IngredientLib
                     labelRefl.SetValue(view, newLabels);
                 }
             }
-            
+
             // Dishes
-            foreach (var dish in GameData.Main.Get<Dish>())
+            foreach (var dish in gameData.Get<Dish>())
             {
                 var minimumList = dish.MinimumIngredients.ToList();
                 for (int i = 0; i < minimumList.Count; i++)
                 {
-                    minimumList[i].TryRedirect(n => minimumList[i] = n);
+                    minimumList[i].TryRedirect(n => minimumList[i] = n, gameData);
                 }
                 dish.MinimumIngredients = minimumList.ToHashSet();
 
                 var processesList = dish.RequiredProcesses.ToList();
                 for (int i = 0; i < processesList.Count; i++)
                 {
-                    processesList[i].TryRedirect(n => processesList[i] = n);
+                    processesList[i].TryRedirect(n => processesList[i] = n, gameData);
                 }
                 dish.RequiredProcesses = processesList.ToHashSet();
             }
@@ -270,7 +270,7 @@ namespace IngredientLib
         private void TweakBasegame()
         {
             GetGDO<Item>(ItemReferences.Sugar).AddRecipe(GetCastedGDO<Item, Caramel>(), ProcessReferences.Cook, 2.6f, false, false);
-            GetGDO<Item>(106900119).AddRecipe(GetCastedGDO<Item, ChocolateShavings>(), ProcessReferences.Chop, 1f, false, false);
+            GetGDO<Item>(1069000119).AddRecipe(GetCastedGDO<Item, ChocolateShavings>(), ProcessReferences.Chop, 1f, false, false);
 
             UpdateCondiment<KetchupIngredient>(GetGDO<Item>(ItemReferences.CondimentKetchup));
             UpdateCondiment<MustardIngredient>(GetGDO<Item>(ItemReferences.CondimentMustard));
@@ -336,7 +336,9 @@ namespace IngredientLib
 
             Events.BuildGameDataEvent += (s, args) =>
             {
-                PerformTweak();
+                SetupMenu();
+
+                PerformTweak(args.gamedata);
 
                 AddLocalisations(args.gamedata);
 
@@ -370,11 +372,6 @@ namespace IngredientLib
 
                 args.gamedata.ProcessesView.Initialise(args.gamedata);
             };
-        }
-
-        protected override void OnInitialise()
-        {
-            SetupMenu();
         }
 
         #region Fixes

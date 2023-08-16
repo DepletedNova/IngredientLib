@@ -13,11 +13,11 @@
 
         public static void Redirect<T>(this T gdo, GameDataObject redirection) where T : CustomGameDataObject => gdo.Redirect(redirection.ID);
         
-        public static void TryRedirect<T>(this T gdo, Action<T> action) where T : GameDataObject
+        public static void TryRedirect<T>(this T gdo, Action<T> action, GameData gameData) where T : GameDataObject
         {
             if (gdo == null) return;
 
-            if (Redirects.TryGetValue(gdo.ID, out var redirect) && GameData.Main.TryGet<T>(redirect, out T outGDO))
+            if (Redirects.TryGetValue(gdo.ID, out var redirect) && gameData.TryGet(redirect, out T outGDO))
             {
                 action.Invoke(outGDO);
                 Main.LogInfo($"[{typeof(T).Name}] Redirecting GDOs: {gdo.name} ({gdo.ID}) -> {outGDO.name} ({redirect})");

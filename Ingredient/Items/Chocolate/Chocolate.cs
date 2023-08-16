@@ -25,7 +25,7 @@
         {
             Prefab.ApplyMaterialToChild("Bar", "Chocolate");
 
-            this.Redirect(106900119); // Chocolate
+            this.Redirect(1069000119); // Chocolate
         }
     }
 }

@@ -9,6 +9,11 @@
             GetCItemProvider(GetIngredient("Whipping Cream"), 1, 1, false, false, true, false, false, true, false)
         };
 
+        public override List<(Locale, ApplianceInfo)> InfoList => new()
+        {
+            (Locale.English, LocalisationUtils.CreateApplianceInfo("Heavy Cream", "Provides heavy cream", new(), new()))
+        };
+
         public override void Modify(Appliance gdo)
         {
             SetupCounter(Prefab);
