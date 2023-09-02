@@ -143,6 +143,23 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.IMGUIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.VFXModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MiniCafe\bin\Release\UnityEngine.VFXModule.dll</HintPath>
@@ -150,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\CPickupIgnoresHolder.cs" />
+    <Compile Include="Ingredient\Items\BoiledWater.cs" />
     <Compile Include="Ingredient\Items\CustardMix.cs" />
     <Compile Include="Ingredient\Items\Custard.cs" />
     <Compile Include="Ingredient\Items\SoySauceIngredient.cs" />
@@ -262,6 +280,7 @@
     <Compile Include="Ingredient\Providers\PorkProvider.cs" />
     <Compile Include="Ingredient\Providers\VinegarProvider.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="Menu\ComponentMenu.cs" />
     <Compile Include="Menu\PreferenceMenu.cs" />
     <Compile Include="Patches\TakeFromHolder_Patch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -37,7 +37,7 @@ namespace IngredientLib
     public class Main : BaseMod
     {
         public const string GUID = "ingredientlib";
-        public const string VERSION = "1.2.3";
+        public const string VERSION = "1.2.5";
 
         public Main() : base(GUID, "IngredientLib", "Depleted Supernova#1957", VERSION, ">=1.1.0", Assembly.GetExecutingAssembly()) { }
 
@@ -271,6 +271,7 @@ namespace IngredientLib
         {
             GetGDO<Item>(ItemReferences.Sugar).AddRecipe(GetCastedGDO<Item, Caramel>(), ProcessReferences.Cook, 2.6f, false, false);
             GetGDO<Item>(1069000119).AddRecipe(GetCastedGDO<Item, ChocolateShavings>(), ProcessReferences.Chop, 1f, false, false);
+            GetGDO<Item>(ItemReferences.Water).AddRecipe(GetCastedGDO<Item, BoiledWater>(), ProcessReferences.Cook, 0f, false, true);
 
             UpdateCondiment<KetchupIngredient>(GetGDO<Item>(ItemReferences.CondimentKetchup));
             UpdateCondiment<MustardIngredient>(GetGDO<Item>(ItemReferences.CondimentMustard));
@@ -323,6 +324,12 @@ namespace IngredientLib
             };
         }
         #endregion
+
+        protected override void OnInitialise()
+        {
+            LogWarning($"{GUID} v{VERSION} is in use!");
+            RegisterMenu<ComponentMenu>();
+        }
 
         protected override void OnPostActivate(Mod mod)
         {
