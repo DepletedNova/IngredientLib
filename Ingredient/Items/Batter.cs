@@ -1,6 +1,6 @@
 ﻿namespace IngredientLib.Ingredient.Items
 {
-    public class Batter : GenericItemGroup<Batter.View>
+    public class Batter : GenericItemGroup<Batter.View>, IWontRegister
     {
         public override string NameTag => "Batter";
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;

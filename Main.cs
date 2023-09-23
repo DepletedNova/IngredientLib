@@ -37,7 +37,7 @@ namespace IngredientLib
     public class Main : BaseMod
     {
         public const string GUID = "ingredientlib";
-        public const string VERSION = "1.2.5";
+        public const string VERSION = "1.2.6";
 
         public Main() : base(GUID, "IngredientLib", "Depleted Supernova#1957", VERSION, ">=1.1.0", Assembly.GetExecutingAssembly()) { }
 
@@ -258,6 +258,16 @@ namespace IngredientLib
                 }
                 dish.MinimumIngredients = minimumList.ToHashSet();
 
+                var unlockedIngredients = dish.UnlocksIngredients.ToList();
+                for (int i = 0; i < unlockedIngredients.Count; i++)
+                {
+                    var menuItem = unlockedIngredients[i].MenuItem;
+                    var ingredient = unlockedIngredients[i].Ingredient;
+                    ingredient.TryRedirect(n => ingredient = n, gameData);
+                    unlockedIngredients[i] = new() { Ingredient = ingredient, MenuItem = menuItem };
+                }
+                dish.UnlocksIngredients = unlockedIngredients.ToHashSet();
+
                 var processesList = dish.RequiredProcesses.ToList();
                 for (int i = 0; i < processesList.Count; i++)
                 {
@@ -272,6 +282,7 @@ namespace IngredientLib
             GetGDO<Item>(ItemReferences.Sugar).AddRecipe(GetCastedGDO<Item, Caramel>(), ProcessReferences.Cook, 2.6f, false, false);
             GetGDO<Item>(1069000119).AddRecipe(GetCastedGDO<Item, ChocolateShavings>(), ProcessReferences.Chop, 1f, false, false);
             GetGDO<Item>(ItemReferences.Water).AddRecipe(GetCastedGDO<Item, BoiledWater>(), ProcessReferences.Cook, 0f, false, true);
+            GetGDO<Appliance>(1470180731).Properties = new() { GetUnlimitedCItemProvider(2094624730) };
 
             UpdateCondiment<KetchupIngredient>(GetGDO<Item>(ItemReferences.CondimentKetchup));
             UpdateCondiment<MustardIngredient>(GetGDO<Item>(ItemReferences.CondimentMustard));
@@ -478,5 +489,5 @@ namespace IngredientLib
         #endregion
     }
 
-    internal struct IWontRegister { }
+    internal interface IWontRegister { }
 }
