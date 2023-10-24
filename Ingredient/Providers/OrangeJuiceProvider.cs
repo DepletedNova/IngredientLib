@@ -9,7 +9,7 @@
             GetCItemProvider(GetIngredient("Orange Juice"), 1, 1, false, false, true, false, false, true, false),
         };
 
-        public override void Modify(Appliance gdo)
+        public override void OnRegister(Appliance gdo)
         {
             SetupCounter(Prefab);
             SetupCounterLimitedItem(Prefab, GetPrefab("Orange Juice"));

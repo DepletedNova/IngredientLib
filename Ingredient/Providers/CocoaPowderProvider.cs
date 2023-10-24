@@ -9,7 +9,7 @@
         };
 
 
-        public override void Modify(Appliance gdo)
+        public override void OnRegister(Appliance gdo)
         {
             Prefab.ApplyMaterialToChild("Sack", "Sack - Brown", "Chocolate");
         }

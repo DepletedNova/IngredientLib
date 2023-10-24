@@ -8,7 +8,7 @@
             GetUnlimitedCItemProvider(GetIngredient("Chocolate"))
         };
 
-        public override void Modify(Appliance gdo)
+        public override void OnRegister(Appliance gdo)
         {
             Prefab.ApplyMaterialToChild("Frame", "Metal Dark");
             Prefab.ApplyMaterialToChild("Stand", "Wood - Default");

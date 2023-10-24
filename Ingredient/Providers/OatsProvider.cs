@@ -8,7 +8,7 @@
             GetUnlimitedCItemProvider(GetIngredient("Oats"))
         };
 
-        public override void Modify(Appliance gdo)
+        public override void OnRegister(Appliance gdo)
         {
             var sack = Prefab.GetChild("Sack");
             sack.ApplyMaterial("Sack");

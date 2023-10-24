@@ -13,7 +13,7 @@
             (Locale.English, LocalisationUtils.CreateApplianceInfo("Noodles", "Provides noodles", new(), new()))
         };
 
-        public override void Modify(Appliance gdo)
+        public override void OnRegister(Appliance gdo)
         {
             Prefab.ApplyMaterialToChild("Sack", "Sack - Brown");
             Prefab.GetChild("Noodles").ApplyMaterialToChildren("Noodle", "Sack");

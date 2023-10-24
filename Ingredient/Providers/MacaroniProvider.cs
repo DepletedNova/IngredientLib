@@ -8,7 +8,7 @@
             GetUnlimitedCItemProvider(GetIngredient("Macaroni"))
         };
 
-        public override void Modify(Appliance gdo)
+        public override void OnRegister(Appliance gdo)
         {
             var storage = Prefab.GetChild("MetalStorage");
             storage.ApplyMaterialToChild("Frame", "Metal Dark");

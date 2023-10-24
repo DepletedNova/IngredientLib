@@ -8,7 +8,7 @@
             GetUnlimitedCItemProvider(GetIngredient("Chicken"))
         };
 
-        public override void Modify(Appliance gdo)
+        public override void OnRegister(Appliance gdo)
         {
             SetupLocker(Prefab);
 

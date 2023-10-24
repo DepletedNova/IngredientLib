@@ -21,17 +21,5 @@
 
             AddProvider(NameTag, gdo);
         }
-
-        public override void AttachDependentProperties(GameData gameData, GameDataObject gdo)
-        {
-            base.AttachDependentProperties(gameData, gdo);
-
-            AddCustomProperties();
-        }
-
-        public override void OnRegister(Appliance gdo) => Modify(gdo);
-
-        protected virtual void AddCustomProperties() { }
-        public abstract void Modify(Appliance gdo);
     }
 }

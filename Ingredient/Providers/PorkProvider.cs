@@ -8,7 +8,7 @@
             GetUnlimitedCItemProvider(GetIngredient("Pork"))
         };
 
-        public override void Modify(Appliance gdo)
+        public override void OnRegister(Appliance gdo)
         {
             SetupFridge(Prefab);
 

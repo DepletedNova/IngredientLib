@@ -14,7 +14,7 @@
             (Locale.English, LocalisationUtils.CreateApplianceInfo("Heavy Cream", "Provides heavy cream", new(), new()))
         };
 
-        public override void Modify(Appliance gdo)
+        public override void OnRegister(Appliance gdo)
         {
             SetupCounter(Prefab);
             SetupCounterLimitedItem(Prefab, GetPrefab("Whipping Cream"));
