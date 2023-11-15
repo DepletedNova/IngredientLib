@@ -3,6 +3,7 @@
     public class Avocado : GenericItem<AvocadoProvider>
     {
         public override string NameTag => "Avocado";
+        public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
 
         public override List<Item.ItemProcess> Processes => new()
         {

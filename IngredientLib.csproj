@@ -167,9 +167,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\CPickupIgnoresHolder.cs" />
+    <Compile Include="Ingredient\Items\Crackers.cs" />
+    <Compile Include="Ingredient\Items\Marshmallow\MeltedMarshmallow.cs" />
+    <Compile Include="Ingredient\Items\Marshmallow\Marshmallow.cs" />
+    <Compile Include="Ingredient\Items\Marshmallow\BrownedMarshmallow.cs" />
     <Compile Include="Ingredient\Items\BoiledWater.cs" />
     <Compile Include="Ingredient\Items\CustardMix.cs" />
     <Compile Include="Ingredient\Items\Custard.cs" />
+    <Compile Include="Ingredient\Items\Asparagus\ChoppedAsparagus.cs" />
+    <Compile Include="Ingredient\Items\Asparagus\Asparagus.cs" />
     <Compile Include="Ingredient\Items\SoySauceIngredient.cs" />
     <Compile Include="Ingredient\Items\MustardIngredient.cs" />
     <Compile Include="Ingredient\Items\KetchupIngredient.cs" />
@@ -205,6 +211,9 @@
     <Compile Include="Ingredient\Items\Syrup\Syrup.cs" />
     <Compile Include="Ingredient\Items\Syrup\SyrupIngredient.cs" />
     <Compile Include="Ingredient\Items\Whipping Cream\WhippedCream.cs" />
+    <Compile Include="Ingredient\Providers\CrackersProvider.cs" />
+    <Compile Include="Ingredient\Providers\MarshmallowProvider.cs" />
+    <Compile Include="Ingredient\Providers\AsparagusProvider.cs" />
     <Compile Include="Ingredient\Providers\AvocadoProvider.cs" />
     <Compile Include="Ingredient\Providers\StrawberryProvider.cs" />
     <Compile Include="Ingredient\Providers\CocoaPowderProvider.cs" />

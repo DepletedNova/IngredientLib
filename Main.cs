@@ -37,7 +37,7 @@ namespace IngredientLib
     public class Main : BaseMod
     {
         public const string GUID = "ingredientlib";
-        public const string VERSION = "1.2.6";
+        public const string VERSION = "1.3.0";
 
         public Main() : base(GUID, "IngredientLib", "Depleted Supernova#1957", VERSION, ">=1.1.0", Assembly.GetExecutingAssembly()) { }
 
@@ -327,11 +327,13 @@ namespace IngredientLib
             ModsPreferencesMenu<PauseMenuAction>.RegisterMenu("IngredientLib", typeof(PreferencesMenu<PauseMenuAction>), typeof(PauseMenuAction));
             Events.PreferenceMenu_MainMenu_CreateSubmenusEvent += (s, args) =>
             {
-                args.Menus.Add(typeof(PreferencesMenu<MainMenuAction>), new PreferencesMenu<MainMenuAction>(args.Container, args.Module_list));
+                if (!args.Menus.ContainsKey(typeof(PreferencesMenu<MainMenuAction>)))
+                    args.Menus.Add(typeof(PreferencesMenu<MainMenuAction>), new PreferencesMenu<MainMenuAction>(args.Container, args.Module_list));
             };
             Events.PreferenceMenu_PauseMenu_CreateSubmenusEvent += (s, args) =>
             {
-                args.Menus.Add(typeof(PreferencesMenu<PauseMenuAction>), new PreferencesMenu<PauseMenuAction>(args.Container, args.Module_list));
+                if (!args.Menus.ContainsKey(typeof(PreferencesMenu<PauseMenuAction>)))
+                    args.Menus.Add(typeof(PreferencesMenu<PauseMenuAction>), new PreferencesMenu<PauseMenuAction>(args.Container, args.Module_list));
             };
         }
         #endregion
@@ -352,10 +354,10 @@ namespace IngredientLib
 
             AddIcons();
 
+            SetupMenu();
+
             Events.BuildGameDataEvent += (s, args) =>
             {
-                SetupMenu();
-
                 PerformTweak(args.gamedata);
 
                 AddLocalisations(args.gamedata);

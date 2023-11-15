@@ -9,7 +9,8 @@ namespace IngredientLib.Ingredient.Providers
         {
             GetCItemProvider(GetIngredient("Butter"), 0, 0, false, false, false, false, false, true, false),
             new CItemHolder(),
-            new CPickupIgnoresHolder()
+            new CPickupIgnoresHolder(),
+            new CItemHolderPreventMergeIntoHeld(),
         };
 
         public override void OnRegister(Appliance gdo)
