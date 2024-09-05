@@ -132,5 +132,22 @@ namespace IngredientLib.Util
             stand.ApplyMaterialToChild("Top", "Wood - Default");
         }
 
+        // Generics Util
+        // https://stackoverflow.com/a/37775540
+        public static bool IsSubclassOfGeneric(this object obj, Type genericType)
+        {
+            if (obj == null || genericType == null || !genericType.IsGenericTypeDefinition) 
+                return false;
+
+            Type type = obj.GetType();
+            while (type != typeof(object))
+            {
+                if (type.IsGenericType && type.GetGenericTypeDefinition() == genericType)
+                    return true;
+                type = type.BaseType;
+            }
+            return false;
+        }
+
     }
 }

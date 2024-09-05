@@ -6,7 +6,7 @@ using static KitchenData.Dish;
 
 namespace IngredientLib.Repair.Systems
 {
-    public class RepairSave : GenericSystemBase, IModSystem
+    public class RepairSave : GenericSystemBase
     {
         private EntityQuery RepairTriggers;
 

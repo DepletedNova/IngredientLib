@@ -21,6 +21,8 @@
             for (int i = 1; i < Prefab.GetChildCount() - 1; i++)
                 items.Add(Prefab.GetChild(i).gameObject);
             ReflectionUtils.GetField<ObjectsSplittableView>("Objects").SetValue(splittable, items);
+
+            this.Redirect(ItemReferences.Butter);
         }
     }
 }

@@ -16,6 +16,8 @@
             Prefab.ApplyMaterialToChild("Pot", "Metal");
             Prefab.ApplyMaterialToChild("Pasta", "Flour Bag", "Raw Pastry");
             Prefab.GetChild("Steam").ApplyVisualEffect("Steam");
+
+            this.Redirect(ItemReferences.SpaghettiPortion);
         }
     }
 }

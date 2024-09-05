@@ -24,6 +24,7 @@
             }
         }
 
+        public static bool IsRedirect(int id) => Redirects.ContainsValue(id);
         public static bool HasRedirect(int id) => Redirects.ContainsKey(id);
         public static bool TryGetRedirect(int id, out int redirect) => Redirects.TryGetValue(id, out redirect);
         public static int GetRedirect(int id) => Redirects[id];

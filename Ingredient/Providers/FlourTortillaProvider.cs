@@ -24,6 +24,8 @@
             Prefab.GetChild("Tortillas").ApplyMaterialToChildren("Tortilla", "Bread - Inside", "Well-done  Burger");
 
             ReflectionUtils.GetField<ItemSourceView>("Animator").SetValue(Prefab.TryAddComponent<ItemSourceView>(), box.GetComponent<Animator>());
+
+            this.Redirect(-5840756);
         }
     }
 }

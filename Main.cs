@@ -37,7 +37,7 @@ namespace IngredientLib
     public class Main : BaseMod
     {
         public const string GUID = "ingredientlib";
-        public const string VERSION = "1.3.0";
+        public const string VERSION = "1.3.3";
 
         public Main() : base(GUID, "IngredientLib", "Depleted Supernova#1957", VERSION, ">=1.1.0", Assembly.GetExecutingAssembly()) { }
 
@@ -164,7 +164,7 @@ namespace IngredientLib
         #region Tweaks
         private void PerformTweak(GameData gameData)
         {
-            if (ApplyRedirects.Value)
+            //if (ApplyRedirects.Value)
                 RedirectGDOs(gameData);
 
             TweakBasegame();
@@ -280,9 +280,8 @@ namespace IngredientLib
         private void TweakBasegame()
         {
             GetGDO<Item>(ItemReferences.Sugar).AddRecipe(GetCastedGDO<Item, Caramel>(), ProcessReferences.Cook, 2.6f, false, false);
-            GetGDO<Item>(1069000119).AddRecipe(GetCastedGDO<Item, ChocolateShavings>(), ProcessReferences.Chop, 1f, false, false);
+            GetGDO<Item>(ItemReferences.Chocolate).AddRecipe(GetCastedGDO<Item, ChocolateShavings>(), ProcessReferences.Chop, 1f, false, false);
             GetGDO<Item>(ItemReferences.Water).AddRecipe(GetCastedGDO<Item, BoiledWater>(), ProcessReferences.Cook, 0f, false, true);
-            GetGDO<Appliance>(1470180731).Properties = new() { GetUnlimitedCItemProvider(2094624730) };
 
             UpdateCondiment<KetchupIngredient>(GetGDO<Item>(ItemReferences.CondimentKetchup));
             UpdateCondiment<MustardIngredient>(GetGDO<Item>(ItemReferences.CondimentMustard));
@@ -341,7 +340,6 @@ namespace IngredientLib
         protected override void OnInitialise()
         {
             LogWarning($"{GUID} v{VERSION} is in use!");
-            RegisterMenu<ComponentMenu>();
         }
 
         protected override void OnPostActivate(Mod mod)
@@ -354,15 +352,15 @@ namespace IngredientLib
 
             AddIcons();
 
-            SetupMenu();
+            //SetupMenu();
 
             Events.BuildGameDataEvent += (s, args) =>
             {
                 PerformTweak(args.gamedata);
 
-                AddLocalisations(args.gamedata);
+                //AddLocalisations(args.gamedata);
 
-                FixServedItems(args.gamedata);
+                //FixServedItems(args.gamedata);
 
                 #region Debug logging
 #if DEBUG
@@ -389,8 +387,6 @@ namespace IngredientLib
                     Debug.Log($" * \"{GetCustomGameDataObject(item.Value).UniqueNameID}\": `{item.Value}`");
 #endif
                 #endregion
-
-                args.gamedata.ProcessesView.Initialise(args.gamedata);
             };
         }
 

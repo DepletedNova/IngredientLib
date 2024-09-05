@@ -2,11 +2,11 @@
 
 namespace IngredientLib.Repair.Patches
 {
-    [HarmonyPatch(typeof(PlayerPauseView))]
+    //[HarmonyPatch(typeof(PlayerPauseView))]
     static class PlayerPauseView_Patch
     {
-        [HarmonyPatch("PerformAction")]
-        [HarmonyPostfix]
+        //[HarmonyPatch("PerformAction")]
+        //[HarmonyPostfix]
         static void PerformAction_Postfix(PauseMenuAction action, PlayerPauseView __instance, int ___ActivePlayer)
         {
             if (action == Main.RepairAction)

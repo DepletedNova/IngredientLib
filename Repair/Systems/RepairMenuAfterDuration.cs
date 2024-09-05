@@ -8,7 +8,7 @@ using static Unity.Collections.AllocatorManager;
 
 namespace IngredientLib.Repair.Systems
 {
-    public class RepairMenuAfterDuration : GameSystemBase, IModSystem
+    public class RepairMenuAfterDuration : GameSystemBase
     {
         private EntityQuery RepairTriggers;
 

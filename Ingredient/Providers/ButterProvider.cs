@@ -21,6 +21,8 @@ namespace IngredientLib.Ingredient.Providers
             Prefab.GetChild("Butter").ApplyMaterialToChildren("Butter", "Butter");
 
             Prefab.TryAddComponent<HoldPointContainer>().HoldPoint = Prefab.transform.Find("HoldPoint");
+
+            this.Redirect(ApplianceReferences.SourceButter);
         }
     }
 }

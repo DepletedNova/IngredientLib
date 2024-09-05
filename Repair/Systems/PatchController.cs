@@ -2,7 +2,7 @@
 
 namespace IngredientLib.Repair.Systems
 {
-    public class PatchController : GenericSystemBase, IModSystem
+    public class PatchController : GenericSystemBase
     {
         static PatchController _instance;
         protected override void OnUpdate()

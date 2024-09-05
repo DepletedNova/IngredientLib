@@ -7,6 +7,8 @@
         public override void Modify(Item gdo)
         {
             Prefab.ApplyMaterialToChild("tortilla", "Bread - Inside", "Well-done  Burger");
+
+            this.Redirect(111245472);
         }
     }
 }

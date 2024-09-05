@@ -7,7 +7,7 @@ using Unity.Entities;
 namespace IngredientLib.Repair.Systems
 {
     [UpdateAfter(typeof(EndOfDayProgressionGroup))]
-    internal class CreateRepairMenuTrigger : NightSystem, IModSystem
+    internal class CreateRepairMenuTrigger : NightSystem
     {
         private EntityQuery Appliances;
         private EntityQuery Unlocks;

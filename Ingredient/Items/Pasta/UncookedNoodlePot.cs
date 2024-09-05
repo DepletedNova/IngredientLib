@@ -58,6 +58,8 @@
             Prefab.ApplyMaterialToChild("Water", "Water");
             Prefab.ApplyMaterialToChild("Un-Egg", "Egg Dough", "Sack");
             Prefab.GetChild("Un-Stick").ApplyMaterialToChildren("Noodle", "Sack");
+
+            this.Redirect(ItemReferences.SpaghettiUncooked);
         }
 
         public class ItemGroupViewAccessed : GenericItemGroup.AccessedItemGroupView

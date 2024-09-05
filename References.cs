@@ -7,7 +7,7 @@
         public static Dictionary<string, int> providerReferences = new Dictionary<string, int>();
 
         public static int GetIngredient(string name) => ingredientReferences[name.ToLower()];
-        public static int GetSplitIngredient(string name) => splitIngredientReferences[name.ToLower()] | 0;
+        public static int GetSplitIngredient(string name) => splitIngredientReferences[name.ToLower()];
         public static int GetProvider(string name) => providerReferences[name.ToLower()];
 
         internal static void AddIngredient<T>(string name, T item) where T : GameDataObject

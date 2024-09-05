@@ -1,6 +1,6 @@
 ﻿namespace IngredientLib.Ingredient.Items
 {
-    public class UnmixedEggDough : GenericItemGroup
+    public class UnmixedEggDough : GenericItemGroup, IWontRegister
     {
         public override string NameTag => "Unmixed Egg Dough";
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;

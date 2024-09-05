@@ -5,11 +5,11 @@ using TMPro;
 
 namespace IngredientLib.Repair.Patches
 {
-    [HarmonyPatch(typeof(GenericPromptIndicatorView))]
+    //[HarmonyPatch(typeof(GenericPromptIndicatorView))]
     static class GenericPromptIndicatorView_Patch
     {
-        [HarmonyPatch("UpdateData")]
-        [HarmonyPrefix]
+        //[HarmonyPatch("UpdateData")]
+        //[HarmonyPrefix]
         static bool UpdateData_Postfix(GenericPromptIndicatorView.ViewData data, ref TextMeshPro ___ActiveText, ref Animator ___Animator, ref InputPromptElement ___ActivePrompt)
         {
             if (data.OpenPromptFor == 0 || data.Message != RepairMenuTrigger.INDICATOR_MESSAGE)

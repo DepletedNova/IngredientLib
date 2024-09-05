@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <LangVersion>latest</LangVersion>
     <FileAlignment>512</FileAlignment>
+    <AssetBundlePath>D:\Modding\PlateUp\Assets\Bundle Generation\Assets\Bundles/ingredientlib</AssetBundlePath>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
@@ -34,303 +35,183 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\workshop\content\1599600\2898033283\0Harmony.dll</HintPath>
-    </Reference>
-    <Reference Include="ChefConnector">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\ChefConnector.dll</HintPath>
-    </Reference>
-    <Reference Include="Controllers, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Controllers.dll</HintPath>
-    </Reference>
-    <Reference Include="Kitchen.Common, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Kitchen.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Kitchen.FranchiseBuilderMode">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Kitchen.FranchiseBuilderMode.dll</HintPath>
-    </Reference>
-    <Reference Include="Kitchen.FranchiseMode">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Kitchen.FranchiseMode.dll</HintPath>
-    </Reference>
-    <Reference Include="Kitchen.GameData, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Kitchen.GameData.dll</HintPath>
-    </Reference>
-    <Reference Include="Kitchen.Layouts">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Kitchen.Layouts.dll</HintPath>
-    </Reference>
-    <Reference Include="Kitchen.Networking">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Kitchen.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="Kitchen.Persistence">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Kitchen.Persistence.dll</HintPath>
-    </Reference>
-    <Reference Include="Kitchen.PostgameMode">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Kitchen.PostgameMode.dll</HintPath>
-    </Reference>
-    <Reference Include="Kitchen.ResearchMode">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Kitchen.ResearchMode.dll</HintPath>
-    </Reference>
-    <Reference Include="Kitchen.RestaurantMode">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Kitchen.RestaurantMode.dll</HintPath>
-    </Reference>
-    <Reference Include="Kitchen.TutorialMode">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Kitchen.TutorialMode.dll</HintPath>
-    </Reference>
-    <Reference Include="KitchenLib-Workshop, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\workshop\content\1599600\2898069883\KitchenLib-Workshop.dll</HintPath>
-    </Reference>
-    <Reference Include="KitchenMode">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\KitchenMode.dll</HintPath>
-    </Reference>
-    <Reference Include="KitchenMods">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\KitchenMods.dll</HintPath>
-    </Reference>
-    <Reference Include="MessagePack, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\MessagePack.dll</HintPath>
-    </Reference>
-    <Reference Include="MessagePack.Annotations, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\MessagePack.Annotations.dll</HintPath>
-    </Reference>
-    <Reference Include="ShapesRuntime">
-      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\ShapesRuntime.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Serialization">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Sirenix.Serialization.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Unity.Collections">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Unity.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Collections.LowLevel.ILSupport">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Entities">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Unity.Entities.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Networking.Transport">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Unity.Networking.Transport.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ImageConversionModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.IMGUIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TextRenderingModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UIElementsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\UnityEngine.UIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.VFXModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MiniCafe\bin\Release\UnityEngine.VFXModule.dll</HintPath>
-    </Reference>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\CPickupIgnoresHolder.cs" />
-    <Compile Include="Ingredient\Items\Crackers.cs" />
-    <Compile Include="Ingredient\Items\Marshmallow\MeltedMarshmallow.cs" />
-    <Compile Include="Ingredient\Items\Marshmallow\Marshmallow.cs" />
-    <Compile Include="Ingredient\Items\Marshmallow\BrownedMarshmallow.cs" />
-    <Compile Include="Ingredient\Items\BoiledWater.cs" />
-    <Compile Include="Ingredient\Items\CustardMix.cs" />
-    <Compile Include="Ingredient\Items\Custard.cs" />
-    <Compile Include="Ingredient\Items\Asparagus\ChoppedAsparagus.cs" />
-    <Compile Include="Ingredient\Items\Asparagus\Asparagus.cs" />
-    <Compile Include="Ingredient\Items\SoySauceIngredient.cs" />
-    <Compile Include="Ingredient\Items\MustardIngredient.cs" />
-    <Compile Include="Ingredient\Items\KetchupIngredient.cs" />
-    <Compile Include="Ingredient\Items\Pasta\PastaNoodles.cs" />
-    <Compile Include="Ingredient\Items\SweetDoughMix.cs" />
-    <Compile Include="Ingredient\Items\SweetDough.cs" />
-    <Compile Include="Ingredient\Items\ThinBatter.cs" />
-    <Compile Include="Ingredient\Items\Strawberry\ChoppedStrawberry.cs" />
-    <Compile Include="Ingredient\Items\Strawberry\Strawberry.cs" />
-    <Compile Include="Ingredient\Items\Avocado\MashedAvocado.cs" />
-    <Compile Include="Ingredient\Items\Avocado\ChoppedAvocado.cs" />
-    <Compile Include="Ingredient\Items\Avocado\Avocado.cs" />
-    <Compile Include="Ingredient\Items\Chocolate\CocoaPowder.cs" />
-    <Compile Include="Ingredient\Items\FlourTortilla.cs" />
-    <Compile Include="Ingredient\Items\Cinnamon.cs" />
-    <Compile Include="Ingredient\Items\Garlic\MincedGarlic.cs" />
-    <Compile Include="Ingredient\Items\Garlic\PeeledGarlic.cs" />
-    <Compile Include="Ingredient\Items\Garlic\Garlic.cs" />
-    <Compile Include="Ingredient\Items\Blueberries.cs" />
-    <Compile Include="Ingredient\Items\Orange Juice\OrangeJuice.cs" />
-    <Compile Include="Ingredient\Items\Orange Juice\OrangeJuiceIngredient.cs" />
-    <Compile Include="Ingredient\Items\Pasta\BoxNoodle.cs" />
-    <Compile Include="Ingredient\Items\Pasta\CookedMacaroniPot.cs" />
-    <Compile Include="Ingredient\Items\Pasta\CookedNoodlePot.cs" />
-    <Compile Include="Ingredient\Items\Pasta\EggNoodle.cs" />
-    <Compile Include="Ingredient\Items\Pasta\Macaroni.cs" />
-    <Compile Include="Ingredient\Items\Pasta\UncookedMacaroniPot.cs" />
-    <Compile Include="Ingredient\Items\Pasta\UncookedNoodlePot.cs" />
-    <Compile Include="Ingredient\Items\Jalapenos\ChoppedJalapeno.cs" />
-    <Compile Include="Ingredient\Items\Jalapenos\Jalapeno.cs" />
-    <Compile Include="Ingredient\Items\Spinach\ChoppedSpinach.cs" />
-    <Compile Include="Ingredient\Items\Spinach\Spinach.cs" />
-    <Compile Include="Ingredient\Items\Syrup\Syrup.cs" />
-    <Compile Include="Ingredient\Items\Syrup\SyrupIngredient.cs" />
-    <Compile Include="Ingredient\Items\Whipping Cream\WhippedCream.cs" />
-    <Compile Include="Ingredient\Providers\CrackersProvider.cs" />
-    <Compile Include="Ingredient\Providers\MarshmallowProvider.cs" />
-    <Compile Include="Ingredient\Providers\AsparagusProvider.cs" />
-    <Compile Include="Ingredient\Providers\AvocadoProvider.cs" />
-    <Compile Include="Ingredient\Providers\StrawberryProvider.cs" />
-    <Compile Include="Ingredient\Providers\CocoaPowderProvider.cs" />
-    <Compile Include="Ingredient\Providers\FlourTortillaProvider.cs" />
-    <Compile Include="Ingredient\Providers\OrangeJuiceProvider.cs" />
-    <Compile Include="Ingredient\Providers\SpinachProvider.cs" />
-    <Compile Include="Ingredient\Providers\BoxPastaProvider.cs" />
-    <Compile Include="Ingredient\Providers\GarlicProvider.cs" />
-    <Compile Include="Ingredient\Providers\MacaroniProvider.cs" />
-    <Compile Include="Ingredient\Providers\CinnamonProvider.cs" />
-    <Compile Include="Ingredient\Providers\JalapenoProvider.cs" />
-    <Compile Include="Ingredient\Providers\BlueberryProvider.cs" />
-    <Compile Include="Ingredient\Providers\SyrupProvider.cs" />
-    <Compile Include="Ingredient\Items\Pork\Bacon.cs" />
-    <Compile Include="Ingredient\Items\Banana\Banana.cs" />
-    <Compile Include="Ingredient\Items\Banana\BananaPeel.cs" />
-    <Compile Include="Ingredient\Items\Batter.cs" />
-    <Compile Include="Ingredient\Items\Drumstick\BonelessDrumstick.cs" />
-    <Compile Include="Ingredient\Items\Pork\BurnedPorkchop.cs" />
-    <Compile Include="Ingredient\Items\Butter\Butter.cs" />
-    <Compile Include="Ingredient\Items\Caramel.cs" />
-    <Compile Include="Ingredient\Items\Chicken\Chicken.cs" />
-    <Compile Include="Ingredient\Items\Chocolate\Chocolate.cs" />
-    <Compile Include="Ingredient\Items\Chocolate\ChocolateShavings.cs" />
-    <Compile Include="Ingredient\Items\Chocolate\ChocolateSauce.cs" />
-    <Compile Include="Ingredient\Items\Chocolate\ChoppedChocolate.cs" />
-    <Compile Include="Ingredient\Items\Lemon\ChoppedLemon.cs" />
-    <Compile Include="Ingredient\Items\Lime\ChoppedLime.cs" />
-    <Compile Include="Ingredient\Items\Peppers\ChoppedPepper.cs" />
-    <Compile Include="Ingredient\Items\Banana\ChoppedBanana.cs" />
-    <Compile Include="Ingredient\Items\Pork\ChoppedPork.cs" />
-    <Compile Include="Ingredient\Items\Drumstick\CookedBonelessDrumstick.cs" />
-    <Compile Include="Ingredient\Items\Chicken\CookedChicken.cs" />
-    <Compile Include="Ingredient\Items\Drumstick\CookedDrumstick.cs" />
-    <Compile Include="Ingredient\Items\Drumstick\Drumstick.cs" />
-    <Compile Include="Ingredient\Items\Drumstick\DrumstickBone.cs" />
-    <Compile Include="Ingredient\Items\Pasta\EggDough.cs" />
-    <Compile Include="Ingredient\Items\Chocolate\Ganache.cs" />
-    <Compile Include="Ingredient\Items\Honey\Honey.cs" />
-    <Compile Include="Ingredient\Items\Honey\HoneyIngredient.cs" />
-    <Compile Include="Ingredient\Items\Ice.cs" />
-    <Compile Include="Ingredient\Items\Lemon\Lemon.cs" />
-    <Compile Include="Ingredient\Items\Lime\LimeJuice.cs" />
-    <Compile Include="Ingredient\Items\Lemon\LemonJuice.cs" />
-    <Compile Include="Ingredient\Items\Lime\Lime.cs" />
-    <Compile Include="Ingredient\Items\Pasta\UnmixedEggDough.cs" />
-    <Compile Include="Ingredient\Items\Whipping Cream\WhippingCream.cs" />
-    <Compile Include="Ingredient\Items\Milk\MilkIngredient.cs" />
-    <Compile Include="Ingredient\Items\Oats.cs" />
-    <Compile Include="Ingredient\Items\Banana\PeeledBanana.cs" />
-    <Compile Include="Ingredient\Items\Milk\Milk.cs" />
-    <Compile Include="Ingredient\Items\Peppers\Pepper.cs" />
-    <Compile Include="Ingredient\Items\Pork\Pork.cs" />
-    <Compile Include="Ingredient\Items\Pork\Porkchop.cs" />
-    <Compile Include="Ingredient\Items\Chicken\ShreddedChicken.cs" />
-    <Compile Include="Ingredient\Items\Vinegar\VinegarIngredient.cs" />
-    <Compile Include="Ingredient\Items\Butter\ButterBlock.cs" />
-    <Compile Include="Ingredient\Items\Vinegar\Vinegar.cs" />
-    <Compile Include="Ingredient\Items\Whipping Cream\WhippingCreamIngredient.cs" />
-    <Compile Include="Ingredient\Providers\BananaProvider.cs" />
-    <Compile Include="Ingredient\Providers\ButterProvider.cs" />
-    <Compile Include="Ingredient\Providers\ChickenProvider.cs" />
-    <Compile Include="Ingredient\Providers\ChocolateProvider.cs" />
-    <Compile Include="Ingredient\Providers\DrumstickProvider.cs" />
-    <Compile Include="Ingredient\Providers\HoneyProvider.cs" />
-    <Compile Include="Ingredient\Providers\IceProvider.cs" />
-    <Compile Include="Ingredient\Providers\LemonProvider.cs" />
-    <Compile Include="Ingredient\Providers\LimeProvider.cs" />
-    <Compile Include="Ingredient\Providers\WhippingCreamProvider.cs" />
-    <Compile Include="Ingredient\Providers\MilkProvider.cs" />
-    <Compile Include="Ingredient\Providers\OatsProvider.cs" />
-    <Compile Include="Ingredient\Providers\PepperProvider.cs" />
-    <Compile Include="Ingredient\Providers\PorkProvider.cs" />
-    <Compile Include="Ingredient\Providers\VinegarProvider.cs" />
-    <Compile Include="Main.cs" />
-    <Compile Include="Menu\ComponentMenu.cs" />
-    <Compile Include="Menu\PreferenceMenu.cs" />
-    <Compile Include="Patches\TakeFromHolder_Patch.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RedirectRegistry.cs" />
-    <Compile Include="References.cs" />
-    <Compile Include="Repair\Components\CRepairAfterDuration.cs" />
-    <Compile Include="Repair\Components\SCheckForRepair.cs" />
-    <Compile Include="Repair\Components\SRequestRepair.cs" />
-    <Compile Include="Repair\Components\SRepair.cs" />
-    <Compile Include="Repair\GDOs\RepairMenuTrigger.cs" />
-    <Compile Include="Repair\GDOs\RepairProcess.cs" />
-    <Compile Include="Repair\Patches\GenericPromptIndicatorView_Patch.cs" />
-    <Compile Include="Repair\Patches\MainMenu_Patch.cs" />
-    <Compile Include="Repair\Patches\PlayerPauseView_Patch.cs" />
-    <Compile Include="Repair\Patches\PlayerManager_Patch.cs" />
-    <Compile Include="Repair\Patches\StartPracticeMode_Patch.cs" />
-    <Compile Include="Repair\Patches\SStartDayWarnings_Patch.cs" />
-    <Compile Include="Repair\Patches\StartNewDay_Patch.cs" />
-    <Compile Include="Repair\Systems\CreateRepairMenuTrigger.cs" />
-    <Compile Include="Repair\Systems\PatchController.cs" />
-    <Compile Include="Repair\Systems\RepairMenuAfterDuration.cs" />
-    <Compile Include="Repair\Systems\RepairSave.cs" />
-    <Compile Include="Repair\Systems\RequestRepairCheck.cs" />
-    <Compile Include="Util\Custom\GenericItem.cs" />
-    <Compile Include="Util\Custom\GenericItemGroup.cs" />
-    <Compile Include="Util\Custom\GenericProvider.cs" />
-    <Compile Include="Util\GDOHelper.cs" />
-    <Compile Include="Util\Helper.cs" />
-    <Compile Include="Util\VisualEffectHelper.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Components\CPickupIgnoresHolder.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Asparagus\Asparagus.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Asparagus\ChoppedAsparagus.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Avocado\Avocado.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Avocado\ChoppedAvocado.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Avocado\MashedAvocado.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Banana\Banana.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Banana\BananaPeel.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Banana\ChoppedBanana.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Banana\PeeledBanana.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Batter.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Blueberries.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\BoiledWater.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Butter\Butter.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Butter\ButterBlock.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Caramel.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Chicken\Chicken.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Chicken\CookedChicken.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Chicken\ShreddedChicken.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Chocolate\Chocolate.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Chocolate\ChocolateSauce.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Chocolate\ChocolateShavings.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Chocolate\ChoppedChocolate.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Chocolate\CocoaPowder.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Chocolate\Ganache.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Cinnamon.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Crackers.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Custard.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\CustardMix.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Drumstick\BonelessDrumstick.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Drumstick\CookedBonelessDrumstick.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Drumstick\CookedDrumstick.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Drumstick\Drumstick.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Drumstick\DrumstickBone.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\FlourTortilla.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Garlic\Garlic.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Garlic\MincedGarlic.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Garlic\PeeledGarlic.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Honey\Honey.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Honey\HoneyIngredient.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Ice.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Jalapenos\ChoppedJalapeno.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Jalapenos\Jalapeno.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\KetchupIngredient.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Lemon\ChoppedLemon.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Lemon\Lemon.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Lemon\LemonJuice.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Lime\ChoppedLime.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Lime\Lime.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Lime\LimeJuice.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Marshmallow\BrownedMarshmallow.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Marshmallow\Marshmallow.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Marshmallow\MeltedMarshmallow.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Milk\Milk.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Milk\MilkIngredient.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\MustardIngredient.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Oats.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Orange Juice\OrangeJuice.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Orange Juice\OrangeJuiceIngredient.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Pasta\BoxNoodle.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Pasta\CookedMacaroniPot.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Pasta\CookedNoodlePot.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Pasta\EggDough.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Pasta\EggNoodle.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Pasta\Macaroni.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Pasta\PastaNoodles.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Pasta\UncookedMacaroniPot.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Pasta\UncookedNoodlePot.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Pasta\UnmixedEggDough.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Peppers\ChoppedPepper.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Peppers\Pepper.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Pork\Bacon.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Pork\BurnedPorkchop.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Pork\ChoppedPork.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Pork\Pork.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Pork\Porkchop.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\SoySauceIngredient.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Spinach\ChoppedSpinach.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Spinach\Spinach.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Strawberry\ChoppedStrawberry.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Strawberry\Strawberry.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\SweetDough.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\SweetDoughMix.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Syrup\Syrup.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Syrup\SyrupIngredient.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\ThinBatter.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Vinegar\Vinegar.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Vinegar\VinegarIngredient.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Whipping Cream\WhippedCream.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Whipping Cream\WhippingCream.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Items\Whipping Cream\WhippingCreamIngredient.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\AsparagusProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\AvocadoProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\BananaProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\BlueberryProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\BoxPastaProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\ButterProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\ChickenProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\ChocolateProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\CinnamonProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\CocoaPowderProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\CrackersProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\DrumstickProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\FlourTortillaProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\GarlicProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\HoneyProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\IceProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\JalapenoProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\LemonProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\LimeProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\MacaroniProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\MarshmallowProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\MilkProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\OatsProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\OrangeJuiceProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\PepperProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\PorkProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\SpinachProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\StrawberryProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\SyrupProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\VinegarProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Ingredient\Providers\WhippingCreamProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Main.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Menu\ComponentMenu.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Menu\PreferenceMenu.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Patches\TakeFromHolder_Patch.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Properties\AssemblyInfo.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\RedirectRegistry.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\References.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Repair\Components\CRepairAfterDuration.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Repair\Components\SCheckForRepair.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Repair\Components\SRepair.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Repair\Components\SRequestRepair.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Repair\GDOs\RepairMenuTrigger.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Repair\GDOs\RepairProcess.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Repair\Patches\GenericPromptIndicatorView_Patch.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Repair\Patches\MainMenu_Patch.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Repair\Patches\PlayerManager_Patch.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Repair\Patches\PlayerPauseView_Patch.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Repair\Patches\SStartDayWarnings_Patch.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Repair\Patches\StartNewDay_Patch.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Repair\Patches\StartPracticeMode_Patch.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Repair\Systems\CreateRepairMenuTrigger.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Repair\Systems\PatchController.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Repair\Systems\RepairMenuAfterDuration.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Repair\Systems\RepairSave.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Repair\Systems\RequestRepairCheck.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Util\Custom\GenericItem.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Util\Custom\GenericItemGroup.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Util\Custom\GenericProvider.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Util\GDOHelper.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Util\Helper.cs" />
+    <Compile Include="D:\Modding\PlateUp\KitchenMods\IngredientLib\Util\VisualEffectHelper.cs" />
+    <Compile Include="Patches\GameDataConstructor_Patch.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetDir)$(TargetFileName)" "C:\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\Mods\IngredientLib\content" /y
-copy "C:\PlateUp\Assets\Bundle Generation\Assets\Bundles\ingredientlib" "C:\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\Mods\IngredientLib\content" /y
-cd "C:\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\Mods\IngredientLib\content"
-del "ingredientlib.assets"
-ren "ingredientlib" "ingredientlib.assets"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
   </PropertyGroup>
+  <Import Project="..\packages\Yariazen.PlateUp.ModBuildUtilities.1.10.21\build\Yariazen.PlateUp.ModBuildUtilities.targets" Condition="Exists('..\packages\Yariazen.PlateUp.ModBuildUtilities.1.10.21\build\Yariazen.PlateUp.ModBuildUtilities.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Yariazen.PlateUp.ModBuildUtilities.1.10.21\build\Yariazen.PlateUp.ModBuildUtilities.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Yariazen.PlateUp.ModBuildUtilities.1.10.21\build\Yariazen.PlateUp.ModBuildUtilities.targets'))" />
+  </Target>
 </Project>

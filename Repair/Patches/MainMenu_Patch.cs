@@ -3,11 +3,11 @@ using IngredientLib.Repair.Systems;
 
 namespace IngredientLib.Repair.Patches
 {
-    [HarmonyPatch(typeof(MainMenu))]
+    //[HarmonyPatch(typeof(MainMenu))]
     static class MainMenu_Patch
     {
-        [HarmonyPatch(nameof(MainMenu.Setup))]
-        [HarmonyPrefix]
+        //[HarmonyPatch(nameof(MainMenu.Setup))]
+        //[HarmonyPrefix]
         static void Setup_Prefix(MainMenu __instance)
         {
             if (!PatchController.StaticHasSingleton<SRepair>() || !GameInfo.IsPreparationTime || GameInfo.CurrentScene != SceneType.Kitchen)

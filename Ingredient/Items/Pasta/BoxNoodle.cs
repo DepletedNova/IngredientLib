@@ -8,6 +8,8 @@
         public override void Modify(Item gdo)
         {
             Prefab.ApplyMaterialToChildren("pasta", "Sack");
+
+            this.Redirect(ItemReferences.SpaghettiUncooked);
         }
     }
 }

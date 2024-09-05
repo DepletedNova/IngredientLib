@@ -17,6 +17,8 @@
         {
             Prefab.ApplyMaterialToChild("Sack", "Sack - Brown");
             Prefab.GetChild("Noodles").ApplyMaterialToChildren("Noodle", "Sack");
+
+            this.Redirect(ApplianceReferences.SourceSpaghetti);
         }
     }
 }

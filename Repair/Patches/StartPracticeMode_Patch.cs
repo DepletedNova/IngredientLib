@@ -2,7 +2,7 @@
 
 namespace EverythingAlways.Patches
 {
-    [HarmonyPatch(typeof(StartPracticeMode), "OnUpdate")]
+    //[HarmonyPatch(typeof(StartPracticeMode), "OnUpdate")]
     static class StartPracticeMode_Patch
     {
         static readonly List<OpCode> OPCODES_TO_MATCH = new List<OpCode>()
@@ -36,7 +36,7 @@ namespace EverythingAlways.Patches
 
         const int EXPECTED_MATCH_COUNT = 1;
 
-        [HarmonyTranspiler]
+        //[HarmonyTranspiler]
         static IEnumerable<CodeInstruction> OriginalLambdaBody_Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             IngredientLib.Main.LogInfo("StartPracticeMode Transpiler");

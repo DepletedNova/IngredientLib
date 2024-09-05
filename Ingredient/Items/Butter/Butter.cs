@@ -9,6 +9,8 @@
         public override void Modify(Item gdo)
         {
             Prefab.ApplyMaterialToChild("Slice", "Butter");
+
+            this.Redirect(ItemReferences.Butter);
         }
     }
 }

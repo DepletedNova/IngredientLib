@@ -3,7 +3,7 @@ using Unity.Entities;
 
 namespace IngredientLib.Repair.Systems
 {
-    public class RequestRepairCheck : GenericSystemBase, IModSystem
+    public class RequestRepairCheck : GenericSystemBase
     {
         protected override void Initialise()
         {
